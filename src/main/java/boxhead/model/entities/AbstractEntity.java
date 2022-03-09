@@ -1,4 +1,4 @@
-package entities;
+package boxhead.model.entities;
 
 import javafx.geometry.BoundingBox;
 import javafx.geometry.Point2D;
@@ -9,6 +9,7 @@ public abstract class AbstractEntity implements Entity {
 	private EntityType entityType;
 	private double height;
 	private double width;
+	
 	
 	public AbstractEntity(Point2D position,EntityType entityType) {
 		this.position=position;

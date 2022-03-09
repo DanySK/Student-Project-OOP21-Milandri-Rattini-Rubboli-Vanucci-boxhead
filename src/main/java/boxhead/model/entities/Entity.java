@@ -1,4 +1,4 @@
-package entities;
+package boxhead.model.entities;
 
 import javafx.geometry.BoundingBox;
 import javafx.geometry.Point2D;

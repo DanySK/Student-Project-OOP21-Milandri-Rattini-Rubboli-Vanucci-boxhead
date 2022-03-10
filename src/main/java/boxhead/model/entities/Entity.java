@@ -21,7 +21,7 @@ public interface Entity {
      * @param height of the bounding box 
      * @param widht of the bounding box 
      */
-	void setBoundingBox(float height, float width);
+	void setBoundingBox(double height, double width);
 	
 	 /** 
      * @return bounding box

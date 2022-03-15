@@ -1,20 +1,31 @@
 package boxhead.model.entities.utils;
 
-public enum Direction {
-	NORTH(),
-	
-	NORTH_EAST(),
-	
-	EAST(),
-	
-	SOUTH_EAST(),
-	
-	SOUTH(),
+import javafx.geometry.Point2D;
 
-	SOUTH_WEST(),
+public enum Direction {
+	NORTH(0,1),
 	
-	WEST(),
+	NORTH_EAST(1,1),
 	
-	NORTH_WEST();
+	EAST(1,0),
 	
+	SOUTH_EAST(1,-1),
+	
+	SOUTH(0,-1),
+
+	SOUTH_WEST(-1,-1),
+	
+	WEST(-1,0),
+	
+	NORTH_WEST(-1,1);
+	
+	private final Point2D direction;
+	
+	Direction(final int x, final int y) {
+		this.direction = new Point2D(x, y);
+	}
+	
+	public final Point2D traduce() {
+		return this.direction;
+	}
 }

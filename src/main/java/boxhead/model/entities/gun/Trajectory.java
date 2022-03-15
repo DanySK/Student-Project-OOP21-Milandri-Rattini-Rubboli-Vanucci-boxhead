@@ -1,10 +1,10 @@
-package boxhead.model.gun;
+package boxhead.model.entities.gun;
 
 import javafx.geometry.Point2D;
 import boxhead.model.entities.utils.Direction;
 
 /**
- * Represents the movement of the shot
+ * Represents the trajectory of the shot
  */
 public interface Trajectory {
 	

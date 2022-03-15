@@ -1,4 +1,4 @@
-package boxhead.model.gun;
+package boxhead.model.entities.gun;
 
 import boxhead.model.entities.AbstractEntity;
 import boxhead.model.entities.EntityType;
@@ -16,11 +16,12 @@ public abstract class AbstractShot extends AbstractEntity implements Shot {
 
 	protected abstract Trajectory getTrajectory();
 	
-//	@Override
-//	public final Point2D getSpeed() {
-//		final double vel = this.getTrajectory().getSpeed();
-//		return this.getTrajectory().getSpeed();
-//	}
+	@Override
+	public final Point2D getSpeed() {
+		final double vel = this.getTrajectory().getSpeed();
+		final Point2D dir = this.getTrajectory().getDirection().traduce();
+		return new Point2D(vel * dir.getX(), vel * dir.getY());
+	}
 
 	@Override
 	public Direction getDirection() {

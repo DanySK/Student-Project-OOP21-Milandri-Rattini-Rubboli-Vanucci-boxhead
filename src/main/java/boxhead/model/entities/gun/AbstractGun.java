@@ -1,4 +1,4 @@
-package boxhead.model.gun;
+package boxhead.model.entities.gun;
 
 import boxhead.model.entities.EntityType;
 import javafx.geometry.Point2D;

@@ -5,10 +5,11 @@ import javafx.application.Application;
 import javafx.stage.Stage;
 
 public class Game extends Application {
-
+	/**
+	 * set the beginning of the game
+	 */
 	@Override
 	public void start(Stage primaryStage) {
-		// TODO Auto-generated method stub
 		try {
 			final ViewManager manager = new ViewManager();
 			primaryStage = manager.getMainStage();
@@ -18,6 +19,11 @@ public class Game extends Application {
 		}
 	}
 
+	/**
+	 * Entry point
+	 *
+	 * @param args
+	 */
 	public static void main(final String[] args) {
 		Application.launch(args);
 	}

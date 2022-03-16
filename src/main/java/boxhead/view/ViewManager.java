@@ -20,6 +20,10 @@ public class ViewManager {
 
 	List<BoxheadButton> menuButtons;
 
+	/**
+	 * Construct a viewManager
+	 */
+
 	public ViewManager() {
 		menuButtons = new ArrayList<>();
 		mainPane = new AnchorPane();
@@ -29,6 +33,10 @@ public class ViewManager {
 		createButton();
 	}
 
+	/**
+	 *
+	 * @return the stage
+	 */
 	public Stage getMainStage() {
 		return mainStage;
 	}
@@ -51,6 +59,12 @@ public class ViewManager {
 	private void createStartButton() {
 		final BoxheadButton startButton = new BoxheadButton("START!");
 		addMenuButton(startButton);
+
+		startButton.setOnAction(event -> {
+			final GameViewManager gameManager = new GameViewManager();
+			gameManager.createNewGame(mainStage);
+
+		});
 	}
 
 	private void createScoreButton() {
@@ -61,6 +75,8 @@ public class ViewManager {
 	private void createExitButton() {
 		final BoxheadButton exitButton = new BoxheadButton("EXIT");
 		addMenuButton(exitButton);
+
+		exitButton.setOnAction(arg0 -> mainStage.close());
 	}
 
 }

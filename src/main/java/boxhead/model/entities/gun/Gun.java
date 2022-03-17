@@ -1,9 +1,10 @@
 package boxhead.model.entities.gun;
 
 import java.util.Optional;
+import java.util.Set;
 
-import javafx.geometry.Point2D;
 import boxhead.model.entities.Entity;
+import boxhead.model.entities.utils.Direction;
 
 /**
  * Represents a generic gun that creates a {@link Shot}
@@ -52,7 +53,7 @@ public interface Gun extends Entity{
 	 * @return
 	 * 			The shot shot		
 	 */
-	Optional<Shot> attack();
+	Set<Optional<Shot>> attack(Direction direction);
 	
 	/**
 	 * @return

@@ -25,6 +25,7 @@ public class StraightTrajectory implements Trajectory {
 	 */
 	public StraightTrajectory(final Point2D start, final Direction dir) {
 		this.position = start;
+		this.direction = dir;
 		this.setSpeed(DEFAULT_SPEED);
 		this.calculateStep();
 	}
@@ -45,10 +46,9 @@ public class StraightTrajectory implements Trajectory {
 	/**
 	 * Used to calculate the next step
 	 */
-	
 	private void calculateStep() {
 		final double xStep, yStep;
-		if (this.direction == null) {
+		if (this.direction != null) {
 			xStep = this.direction.traduce().getX() * this.speed;
 			yStep = this.direction.traduce().getY() * this.speed;
 			this.positionVariation = new Point2D(xStep, yStep);

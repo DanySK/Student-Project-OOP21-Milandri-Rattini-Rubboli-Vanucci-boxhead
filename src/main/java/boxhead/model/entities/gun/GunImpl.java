@@ -1,8 +1,11 @@
 package boxhead.model.entities.gun;
 
 import java.time.Duration;
+import java.util.HashSet;
 import java.util.Optional;
+import java.util.Set;
 
+import boxhead.model.entities.utils.Direction;
 import javafx.geometry.Point2D;
 
 /**
@@ -36,23 +39,41 @@ public class GunImpl extends AbstractGun {
 	 * {@inheritDoc}
 	 */
 	@Override
-	public Optional<Shot> attack() {
+	public Set<Optional<Shot>> attack(final Direction direction) {
+		final Set<Optional<Shot>> attacks = new HashSet<>();
 		if (System.currentTimeMillis() - this.lastShot <= rateOfFire || this.ammoInMagazine <= 0) {
-			return Optional.empty();
+			attacks.add(Optional.empty());
+			return attacks;
 		}
 		this.ammoInMagazine--;
 		this.lastShot = System.currentTimeMillis();
-		switch(gunType) {
+		switch(this.gunType) {
 		case PISTOL:
-			//TODO
 		case UZI:
-			return Optional.empty();
+			attacks.add(Optional.of(new Bullet(this.getPosition(), direction, damage)));
+			return attacks;
 		case SHOTGUN:
-			return Optional.empty();
+			Point2D offset = null;
+			if (direction.equals(Direction.NORTH) || direction.equals(Direction.SOUTH))
+				offset = Direction.EAST.traduce();
+			if (direction.equals(Direction.EAST) || direction.equals(Direction.WEST))
+				offset = Direction.NORTH.traduce();
+			if (direction.equals(Direction.NORTH_EAST) || direction.equals(Direction.SOUTH_WEST))
+				offset = Direction.NORTH_WEST.traduce();
+			if (direction.equals(Direction.NORTH_WEST) || direction.equals(Direction.SOUTH_EAST))
+				offset = Direction.NORTH_EAST.traduce();
+			final Point2D bullet2 = new Point2D(direction.traduce().getX()*10 + offset.getX(),
+												direction.traduce().getY()*10 + offset.getY());
+			final Point2D bullet3 = new Point2D(direction.traduce().getX()*10 - offset.getX(),
+												direction.traduce().getY()*10 - offset.getY());
+			attacks.add(Optional.of(new Bullet(this.getPosition(), direction, damage)));
+			attacks.add(Optional.of(new Bullet(this.getPosition(), bullet2, damage)));
+			attacks.add(Optional.of(new Bullet(this.getPosition(), bullet3, damage)));
+			return attacks;
 		}
-		return Optional.empty();
+		return attacks;
 	}
-	
+
 	/**
 	 * {@inheritDoc}
 	 */

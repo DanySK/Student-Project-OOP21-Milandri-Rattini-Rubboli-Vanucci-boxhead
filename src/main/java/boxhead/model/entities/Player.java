@@ -7,11 +7,10 @@ import java.util.Set;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.LinkedList;
-
-import boxhead.model.entities.*;
 import boxhead.model.entities.utils.*;
 import boxhead.model.entities.gun.*;
 import boxhead.model.entities.gun.Gun.GunType;
+
 public class Player extends AbstractHealthEntity {
 	
 	private static final int MAX_HEALTH=100;
@@ -21,11 +20,12 @@ public class Player extends AbstractHealthEntity {
 	private final List<Boolean> iscolliding;
 	private Gun currentGun;
 	private int gunIndex;
+	private Gun selectedGun=null;
 	
-	public Player(Point2D speed, Direction direction, Point2D position, EntityType entityType, double health) {
-		super(Point2D.ZERO, Direction.WEST, Point2D.ZERO, EntityType.PLAYER, MAX_HEALTH);
+	public Player() {
+		super(Point2D.ZERO, Direction.EAST, Point2D.ZERO, EntityType.PLAYER, MAX_HEALTH);
 		this.guns = new LinkedList<>();
-		this.currentGun=new GunFactory().getGun(position,GunType.PISTOL);
+		this.currentGun=new GunFactory().getGun(this.position,GunType.PISTOL);
 		this.guns.add(this.currentGun);
 		this.iscolliding=new ArrayList<>();
 		this.gunIndex=0;
@@ -37,6 +37,16 @@ public class Player extends AbstractHealthEntity {
      */
 	public final Gun getCurrentGun() {
 		return this.currentGun;
+	
+	}
+	
+	public final Gun getSelectedGun(GunType gunType) {
+		
+		this.guns.forEach(g -> {
+		      if(g.getGunType()==gunType)
+		        this.selectedGun = g;
+		});
+		return this.selectedGun;
 	}
 	
 	/**
@@ -51,21 +61,27 @@ public class Player extends AbstractHealthEntity {
      * Check collision in the next position
      * @param Point2D nextPosition
      */
-	public void checkCollision(final Point2D nextPosition) {
-        final BoundingBox playerBB = new BoundingBox(getPosition().getX() + nextPosition.getX(),
-                getPosition().getY() + nextPosition.getY(), getWidth(), getHeight());
-
-        this.obstacles.forEach(BB -> {
-            if (Collision.isColliding(playerBB, BB)) {
-                this.iscolliding.add(true);
-            }
-        });
-
-        if (!this.iscolliding.isEmpty()) {
-            setSpeed(Point2D.ZERO);
-        } else {
-            setSpeed(nextPosition);
-        }
+	public void checkCollision(final Direction direction) {
+		if (!direction.equals(Direction.NULL)) {
+			this.setDirection(direction);
+	        final BoundingBox playerBB = new BoundingBox(getPosition().getX() + direction.traduce().getX(),
+	                getPosition().getY() + direction.traduce().getY(), getWidth(), getHeight());
+	
+	        this.obstacles.forEach(BB -> {
+	            if (Collision.isColliding(playerBB, BB)) {
+	                this.iscolliding.add(true);
+	            }
+	        });
+	
+	        if (!this.iscolliding.isEmpty()) {
+	            setSpeed(Point2D.ZERO);
+	        } else {
+	            setSpeed(direction.traduce());
+	        }
+		}
+		else {
+			this.setSpeed(direction.traduce());
+		}
         this.iscolliding.clear();
 	}	
 	
@@ -88,7 +104,6 @@ public class Player extends AbstractHealthEntity {
 			this.currentGun=this.guns.get(gunIndex);
 		}
 	}
-	
 	/**
      * Set currentGun to the previous gun in the inventory
      */

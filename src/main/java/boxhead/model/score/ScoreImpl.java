@@ -4,9 +4,7 @@ import java.util.Optional;
 import java.util.concurrent.TimeUnit;
 
 /**
- * TODO SCORE WILL BE IN THE ZOMBIEMODEL CLASS, SO THAT WHENEVER A ZOMBIE DIES THE SCORE WILL BE INCREMENTED.
- * @author emira
- *
+ * Implementation of {@link Score}.
  */
 public class ScoreImpl implements Score {
 
@@ -18,6 +16,10 @@ public class ScoreImpl implements Score {
 	private Optional<String> timePlayed;
 	private Optional<String> nickname;
 	
+	/**
+	 * @param nickname
+	 * 			The nickname of the player.
+	 */
 	public ScoreImpl(final String nickname) {
 		this.kills = 0;
 		this.killStreak = 0;
@@ -125,7 +127,7 @@ public class ScoreImpl implements Score {
 	 */
 	@Override
 	public void update() {
-		if (System.currentTimeMillis() - this.lastKill > this.streakTime) {
+		if (System.currentTimeMillis() - this.lastKill > this.streakTime && this.killStreak > 0) {
 			this.decreaseStreak();
 		}
 	}

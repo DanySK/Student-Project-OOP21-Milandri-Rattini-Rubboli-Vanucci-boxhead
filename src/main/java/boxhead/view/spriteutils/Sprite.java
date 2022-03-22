@@ -1,10 +1,13 @@
 package boxhead.view.spriteutils;
 
 import javafx.scene.SnapshotParameters;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
 
 import boxhead.model.entities.EntityType;
+import boxhead.model.entities.gun.Gun.GunType;
+import boxhead.model.entities.utils.Direction;
 
 public class Sprite {
 	
@@ -25,10 +28,13 @@ public class Sprite {
     
     private final EntityType type;
     private ImageView imageView;
+    private final SnapshotParameters snapshot;
     
     public Sprite(final EntityType type) {
         this.type = type;
         this.setImageView();
+        this.snapshot = new SnapshotParameters();
+        this.snapshot.setFill(Color.TRANSPARENT);
     }
 
     /**
@@ -63,4 +69,123 @@ public class Sprite {
 			this.imageView.setImage(PLACEHOLDER);	
 		}
 	}
+	
+	public static void updatePlayerImage(final ImageView image, Direction direction, GunType gun) {
+        switch (direction) {
+        case NORTH:
+            switch (gun) {
+            case PISTOL:
+                image.setImage(PLACEHOLDER);
+                break;
+            case UZI:
+                image.setImage(PLACEHOLDER);
+                break;
+            case SHOTGUN:
+                image.setImage(PLACEHOLDER);
+                break;
+            }
+            break;
+
+        case NORTH_EAST:
+            switch (gun) {
+            case PISTOL:
+                image.setImage(PLACEHOLDER);
+                break;
+            case UZI:
+                image.setImage(PLACEHOLDER);
+                break;
+            case SHOTGUN:
+                image.setImage(PLACEHOLDER);
+                break;
+            }
+            break;
+        case EAST:
+            switch (gun) {
+            case PISTOL:
+                image.setImage(PLACEHOLDER);
+                break;
+            case UZI:
+                image.setImage(PLACEHOLDER);
+                break;
+            case SHOTGUN:
+                image.setImage(PLACEHOLDER);
+                break;
+            }
+            break;
+        case SOUTH_EAST:
+            switch (gun) {
+            case PISTOL:
+                image.setImage(PLACEHOLDER);
+                break;
+            case UZI:
+                image.setImage(PLACEHOLDER);
+                break;
+            case SHOTGUN:
+                image.setImage(PLACEHOLDER);
+                break;
+            }
+            break;
+        case SOUTH:
+            switch (gun) {
+            case PISTOL:
+                image.setImage(PLACEHOLDER);
+                break;
+            case UZI:
+                image.setImage(PLACEHOLDER);
+                break;
+            case SHOTGUN:
+                image.setImage(PLACEHOLDER);
+                break;
+            }
+            break;
+        case SOUTH_WEST:
+            switch (gun) {
+            case PISTOL:
+                image.setImage(PLACEHOLDER);
+                break;
+            case UZI:
+                image.setImage(PLACEHOLDER);
+                break;
+            case SHOTGUN:
+                image.setImage(PLACEHOLDER);
+                break;
+            }
+            break;
+        case WEST:
+            switch (gun) {
+            case PISTOL:
+                image.setImage(PLACEHOLDER);
+                break;
+            case UZI:
+                image.setImage(PLACEHOLDER);
+                break;
+            case SHOTGUN:
+                image.setImage(PLACEHOLDER);
+                break;
+            }
+            break;
+        case NORTH_WEST:
+            switch (gun) {
+            case PISTOL:
+                image.setImage(PLACEHOLDER);
+                break;
+            case UZI:
+                image.setImage(PLACEHOLDER);
+                break;
+            case SHOTGUN:
+                image.setImage(PLACEHOLDER);
+                break;
+            }
+            break;
+        }
+    }
+	
+	public final ImageView getImageView() {
+        return this.imageView;
+    }
+	
+	public final Image getImage() {
+        return this.imageView.snapshot(this.snapshot, null);
+    }
+	
 }

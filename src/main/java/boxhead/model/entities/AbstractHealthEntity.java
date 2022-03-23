@@ -7,7 +7,7 @@ public abstract class AbstractHealthEntity extends AbstractActiveEntity{
 	
 	double health;
 	
-	public AbstractHealthEntity(Point2D speed, Direction direction, Point2D position, EntityType entityType, double health) {
+	public AbstractHealthEntity(Point2D speed, Direction direction, Point2D position, EntityType entityType, int health) {
 		super(speed,direction,position,entityType);
 		this.health=health;
 	}

@@ -39,6 +39,7 @@ public class StraightTrajectory implements Trajectory {
 	public StraightTrajectory(final Point2D from, final Point2D towards) {
 		this.position = from;
 		this.positionVariation = towards;
+		this.direction = null;
 		this.setSpeed(DEFAULT_SPEED);
 		this.calculateStep();
 	}

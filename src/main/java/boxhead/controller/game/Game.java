@@ -1,4 +1,4 @@
-package boxhead.game;
+package boxhead.controller.game;
 
 import boxhead.view.ViewManager;
 import javafx.application.Application;

@@ -1,4 +1,4 @@
-package boxhead.model.world;
+package boxhead.model.level;
 
 import boxhead.model.entities.Player;
 import javafx.geometry.Point2D;

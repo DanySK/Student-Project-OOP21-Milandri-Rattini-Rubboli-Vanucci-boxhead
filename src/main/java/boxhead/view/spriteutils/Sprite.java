@@ -180,6 +180,35 @@ public class Sprite {
         }
     }
 	
+	public static void updateZombieImage(final ImageView image, Direction direction) {
+        switch (direction) {
+        case NORTH:
+        	image.setImage(PLACEHOLDER);
+        	break;
+        case NORTH_EAST:
+        	image.setImage(PLACEHOLDER);
+            break;
+        case EAST:
+        	image.setImage(PLACEHOLDER);
+        	break;
+        case SOUTH_EAST:
+        	image.setImage(PLACEHOLDER);
+        	break;
+        case SOUTH:
+        	image.setImage(PLACEHOLDER);
+            break;
+        case SOUTH_WEST:
+        	image.setImage(PLACEHOLDER);
+            break;
+        case WEST:
+        	image.setImage(PLACEHOLDER);
+            break;
+        case NORTH_WEST:
+        	image.setImage(PLACEHOLDER);
+            break;
+        }
+    }
+	
 	public final ImageView getImageView() {
         return this.imageView;
     }

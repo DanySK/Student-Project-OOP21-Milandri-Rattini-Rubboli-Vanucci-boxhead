@@ -16,9 +16,9 @@ public interface Trajectory {
 	
 	/**
 	 * 
-	 * @return The direction at the current moment
+	 * @return The angle at the current moment
 	 */
-	Direction getDirection();
+	double getAngle();
 	
 	/**
 	 * 

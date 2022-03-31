@@ -26,6 +26,7 @@ public class StraightTrajectory implements Trajectory {
 	public StraightTrajectory(final Point2D start, final Direction dir) {
 		this.position = start;
 		this.direction = dir;
+		this.angle = this.direction.getAngle();
 		this.setSpeed(DEFAULT_SPEED);
 		this.calculateStep();
 	}
@@ -39,7 +40,7 @@ public class StraightTrajectory implements Trajectory {
 	public StraightTrajectory(final Point2D from, final Point2D towards) {
 		this.position = from;
 		this.positionVariation = towards;
-		this.direction = null;
+		this.direction = Direction.NULL;
 		this.setSpeed(DEFAULT_SPEED);
 		this.calculateStep();
 	}
@@ -49,7 +50,7 @@ public class StraightTrajectory implements Trajectory {
 	 */
 	private void calculateStep() {
 		final double xStep, yStep;
-		if (this.direction != null) {
+		if (this.direction != Direction.NULL) {
 			xStep = this.direction.traduce().getX() * this.speed;
 			yStep = this.direction.traduce().getY() * this.speed;
 			this.positionVariation = new Point2D(xStep, yStep);
@@ -76,8 +77,8 @@ public class StraightTrajectory implements Trajectory {
 	 * {@inheritDoc}
 	 */
 	@Override
-	public final Direction getDirection() {
-		return this.direction;
+	public final double getAngle() {
+		return this.angle;
 	}
 
 	/**

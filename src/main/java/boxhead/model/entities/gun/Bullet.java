@@ -47,8 +47,7 @@ public class Bullet extends AbstractShot {
 	 * {@inheritDoc}
 	 */
 	@Override
-	protected Trajectory getTrajectory() {
+	public Trajectory getTrajectory() {
 		return this.trajectory;
 	}
-
 }

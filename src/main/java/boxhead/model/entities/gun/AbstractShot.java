@@ -21,7 +21,7 @@ public abstract class AbstractShot extends AbstractEntity implements Shot {
 	 * @return
 	 * 			The trajectory of the shot
 	 */
-	protected abstract Trajectory getTrajectory();
+	public abstract Trajectory getTrajectory();
 	
 	/**
 	 * {@inheritDoc}

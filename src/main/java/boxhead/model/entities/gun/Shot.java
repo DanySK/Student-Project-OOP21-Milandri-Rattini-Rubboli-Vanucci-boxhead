@@ -5,12 +5,17 @@ import boxhead.model.entities.ActiveEntity;
 public interface Shot extends ActiveEntity {
 	
 	/**
-	 * @return True if the shot has ended his trajectory
+	 * @return True if the shot has ended his trajectory.
 	 */
 	boolean hasEnded();
 	
 	/**
-	 * @return The amount of damage the shot does
+	 * @return The amount of damage the shot does.
 	 */
 	int getDamage();
+	
+	/**
+	 * @return The trajectory of the shot.
+	 */
+	Trajectory getTrajectory();
 }

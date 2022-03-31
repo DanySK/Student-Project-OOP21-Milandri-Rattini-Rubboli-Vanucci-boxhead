@@ -5,6 +5,7 @@ import java.util.Optional;
 import java.util.Set;
 
 import boxhead.model.entities.gun.Shot;
+import boxhead.model.entities.gun.ShotManager;
 import boxhead.view.entities.ShotView;
 import javafx.geometry.BoundingBox;
 
@@ -17,13 +18,13 @@ public interface ShotController {
 	 * @return
 	 * 			A set with all the active shots.
 	 */
-	Set<Shot> getShotsModel();
+	Set<Shot> getShotsActive();
 	
 	/**
 	 * @param obstacles
 	 * 			A set with all the obstacles in the world with which the shots can crash.
 	 */
-	void setObstacles(Set<BoundingBox> obstacles);
+	void setWalls(Set<BoundingBox> walls);
 	
 	/**
 	 * @return
@@ -38,7 +39,7 @@ public interface ShotController {
 	void addShot(Optional<Shot> shot);
 	
 	/**
-	 * Method to update the inner logic.
+	 * Method to update the deleted shots in {@link ShotManagerImpl} and update the map in {@link ShotControllerImpl}.
 	 */
 	void update();
 }

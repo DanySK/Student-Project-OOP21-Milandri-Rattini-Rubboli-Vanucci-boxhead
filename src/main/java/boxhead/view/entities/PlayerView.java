@@ -10,6 +10,7 @@ import boxhead.model.entities.gun.Gun.GunType;
 
 
 public class PlayerView {
+	
 	private Point2D position;
 	private Direction direction;
 	private final EntityType type;

@@ -25,7 +25,7 @@ public class Player extends AbstractHealthEntity {
 	public Player() {
 		super(Point2D.ZERO, Direction.EAST, Point2D.ZERO, EntityType.PLAYER, MAX_HEALTH);
 		this.guns = new LinkedList<>();
-		this.currentGun=new GunFactory().getGun(this.position,GunType.PISTOL);
+		this.currentGun=new GunFactory().getGun(this.getPosition(),GunType.PISTOL);
 		this.guns.add(this.currentGun);
 		this.iscolliding=new ArrayList<>();
 		this.gunIndex=0;

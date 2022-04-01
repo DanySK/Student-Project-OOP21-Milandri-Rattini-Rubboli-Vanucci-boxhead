@@ -30,7 +30,7 @@ public class ZombieViewImpl implements ZombieView {
     private Set<Pair<Point2D, Image>> imagesToRender;
 
     /**
-     * Instantiates a {@link ZombieViewImpl}.
+     * Instantiates a {@link ZombieViewImpl}
      */
     public ZombieViewImpl() {
         this.posIteratorions = new HashSet<>();

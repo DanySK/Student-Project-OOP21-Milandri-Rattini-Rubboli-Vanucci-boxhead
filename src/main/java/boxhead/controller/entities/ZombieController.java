@@ -3,7 +3,9 @@ package boxhead.controller.entities;
 import boxhead.view.entities.*;
 import boxhead.model.entities.zombies.*;
 
-
+/*
+ * Manages model and view of zombie
+ */
 public interface ZombieController {
 
 	/**

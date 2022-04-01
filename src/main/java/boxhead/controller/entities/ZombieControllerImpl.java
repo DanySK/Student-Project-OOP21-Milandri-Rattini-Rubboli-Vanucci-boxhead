@@ -59,7 +59,7 @@ public class ZombieControllerImpl implements ZombieController {
     }
 
     /**
-     * Update zombieview
+     * Update zombieview for every zombie 
      */
     private void updateView() {
         final Set<Pair<Point2D, Direction>> positions = new HashSet<>();

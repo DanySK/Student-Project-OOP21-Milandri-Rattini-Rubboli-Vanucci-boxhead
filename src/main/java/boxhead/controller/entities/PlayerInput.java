@@ -10,6 +10,8 @@ import static javafx.scene.input.KeyCode.W;
 import static javafx.scene.input.KeyCode.S;
 import static javafx.scene.input.KeyCode.D;
 import static javafx.scene.input.KeyCode.SPACE;
+import static javafx.scene.input.KeyCode.Q;
+import static javafx.scene.input.KeyCode.E;
 
 public class PlayerInput {
 	
@@ -48,6 +50,23 @@ public class PlayerInput {
 	 */
 	public static boolean shotInput(final Set<KeyCode> keys) {
 		return keys.contains(SPACE);
-
+	}
+	
+	/**
+	 * Check if previous gun key is pressed
+	 * @param Set keys
+	 * @return boolean true if key is pressed 
+	 */
+	public static boolean previousGun(final Set<KeyCode> keys) {
+		return keys.contains(Q);
+	}
+	
+	/**
+	 * Check if next gun key is pressed
+	 * @param Set keys
+	 * @return boolean true if key is pressed 
+	 */
+	public static boolean nextGun(final Set<KeyCode> keys) {
+		return keys.contains(E);
 	}
 }

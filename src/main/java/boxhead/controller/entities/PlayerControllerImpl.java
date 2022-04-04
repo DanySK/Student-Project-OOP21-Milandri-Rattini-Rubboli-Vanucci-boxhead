@@ -69,6 +69,12 @@ public class PlayerControllerImpl implements PlayerController {
 		if(PlayerInput.shotInput(keys)) {
 			this.player.getCurrentGun().attack().forEach(s -> this.gameWorld.getShotController().addShot(s));
 		}
+		if(PlayerInput.nextGun(keys)) {
+			this.player.nextGun();
+		}
+		if(PlayerInput.previousGun(keys)) {
+			this.player.previousGun();
+		}
 	}
 
 }

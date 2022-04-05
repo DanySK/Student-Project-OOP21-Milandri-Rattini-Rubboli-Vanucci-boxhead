@@ -57,14 +57,14 @@ public class ViewManager {
 	}
 
 	private void createStartButton() {
-		final BoxheadButton startButton = new BoxheadButton("START!");
-		addMenuButton(startButton);
-
-		startButton.setOnAction(event -> {
-			final GameViewManager gameManager = new GameViewManager();
-			gameManager.createNewGame(mainStage);
-
-		});
+//		final BoxheadButton startButton = new BoxheadButton("START!");
+//		addMenuButton(startButton);
+//
+//		startButton.setOnAction(event -> {
+//			final GameViewManager gameManager = new GameViewManager();
+//			gameManager.createNewGame(mainStage);
+//
+//		});
 	}
 
 	private void createScoreButton() {

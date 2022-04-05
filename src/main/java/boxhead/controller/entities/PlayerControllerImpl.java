@@ -67,7 +67,7 @@ public class PlayerControllerImpl implements PlayerController {
 			this.player.setSpeed(Point2D.ZERO);
 		}
 		if(PlayerInput.shotInput(keys)) {
-			this.player.getCurrentGun().attack().forEach(s -> this.gameWorld.getShotController().addShot(s));
+			this.player.getCurrentGun().attack(this.player.getDirection()).forEach(s -> this.gameWorld.getShotController().addShot(s));
 		}
 		if(PlayerInput.nextGun(keys)) {
 			this.player.nextGun();

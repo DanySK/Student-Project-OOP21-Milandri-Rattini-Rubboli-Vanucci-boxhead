@@ -61,18 +61,14 @@ public class ShotManagerImpl implements ShotManager {
 		final Set<Shot> delete = new HashSet<>();
 		this.shotsActive.forEach(s -> {
 			s.update();
-			if (s.hasEnded()) {
-				delete.add(s);
-			} else {
-				this.zombieModel.getZombies().stream()
-											 .filter(z -> Collision.isColliding(s.getBoundingBox(), z.getBoundingBox()))
-											 .forEach(z -> {
-												 this.zombieModel.hitZombie(z, s.getDamage());
-												 delete.add(s);
+			this.zombieModel.getZombies().stream()
+									 	 .filter(z -> Collision.isColliding(s.getBoundingBox(), z.getBoundingBox()))
+										 .forEach(z -> {
+											 this.zombieModel.hitZombie(z, s.getDamage());
+											 delete.add(s);
 											 });
-				if(!delete.contains(s) && this.walls.stream().anyMatch(w -> Collision.isColliding(w, s.getBoundingBox()))) {
-					delete.add(s);
-				}
+			if(!delete.contains(s) && this.walls.stream().anyMatch(w -> Collision.isColliding(w, s.getBoundingBox()))) {
+				delete.add(s);
 			}
 		});
 		this.ended.addAll(delete);

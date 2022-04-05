@@ -47,6 +47,7 @@ public abstract class AbstractShot extends AbstractEntity implements Shot {
 	@Override
 	public void update() {
 		this.getTrajectory().update();
+		this.setPosition(this.getTrajectory().getCurrentPosition());
 	}
 
 	/**

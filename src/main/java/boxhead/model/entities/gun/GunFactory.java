@@ -11,7 +11,7 @@ import javafx.geometry.Point2D;
  */
 public class GunFactory {
 	
-	private static final int PISTOL_DAMAGE = 35;
+	private static final int PISTOL_DAMAGE = 30;
     private static final long PISTOL_RATE_OF_FIRE = 150;
     private static final int PISTOL_MAGAZINE = 15;
 
@@ -19,7 +19,7 @@ public class GunFactory {
     private static final long UZI_RATE_OF_FIRE = 350;
     private static final int UZI_MAGAZINE = 40;
     
-    private static final int SHOTGUN_DAMAGE = 60;
+    private static final int SHOTGUN_DAMAGE = 50;
     private static final long SHOTGUN_RATE_OF_FIRE = 150;
     private static final int SHOTGUN_MAGAZINE = 10;
     

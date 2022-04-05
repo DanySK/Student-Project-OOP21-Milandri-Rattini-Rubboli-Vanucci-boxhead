@@ -98,7 +98,7 @@ public class Player extends AbstractHealthEntity {
      */
 	public void nextGun() {
 		if(this.gunIndex+1<this.guns.size()) {
-			this.currentGun=this.guns.get(gunIndex++);
+			this.currentGun=this.guns.get(++gunIndex);
 		} else {
 			this.gunIndex=0;
 			this.currentGun=this.guns.get(gunIndex);
@@ -109,7 +109,7 @@ public class Player extends AbstractHealthEntity {
      */
 	public void previousGun() {
 		if(this.gunIndex>0) {
-			this.currentGun=this.guns.get(gunIndex--);
+			this.currentGun=this.guns.get(--gunIndex);
 		} else {
 			this.gunIndex=this.guns.size();
 			this.currentGun=this.guns.get(gunIndex);

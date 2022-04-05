@@ -9,8 +9,8 @@ import javafx.geometry.Point2D;
  */
 public class Bullet extends AbstractShot {
 	
-	private static final double HEIGHT = 7;
-	private static final double WIDTH = 3;
+	private static final double HEIGHT = 2;
+	private static final double WIDTH = 1;
 	private final Trajectory trajectory;
 
 	/**
@@ -42,7 +42,7 @@ public class Bullet extends AbstractShot {
 		this.setBoundingBox(HEIGHT, WIDTH);
 		this.trajectory = new StraightTrajectory(from, towards);
 	}
-	
+		
 	/**
 	 * {@inheritDoc}
 	 */

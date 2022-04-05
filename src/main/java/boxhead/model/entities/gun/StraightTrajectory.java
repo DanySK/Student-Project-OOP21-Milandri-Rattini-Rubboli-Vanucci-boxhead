@@ -84,6 +84,13 @@ public class StraightTrajectory implements Trajectory {
 	/**
 	 * {@inheritDoc}
 	 */
+	public final Direction getDirection() {
+		return this.direction;
+		
+	}
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public final double getSpeed() {
 		return this.speed;

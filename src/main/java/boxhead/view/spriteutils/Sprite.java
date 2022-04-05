@@ -8,6 +8,7 @@ import javafx.scene.paint.Color;
 import boxhead.model.entities.EntityType;
 import boxhead.model.entities.gun.Gun.GunType;
 import boxhead.model.entities.utils.Direction;
+import boxhead.model.entities.zombies.Zombie;
 
 public class Sprite {
 	
@@ -75,9 +76,9 @@ public class Sprite {
 	 * @param direction
 	 * @param gun
 	 */
-	public void updatePlayerImage(final ImageView image, Direction direction, GunType gun) {
+	public static void updatePlayerImage(final ImageView image, Direction direction, GunType gun) {
 		String filename=gun.toString().toLowerCase() + "-" + direction.toString().toLowerCase();
-		image.setImage(new Image(getClass().getResourceAsStream("/player/" + filename)));
+		image.setImage(new Image(Sprite.class.getResourceAsStream("/player/" + filename)));
 	}
 		
 
@@ -194,9 +195,9 @@ public class Sprite {
 	 * @param image
 	 * @param direction
 	 */
-	public void updateZombieImage(final ImageView image, Direction direction) {
+	public static void updateZombieImage( final ImageView image, Direction direction) {
 		String filename=direction.toString();
-		image.setImage(new Image(getClass().getResourceAsStream("/zombie/" + filename)));
+		image.setImage(new Image(Sprite.class.getResourceAsStream("/zombie/" + filename)));
 //        switch (direction) {
 //        case NORTH:
 //        	image.setImage(PLACEHOLDER);

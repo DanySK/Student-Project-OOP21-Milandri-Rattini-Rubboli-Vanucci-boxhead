@@ -22,6 +22,12 @@ public interface Trajectory {
 	
 	/**
 	 * 
+	 * @return The direction of the movement
+	 */
+	Direction getDirection();
+	
+	/**
+	 * 
 	 * @return The speed of the movement
 	 */
 	double getSpeed();

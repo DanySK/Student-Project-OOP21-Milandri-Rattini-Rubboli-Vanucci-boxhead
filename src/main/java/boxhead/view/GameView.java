@@ -13,6 +13,7 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.paint.Color;
 import javafx.util.Pair;
 
 public class GameView implements Initializable {
@@ -97,6 +98,22 @@ public class GameView implements Initializable {
      */
     public final void renderHPLabel(final String hp) {
         this.healthPoints.setText("HP: " + hp);
+    }
+    
+    /*
+     * Renders the gun upgrade text with the upgrade the player just got
+     */
+    public final void renderGunUpgrade(final String gunUpgradeText) {
+		this.gunUpgrade.setTextFill(Color.WHITE);
+        this.gunUpgrade.setText(gunUpgradeText);
+    }
+    
+    /*
+     * Renders the gun unlock text with the upgrade the player just got
+     */
+    public final void renderGunUnlock(final String gunUnlockText) {
+		this.gunUpgrade.setTextFill(Color.GREEN);
+        this.gunUpgrade.setText(gunUnlockText);
     }
     
     /*

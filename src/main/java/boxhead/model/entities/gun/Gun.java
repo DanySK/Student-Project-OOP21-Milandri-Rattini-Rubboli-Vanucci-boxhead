@@ -66,4 +66,22 @@ public interface Gun extends Entity{
 	 * 			The type of the weapon
 	 */
 	GunType getGunType();
+	
+	/**
+	 * Used to upgrade the gun's damage
+	 * @param newDamage
+	 */
+	void updateDamage(int newDamage);
+	
+	/**
+	 * Used to upgrade the gun's rate of fire
+	 * @param newRate
+	 */
+	void updateRateOfFire(int newRate);
+	
+	/**
+	 * Used to upgrade the gun's magazine size
+	 * @param newSize
+	 */
+	void updateMagazine(int newSize);
 }

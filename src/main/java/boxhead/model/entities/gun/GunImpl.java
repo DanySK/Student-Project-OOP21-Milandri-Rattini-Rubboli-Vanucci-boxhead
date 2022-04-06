@@ -115,8 +115,7 @@ public class GunImpl extends AbstractGun {
 	}
 	
 	/**
-	 * Used to upgrade the gun's damage.
-	 * @param newDamage
+	 * {@inheritDoc}
 	 */
 	public void updateDamage(final int newDamage) {
 		this.damage = newDamage;
@@ -124,8 +123,7 @@ public class GunImpl extends AbstractGun {
 	}
 	
 	/**
-	 * Used to upgrade the gun's rate of fire.
-	 * @param newRate
+	 * {@inheritDoc}
 	 */
 	public void updateRateOfFire(final long newRate) {
 		this.rateOfFire = newRate;
@@ -133,8 +131,7 @@ public class GunImpl extends AbstractGun {
 	}
 	
 	/**
-	 * Used to upgrade the magazine size.
-	 * @param newSize
+	 * {@inheritDoc}
 	 */
 	public void updateMagazine(final int newSize) {
 		this.magazineSize = newSize;

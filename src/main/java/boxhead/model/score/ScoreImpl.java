@@ -3,6 +3,8 @@ package boxhead.model.score;
 import java.util.Optional;
 import java.util.concurrent.TimeUnit;
 
+import boxhead.model.entities.gun.GunUpgradeManager;
+
 /**
  * Implementation of {@link Score}.
  */
@@ -15,24 +17,26 @@ public class ScoreImpl implements Score {
 	private long streakTime;
 	private Optional<String> timePlayed;
 	private Optional<String> nickname;
+	private final GunUpgradeManager gunManager;
 	
 	/**
 	 * @param nickname
 	 * 			The nickname of the player.
 	 */
-	public ScoreImpl(final String nickname) {
+	public ScoreImpl(final String nickname, final GunUpgradeManager manager) {
 		this.kills = 0;
 		this.killStreak = 0;
 		this.streakTime = 4000;
 		this.timePlayed = Optional.empty();
 		this.nickname = Optional.ofNullable(nickname);
+		this.gunManager = manager;
 		this.setGameStart();
 	}
 	
 	/**
 	 * Used to set the starting time of the game.
 	 */
-	private void setGameStart() {
+	private final void setGameStart() {
 		this.time = System.currentTimeMillis();
 	}
 	
@@ -40,7 +44,7 @@ public class ScoreImpl implements Score {
 	 * {@inheritDoc}
 	 */
 	@Override
-	public int getKills() {
+	public final int getKills() {
 		return this.kills;
 	}
 
@@ -48,7 +52,7 @@ public class ScoreImpl implements Score {
 	 * {@inheritDoc}
 	 */
 	@Override
-	public void addKill() {
+	public final void addKill() {
 		this.kills++;
 		this.lastKill = System.currentTimeMillis();
 		this.addStreak();
@@ -59,7 +63,7 @@ public class ScoreImpl implements Score {
 	 * @return
 	 * 			The time when the last kill was added.
 	 */
-	private long getLastKill() {
+	private final long getLastKill() {
 		return this.lastKill;
 	}
 
@@ -67,15 +71,16 @@ public class ScoreImpl implements Score {
 	 * {@inheritDoc}
 	 */
 	@Override
-	public int getStreak() {
+	public final int getStreak() {
 		return this.killStreak;
 	}
 
 	/**
 	 * Used to add a kill to the streak.
 	 */
-	private void addStreak() {
+	private final void addStreak() {
 		this.killStreak++;
+		this.gunManager.checkUpgrades(this.killStreak);
 	}
 
 	/**
@@ -106,7 +111,7 @@ public class ScoreImpl implements Score {
 	 * @return 
 	 */
 	@Override
-	public String getTimePlayed() {
+	public final String getTimePlayed() {
 		return this.timePlayed.orElse("Not set");
 	}
 
@@ -114,7 +119,7 @@ public class ScoreImpl implements Score {
 	 * {@inheritDoc}
 	 */
 	@Override
-	public void setGameEnd() {
+	public final void setGameEnd() {
 		this.time = System.currentTimeMillis() - this.time;
         final long hour = TimeUnit.MILLISECONDS.toHours(this.time);
         final long min = TimeUnit.MILLISECONDS.toMinutes(this.time) - TimeUnit.HOURS.toMinutes(hour);
@@ -126,7 +131,7 @@ public class ScoreImpl implements Score {
 	 * {@inheritDoc}
 	 */
 	@Override
-	public void update() {
+	public final void update() {
 		if (System.currentTimeMillis() - this.lastKill > this.streakTime && this.killStreak > 0) {
 			this.decreaseStreak();
 		}

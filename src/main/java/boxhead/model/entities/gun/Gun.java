@@ -63,6 +63,12 @@ public interface Gun extends Entity{
 	
 	/**
 	 * @return
+	 * 			The amount of ammo remaining
+	 */
+	int getCurrentAmmo();
+	
+	/**
+	 * @return
 	 * 			The type of the weapon
 	 */
 	GunType getGunType();

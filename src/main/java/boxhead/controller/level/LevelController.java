@@ -1,15 +1,15 @@
 package boxhead.controller.level;
 
+import java.util.Set;
+
 import boxhead.model.level.Level;
 import boxhead.model.level.LevelGenerator;
 import boxhead.model.level.LevelGeneratorImpl;
 import boxhead.view.level.LevelView;
+import javafx.geometry.BoundingBox;
 
 /**
  * Controller for Level and and LevelView
- *
- * @author USER
- *
  */
 public class LevelController {
 
@@ -24,4 +24,7 @@ public class LevelController {
 		lv.SetScale(renderScale);
 	}
 
+	public final Level getLevel() {
+		return this.l;
+	}
 }

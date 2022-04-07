@@ -21,7 +21,7 @@ public interface ZombieModel {
      * Used to set obstacles
      * @param set map obstacles set
      */
-    void setObstacles(Set<BoundingBox> set);
+    void setWalls(Set<BoundingBox> walls);
 
     /**
      * Used to set spawn points

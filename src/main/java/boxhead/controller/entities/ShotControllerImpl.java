@@ -6,7 +6,7 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
 
-import boxhead.controller.game.GameWorld;
+import boxhead.controller.game.GameLevel;
 import boxhead.model.entities.gun.Shot;
 import boxhead.model.entities.gun.ShotManager;
 import boxhead.model.entities.gun.ShotManagerImpl;
@@ -19,7 +19,7 @@ import javafx.geometry.BoundingBox;
  */
 public class ShotControllerImpl implements ShotController {
 
-	private final GameWorld world;
+	private final GameLevel level;
 	private final ShotManager manager;
 	private final Map<Shot, ShotView> shotsActiveView;
 	
@@ -27,9 +27,9 @@ public class ShotControllerImpl implements ShotController {
 	 * @param world
 	 * 			The world where the ShotController will be used.
 	 */
-	public ShotControllerImpl(final GameWorld world) {
-		this.world = world;
-		this.manager = new ShotManagerImpl(world.getZombieController().getZombieModel());
+	public ShotControllerImpl(final GameLevel level) {
+		this.level = level;
+		this.manager = new ShotManagerImpl(level.getZombieController().getZombieModel());
 		this.shotsActiveView = new HashMap<>();
 	}
 	

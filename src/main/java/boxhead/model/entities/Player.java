@@ -16,7 +16,7 @@ public class Player extends AbstractHealthEntity {
 	private static final int MAX_HEALTH=100;
 	
 	private LinkedList<Gun> guns;
-	private Set<BoundingBox>obstacles;
+	private Set<BoundingBox> walls;
 	private final List<Boolean> iscolliding;
 	private Gun currentGun;
 	private int gunIndex;
@@ -29,6 +29,10 @@ public class Player extends AbstractHealthEntity {
 		this.guns.add(this.currentGun);
 		this.iscolliding=new ArrayList<>();
 		this.gunIndex=0;
+	}
+	
+	public final void setWalls(final Set<BoundingBox> walls) {
+		this.walls = walls;
 	}
 	
 	 /**

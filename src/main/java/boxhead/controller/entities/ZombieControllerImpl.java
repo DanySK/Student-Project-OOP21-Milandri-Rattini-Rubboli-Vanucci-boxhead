@@ -5,7 +5,7 @@ import java.util.Set;
 
 import javafx.geometry.Point2D;
 import javafx.util.Pair;
-import boxhead.controller.game.GameWorld;
+import boxhead.controller.game.GameLevel;
 import boxhead.model.entities.utils.Direction;
 import boxhead.model.entities.zombies.ZombieAIImpl;
 import boxhead.model.entities.zombies.ZombieModel;
@@ -20,15 +20,15 @@ import boxhead.view.entities.ZombieViewImpl;
 public class ZombieControllerImpl implements ZombieController {
 
     private final ZombieModel zombies;
-    private final GameWorld gameController;
+    private final GameLevel level;
     private final ZombieView zombieView;
 
     /**
      * Instantiates a {@link ZombieControllerImpl}
-     * @param gameController game controller
+     * @param The GameLevel
      */
-    public ZombieControllerImpl(final GameWorld gameController) {
-        this.gameController = gameController;
+    public ZombieControllerImpl(final GameLevel level) {
+        this.level = level;
         this.zombies = new ZombieModelImpl();
         this.zombieView = new ZombieViewImpl();
     }
@@ -64,7 +64,7 @@ public class ZombieControllerImpl implements ZombieController {
     private void updateView() {
         final Set<Pair<Point2D, Direction>> positions = new HashSet<>();
         this.zombies.getZombies().forEach(zombie -> {
-            positions.add(new Pair<>(zombie.getPosition(), ZombieAIImpl.getDirectionToPlayer(zombie, this.gameController.getPlayerController().getPlayer())));
+            positions.add(new Pair<>(zombie.getPosition(), ZombieAIImpl.getDirectionToPlayer(zombie, this.level.getPlayerController().getPlayer())));
         });
         this.zombieView.setPositionsAndDirections(positions);
         this.zombieView.update();

@@ -15,7 +15,7 @@ public interface ZombieAI {
      * Set obstacles
      * @param obstacles set
      */
-    void setObstacles(Set<BoundingBox> obstacles);
+    void setWalls(Set<BoundingBox> walls);
     
     /**
      * Determine zombie's group next position.

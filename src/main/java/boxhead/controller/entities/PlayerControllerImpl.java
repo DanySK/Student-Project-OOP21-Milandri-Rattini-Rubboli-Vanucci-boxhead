@@ -2,6 +2,7 @@ package boxhead.controller.entities;
 
 import java.util.Set;
 
+import boxhead.controller.game.GameLevel;
 import boxhead.controller.game.GameWorld;
 import boxhead.model.entities.Player;
 import boxhead.view.entities.PlayerView;
@@ -14,15 +15,15 @@ public class PlayerControllerImpl implements PlayerController {
 	private final Player player;
 	private final PlayerView playerView;
 	private final InputHandler input;
-	private final GameWorld gameWorld;
+	private final GameLevel gameLevel;
 	private final ImageView playerImage;
 	
-	public PlayerControllerImpl(final GameWorld gameWorld) {
+	public PlayerControllerImpl(final GameLevel gameLevel) {
 		this.player=new Player();
 		this.playerView=new PlayerView();
 		this.playerImage=this.playerView.getImageView();
-		this.gameWorld=gameWorld;
-		this.input=gameWorld.getInputHandler();
+		this.gameLevel=gameLevel;
+		this.input=gameLevel.getInputHandler();
 		this.player.setBoundingBox(playerImage.getFitWidth(), playerImage.getFitHeight());
 	}
 	

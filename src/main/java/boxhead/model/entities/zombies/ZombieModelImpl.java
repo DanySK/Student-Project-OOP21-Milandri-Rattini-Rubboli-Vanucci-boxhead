@@ -54,8 +54,8 @@ public class ZombieModelImpl implements ZombieModel {
      * {@inheritDoc}
      */
     @Override
-    public void setObstacles(final Set<BoundingBox> obstacles) {
-        this.ai.setObstacles(obstacles);
+    public void setWalls(final Set<BoundingBox> walls) {
+        this.ai.setWalls(walls);
     }
 
     /**

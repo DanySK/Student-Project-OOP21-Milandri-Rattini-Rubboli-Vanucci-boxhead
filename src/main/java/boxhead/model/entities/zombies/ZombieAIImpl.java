@@ -15,7 +15,7 @@ import boxhead.model.entities.Player;
 public class ZombieAIImpl implements ZombieAI {
 
 
-    private Set<BoundingBox> obstacles;
+    private Set<BoundingBox> walls;
 
     /**
      * {@inheritDoc}
@@ -32,8 +32,8 @@ public class ZombieAIImpl implements ZombieAI {
      * {@inheritDoc}
      */
     @Override
-    public void setObstacles(final Set<BoundingBox> obstacles) {
-        this.obstacles = obstacles;
+    public void setWalls(final Set<BoundingBox> walls) {
+        this.walls = walls;
 
     }
 
@@ -61,7 +61,7 @@ public class ZombieAIImpl implements ZombieAI {
         Direction currentDirection = zombie.getDirection();
         final Set<BoundingBox> entities = zombies.stream().filter(z -> !z.equals(zombie)).map(z -> z.getBoundingBox())
                 .collect(Collectors.toSet());
-        entities.addAll(this.obstacles);
+        entities.addAll(this.walls);
 
         final Set<Direction> collisions = this.checkCollisions(zombie, entities, player);
 

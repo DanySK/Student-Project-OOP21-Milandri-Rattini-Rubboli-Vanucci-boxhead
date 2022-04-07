@@ -8,9 +8,9 @@ public class RoundView {
 	private int round;
 	private Label roundLabel;
 	
-	public RoundView(){
+	public RoundView(Label label){
 		this.round=1;
-		this.roundLabel=new Label();
+		this.roundLabel=label;
 		this.roundLabel.setText(Integer.toString(this.round));
 		this.roundLabel.setFont(Font.font("Corbel",20));
 		this.roundLabel.setVisible(true);

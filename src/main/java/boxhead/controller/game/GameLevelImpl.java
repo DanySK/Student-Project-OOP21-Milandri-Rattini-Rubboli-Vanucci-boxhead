@@ -13,6 +13,7 @@ import boxhead.controller.entities.ZombieController;
 import boxhead.controller.entities.ZombieControllerImpl;
 import boxhead.controller.level.CameraController;
 import boxhead.controller.level.LevelController;
+import boxhead.controller.level.RoundController;
 import boxhead.model.entities.gun.GunUpgradeManager;
 import boxhead.model.score.Score;
 import boxhead.model.score.ScoreImpl;
@@ -59,7 +60,7 @@ public class GameLevelImpl implements GameLevel{
 		this.playerController = new PlayerControllerImpl(this);
 
 		this.zombieController = new ZombieControllerImpl(this);
-//		this.roundController = new RoundControllerImpl(this);
+		this.roundController = new RoundController(this);
 		this.shotController = new ShotControllerImpl(this);
 
 		this.playerController.getPlayer().setPosition(this.cams.getCenter());

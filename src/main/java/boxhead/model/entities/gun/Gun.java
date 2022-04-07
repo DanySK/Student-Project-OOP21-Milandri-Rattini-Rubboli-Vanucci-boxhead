@@ -77,7 +77,7 @@ public interface Gun extends Entity{
 	 * Used to upgrade the gun's rate of fire
 	 * @param newRate
 	 */
-	void updateRateOfFire(int newRate);
+	void updateRateOfFire(long newRate);
 	
 	/**
 	 * Used to upgrade the gun's magazine size

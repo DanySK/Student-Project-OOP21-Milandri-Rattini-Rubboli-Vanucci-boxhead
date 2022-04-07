@@ -6,6 +6,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.Set;
 
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Point2D;
 import javafx.scene.canvas.Canvas;
@@ -19,13 +20,21 @@ import javafx.util.Pair;
 public class GameView implements Initializable {
 	
 	// View elements
+	@FXML
 	private AnchorPane gamePane;
+	@FXML
 	private Canvas gameMap;
+	@FXML
 	private Label magazineAmmo;
+	@FXML
 	private Label healthPoints;
+	@FXML
 	private Label gameRound;
-	private Label gameScore;
+	@FXML
+	private Label killStreak;
+	@FXML
 	private Label gunName;
+	@FXML
 	private Label gunUpgrade;
 
 	/*
@@ -101,6 +110,13 @@ public class GameView implements Initializable {
     }
     
     /*
+     * Renders the kill streak of the player
+     */
+    public final void renderKillStreak(final String killStreak) {
+    	this.gunUpgrade.setText(killStreak);
+    }
+    
+    /*
      * Renders the gun upgrade text with the upgrade the player just got
      */
     public final void renderGunUpgrade(final String gunUpgradeText) {
@@ -138,13 +154,6 @@ public class GameView implements Initializable {
      */
     public final Label getRoundLabel() {
         return this.gameRound;
-    }
-    
-    /** 
-     * @return gameScore label
-     */
-    public final Label getScoreLabel() {
-    	return this.gameScore;
     }
     
     /** 

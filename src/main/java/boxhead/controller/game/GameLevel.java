@@ -15,7 +15,7 @@ import javafx.geometry.Point2D;
 /**
  * Interface to assemble all the controllers of the game.
  */
-public interface GameWorld {
+public interface GameLevel {
 	
 	/**
 	 * Main method to update the game.

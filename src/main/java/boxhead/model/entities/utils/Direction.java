@@ -29,6 +29,14 @@ public enum Direction {
 		this.angle = angle;
 	}
 	
+	public final double getX() {
+		return this.direction.getX();
+	}
+	
+	public final double getY() {
+		return this.direction.getY();
+	}
+	
 	public final Point2D traduce() {
 		return this.direction;
 	}

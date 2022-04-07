@@ -47,6 +47,7 @@ public class ZombieModelImpl implements ZombieModel {
         this.updateSpawns();
         this.ai.determineNextMovement(zombies, player);
         this.updateKills();
+        this.score.update();
     }
 
     /**

@@ -14,6 +14,7 @@ public class ScoreImpl implements Score {
 	private int kills;
 	private long lastKill;
 	private int killStreak;
+	private int maxStreak;
 	private long streakTime;
 	private Optional<String> timePlayed;
 	private Optional<String> nickname;
@@ -26,6 +27,7 @@ public class ScoreImpl implements Score {
 	public ScoreImpl(final String nickname, final GunUpgradeManager manager) {
 		this.kills = 0;
 		this.killStreak = 0;
+		this.maxStreak = 0;
 		this.streakTime = 4000;
 		this.timePlayed = Optional.empty();
 		this.nickname = Optional.ofNullable(nickname);
@@ -59,15 +61,6 @@ public class ScoreImpl implements Score {
 	}
 
 	/**
-	 * Used to get the time the last kill was added.
-	 * @return
-	 * 			The time when the last kill was added.
-	 */
-	private final long getLastKill() {
-		return this.lastKill;
-	}
-
-	/**
 	 * {@inheritDoc}
 	 */
 	@Override
@@ -80,7 +73,10 @@ public class ScoreImpl implements Score {
 	 */
 	private final void addStreak() {
 		this.killStreak++;
-		this.gunManager.checkUpgrades(this.killStreak);
+		if (this.killStreak > this.maxStreak) {
+			this.gunManager.checkUpgrades(this.killStreak);
+			this.maxStreak = this.killStreak;
+		}
 	}
 
 	/**

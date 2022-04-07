@@ -5,7 +5,7 @@ import javafx.geometry.Point2D;
 
 public abstract class AbstractHealthEntity extends AbstractActiveEntity{
 	
-	double health;
+	int health;
 	
 	public AbstractHealthEntity(Point2D speed, Direction direction, Point2D position, EntityType entityType, int health) {
 		super(speed,direction,position,entityType);
@@ -16,7 +16,7 @@ public abstract class AbstractHealthEntity extends AbstractActiveEntity{
      * Set the entity's health
      * @param double health
      */
-	public void setHealth(double health) {
+	public void setHealth(int health) {
 		this.health=health;
 	}
 	
@@ -24,7 +24,7 @@ public abstract class AbstractHealthEntity extends AbstractActiveEntity{
      * Get the entity's health
      * @return double health
      */
-	public double getHealth() {
+	public int getHealth() {
 		return this.health;
 	}
 	
@@ -32,7 +32,7 @@ public abstract class AbstractHealthEntity extends AbstractActiveEntity{
      * Deal damage to the entity
      * @param double damage done do the entity
      */
-	public void takeDamage(double damage) {
+	public void takeDamage(int damage) {
 		this.health-=damage;
 	}
 	

@@ -31,7 +31,7 @@ public class GameLevelImpl implements GameLevel{
 	//Always power of 2 as size
 	private static final int TILE_SIZE = 32;
 		
-	//Map dimesions
+	//Map dimensions
 	private static final int MAP_WIDTH = 35;
 	private static final int MAP_HEIGHT = 35;
 		   
@@ -136,7 +136,7 @@ public class GameLevelImpl implements GameLevel{
 		final Set<Pair<Point2D, Image>> res = new HashSet<>();
 		this.gameView.clear();
 		
-		this.gameView.completeRender(this.map.getLevelView, this.cams.getCamera().start(),
+		this.gameView.completeRender(this.map.getLevelView().renderLevelBackground(), this.cams.getCamera().start(),
 				this.cams.getCamera().end(), this.cams.getCamera().getOffset(), TILE_SIZE);
 		
 		this.gameView.completeRender(this.map.render(), this.cams.getCamera().start(),

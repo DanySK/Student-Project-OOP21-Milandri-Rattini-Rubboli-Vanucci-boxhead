@@ -7,18 +7,6 @@ import javafx.scene.image.Image;
  * Interface to model a tile.
  */
 public interface Tile {
-	/**
-	 * Enum to model the type of tiles.
-	 */
-	public enum TileType {
-		GROUND(),
-
-		WALL(),
-
-		AMMO(),
-
-		ZOMBIE_SPAWN();
-	}
 
 	/**
 	 * Method to get the image of the tile.

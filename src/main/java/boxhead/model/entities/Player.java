@@ -71,7 +71,7 @@ public class Player extends AbstractHealthEntity {
 	        final BoundingBox playerBB = new BoundingBox(getPosition().getX() + direction.traduce().getX(),
 	                getPosition().getY() + direction.traduce().getY(), getWidth(), getHeight());
 	
-	        this.obstacles.forEach(BB -> {
+	        this.walls.forEach(BB -> {
 	            if (Collision.isColliding(playerBB, BB)) {
 	                this.iscolliding.add(true);
 	            }

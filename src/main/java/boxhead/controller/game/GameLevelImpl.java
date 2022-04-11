@@ -13,6 +13,7 @@ import boxhead.controller.entities.ZombieController;
 import boxhead.controller.entities.ZombieControllerImpl;
 import boxhead.controller.level.CameraController;
 import boxhead.controller.level.LevelController;
+import boxhead.controller.level.RoundController;
 import boxhead.model.entities.gun.GunUpgradeManager;
 import boxhead.model.score.Score;
 import boxhead.model.score.ScoreImpl;
@@ -29,7 +30,7 @@ public class GameLevelImpl implements GameLevel{
 	//Always power of 2 as size
 	private static final int TILE_SIZE = 32;
 		
-	//Map dimesions
+	//Map dimensions
 	private static final int MAP_WIDTH = 35;
 	private static final int MAP_HEIGHT = 35;
 		   
@@ -58,7 +59,7 @@ public class GameLevelImpl implements GameLevel{
 		this.playerController = new PlayerControllerImpl(this);
 
 		this.zombieController = new ZombieControllerImpl(this);
-//		this.roundController = new RoundControllerImpl(this);
+		this.roundController = new RoundController(this);
 		this.shotController = new ShotControllerImpl(this);
 
 		this.playerController.getPlayer().setPosition(this.cams.getCenter());
@@ -139,11 +140,19 @@ public class GameLevelImpl implements GameLevel{
 		final Set<Pair<Point2D, Image>> res = new HashSet<>();
 		this.gameView.clear();
 		
+<<<<<<< HEAD
 //		this.gameView.completeRender(this.map.getLevelView, this.cams.getCamera().start(),
 //				this.cams.getCamera().end(), this.cams.getCamera().getOffset(), TILE_SIZE);
 //		
 //		this.gameView.completeRender(this.map.render(), this.cams.getCamera().start(),
 //				this.cams.getCamera().end(), this.cams.getCamera().getOffset(), TILE_SIZE);
+=======
+		this.gameView.completeRender(this.map.getLevelView().renderLevelBackground(), this.cams.getCamera().start(),
+				this.cams.getCamera().end(), this.cams.getCamera().getOffset(), TILE_SIZE);
+		
+		this.gameView.completeRender(this.map.render(), this.cams.getCamera().start(),
+				this.cams.getCamera().end(), this.cams.getCamera().getOffset(), TILE_SIZE);
+>>>>>>> 1476ffd9b14dcee014c285467f6a88c00e4a8e18
 	
 		res.add(new Pair<>(this.playerController.getPlayer().getPosition(), this.playerController.getPlayerView().getImageView().getImage()));
 		res.addAll(this.zombieController.getZombieView().getSprites());

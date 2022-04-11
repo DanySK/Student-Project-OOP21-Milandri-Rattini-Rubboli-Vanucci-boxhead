@@ -1,5 +1,8 @@
 package boxhead.view;
 
+import java.nio.file.Files;
+import java.nio.*;
+
 import boxhead.controller.game.GameState;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -70,8 +73,8 @@ public class MenuView {
     }
 
     private void createSoundButton() {
-        final ImageView imgS = new ImageView(new Image(getClass().getResourceAsStream("/media/icon.png")));
-        final ImageView imgNS = new ImageView(new Image(getClass().getResourceAsStream("/media/iconNotSelect.png")));
+        final ImageView imgS = new ImageView(new Image(getClass().getResourceAsStream("/media/unmute.png")));
+        final ImageView imgNS = new ImageView(new Image(getClass().getResourceAsStream("/media/mute.png")));
         imgS.setFitHeight(SOUND_HEIGHT);
         imgS.setFitWidth(SOUND_WIDTH);
         imgNS.setFitHeight(SOUND_HEIGHT);

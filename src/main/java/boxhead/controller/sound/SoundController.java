@@ -4,7 +4,7 @@ import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 
 public class SoundController {
-	private static String BACKGROUND="/media/background.mp3";
+	//private static String BACKGROUND="/media/background.mp3";
 	private final Media background;
 	MediaPlayer mediaplayer;
 	
@@ -12,7 +12,7 @@ public class SoundController {
 	 * Constructor to initialize the background, the only sound implemented
 	 */
 	public SoundController() {
-	this.background=new Media(BACKGROUND);
+	this.background=new Media(getClass().getResource("/media/background.mp3").toString());;
 	this.mediaplayer=new MediaPlayer(this.background);
 	this.mediaplayer.setAutoPlay(true);
 	this.mediaplayer.setCycleCount(MediaPlayer.INDEFINITE);

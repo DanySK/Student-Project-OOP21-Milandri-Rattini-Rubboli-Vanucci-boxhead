@@ -47,7 +47,7 @@ public class Game extends Application {
         GameState.state = GameState.GameStateEnum.MENU;
         this.changeScene();
 
-        primaryStage.getIcons().add(new Image(getClass().getResourceAsStream("/icon.png")));
+        primaryStage.getIcons().add(new Image(getClass().getResourceAsStream("/media/unmute.png")));
         primaryStage.setTitle("BOXHEAD");
         primaryStage.setResizable(false);
         primaryStage.show();

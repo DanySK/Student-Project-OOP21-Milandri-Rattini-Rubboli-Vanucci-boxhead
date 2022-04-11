@@ -38,7 +38,7 @@ public class GameLevelImpl implements GameLevel{
 	private final InputHandler inputHandler;
 	private final PlayerController playerController;
 	private final ZombieController zombieController;
-//	private final RoundController roundController;
+	private final RoundController roundController;
 	private final LevelController map;
 	private final CameraController cams;
 	private final GameView gameView;
@@ -131,7 +131,7 @@ public class GameLevelImpl implements GameLevel{
 		this.playerController.update();
 		this.cams.centerOnPlayer(this.playerController.getPlayer());
 		this.zombieController.update();
-	//	this.roundController.update();
+		this.roundController.update();
 		this.shotController.update();
 	}
 	
@@ -139,20 +139,12 @@ public class GameLevelImpl implements GameLevel{
 		this.playerController.getPlayerView().render();
 		final Set<Pair<Point2D, Image>> res = new HashSet<>();
 		this.gameView.clear();
-		
-<<<<<<< HEAD
-//		this.gameView.completeRender(this.map.getLevelView, this.cams.getCamera().start(),
-//				this.cams.getCamera().end(), this.cams.getCamera().getOffset(), TILE_SIZE);
-//		
-//		this.gameView.completeRender(this.map.render(), this.cams.getCamera().start(),
-//				this.cams.getCamera().end(), this.cams.getCamera().getOffset(), TILE_SIZE);
-=======
 		this.gameView.completeRender(this.map.getLevelView().renderLevelBackground(), this.cams.getCamera().start(),
 				this.cams.getCamera().end(), this.cams.getCamera().getOffset(), TILE_SIZE);
 		
 		this.gameView.completeRender(this.map.render(), this.cams.getCamera().start(),
 				this.cams.getCamera().end(), this.cams.getCamera().getOffset(), TILE_SIZE);
->>>>>>> 1476ffd9b14dcee014c285467f6a88c00e4a8e18
+
 	
 		res.add(new Pair<>(this.playerController.getPlayer().getPosition(), this.playerController.getPlayerView().getImageView().getImage()));
 		res.addAll(this.zombieController.getZombieView().getSprites());

@@ -3,10 +3,6 @@ package boxhead.controller.entities;
 import java.util.Set;
 
 import boxhead.controller.game.GameLevel;
-<<<<<<< HEAD
-=======
-import boxhead.controller.game.GameLevel;
->>>>>>> 1476ffd9b14dcee014c285467f6a88c00e4a8e18
 import boxhead.model.entities.Player;
 import boxhead.view.entities.PlayerView;
 import javafx.geometry.Point2D;

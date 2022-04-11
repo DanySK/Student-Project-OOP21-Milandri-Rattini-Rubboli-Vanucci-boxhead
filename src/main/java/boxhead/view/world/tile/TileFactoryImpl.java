@@ -19,9 +19,9 @@ public class TileFactoryImpl implements TileFactory {
 	 * @param s
 	 */
 
-	public TileFactoryImpl(final String url, final double s) {
+	public TileFactoryImpl(final double s) {
 		tileSize = s;
-		tiles = new TileSetImpl(url);
+		tiles = new TileSetImpl();
 		tiles.Tiles((int) tileSize);
 		;
 	}

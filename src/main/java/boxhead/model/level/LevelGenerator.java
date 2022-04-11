@@ -1,8 +1,8 @@
 package boxhead.model.level;
 
-import org.apache.commons.math3.util.Pair;
-
 import boxhead.view.level.LevelView;
+
+import javafx.util.Pair;
 
 public interface LevelGenerator {
 

@@ -1,11 +1,12 @@
 package boxhead.model.level;
 
-import java.awt.geom.Point2D;
+import javafx.geometry.Point2D;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
 import boxhead.model.entities.Wall;
+import boxhead.view.world.tile.TileType;
 
 /**
  * Implementation of {@link Level}
@@ -44,12 +45,16 @@ public class LevelImpl implements Level {
 	 */
 	private void loadObjects() {
 		blocks.forEach((point, id) -> {
-			switch (type) {
+			switch (TileType.getFromId(id)) {
 			case WALL:
 				this.walls.add(new Wall(point, tileSize * scale, tileSize * scale));
 				break;
 			case ZOMBIE_SPAWN:
 				this.zombieSpawns.add(point);
+				break;
+			case AMMO_SPAWN:
+				break;
+			case GROUND:
 				break;
 			}
 		});

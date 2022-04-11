@@ -8,9 +8,9 @@ public enum TileType {
 
 	WALL(2),
 
-	AMMO(3),
+	ZOMBIE_SPAWN(3),
 
-	ZOMBIE_SPAWN(4);
+	AMMO_SPAWN(4);
 
 	private final int id;
 

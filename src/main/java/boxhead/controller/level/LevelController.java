@@ -1,10 +1,10 @@
 package boxhead.controller.level;
 
-import java.awt.Image;
-import java.awt.geom.Point2D;
-import java.util.Set;
+import javafx.geometry.Point2D;
+import javafx.scene.image.Image;
+import javafx.util.Pair;
 
-import org.apache.commons.math3.util.Pair;
+import java.util.Set;
 
 import boxhead.model.level.Level;
 import boxhead.model.level.LevelGenerator;
@@ -31,7 +31,8 @@ public class LevelController {
 	 * @param renderScale
 	 */
 	public LevelController(final double w, final double h, final double ts, final int renderScale) {
-		lGenerator = new LevelGeneratorImpl(LevelController.TILE_SIZE);
+		this.lGenerator = new LevelGeneratorImpl(TILE_SIZE);
+		this.generateMap(w, h, ts);
 		l.setScale(renderScale);
 		lv.setScale(renderScale);
 	}
@@ -40,8 +41,10 @@ public class LevelController {
 		return l;
 	}
 
-	public final void generateMap(final double w, final double h, final int ts) {
-		lGenerator.readLevel();
+	public final void generateMap(final double w, final double h, final double ts) {
+		final Pair<Level, LevelView> result = lGenerator.loadLevel(w, h, ts);
+		l = result.getKey(); 
+		lv = result.getValue();
 	}
 
 	/**

@@ -1,13 +1,13 @@
 package boxhead.model.level;
 
-import java.awt.geom.Point2D;
+import javafx.geometry.Point2D;
+import javafx.util.Pair;
+
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.HashMap;
 import java.util.Map;
-
-import org.apache.commons.math3.util.Pair;
 
 import boxhead.view.level.LevelView;
 import boxhead.view.level.LevelViewImpl;

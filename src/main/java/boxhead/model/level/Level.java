@@ -1,6 +1,6 @@
 package boxhead.model.level;
 
-import java.awt.geom.Point2D;
+import javafx.geometry.Point2D;
 import java.util.List;
 import java.util.Map;
 

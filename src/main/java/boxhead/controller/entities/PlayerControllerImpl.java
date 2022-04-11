@@ -3,7 +3,6 @@ package boxhead.controller.entities;
 import java.util.Set;
 
 import boxhead.controller.game.GameLevel;
-import boxhead.controller.game.GameWorld;
 import boxhead.model.entities.Player;
 import boxhead.view.entities.PlayerView;
 import javafx.geometry.Point2D;
@@ -68,7 +67,7 @@ public class PlayerControllerImpl implements PlayerController {
 			this.player.setSpeed(Point2D.ZERO);
 		}
 		if(PlayerInput.shotInput(keys)) {
-			this.player.getCurrentGun().attack(this.player.getDirection()).forEach(s -> this.gameWorld.getShotController().addShot(s));
+			this.player.getCurrentGun().attack(this.player.getDirection()).forEach(s -> this.gameLevel.getShotController().addShot(s));
 		}
 		if(PlayerInput.nextGun(keys)) {
 			this.player.nextGun();

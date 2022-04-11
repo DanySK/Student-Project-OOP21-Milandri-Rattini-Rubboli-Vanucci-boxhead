@@ -7,17 +7,15 @@ import boxhead.view.GameView;
 import boxhead.view.MenuView;
 import boxhead.view.SceneSwapper;
 import boxhead.view.SceneSwapperImpl;
-import boxhead.view.ViewManager;
 import javafx.animation.AnimationTimer;
 import javafx.application.Application;
-import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 public class Game extends Application {
 
-    private GameWorld gameCore;
+    private GameLevel gameCore;
     private SceneSwapper swapper;
     private Stage stage;
     private SoundController sound;
@@ -69,7 +67,7 @@ public class Game extends Application {
     private void initGame() {
         swapper.loadFromFile(GameState.GameStateEnum.GAME.getName());
         swapper.swapTo(GameState.GameStateEnum.GAME.getName());
-        gameCore = new GameWorldImpl((GameView) (swapper.getFXMLController(GameState.GameStateEnum.GAME.getName()).get()),
+        gameCore = new GameLevelImpl((GameView) (swapper.getFXMLController(GameState.GameStateEnum.GAME.getName()).get()),
                 this);
     }
 

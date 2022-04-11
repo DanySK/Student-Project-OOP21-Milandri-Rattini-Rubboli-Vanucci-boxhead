@@ -48,7 +48,7 @@ public class GunTest {
         this.zombieModel = new ZombieModelImpl();
         this.manager = new ShotManagerImpl(zombieModel);
         this.manager.setWalls(obstacles);
-        this.zombieModel.setObstacles(obstacles);
+        this.zombieModel.setWalls(obstacles);
         this.zombieModel.setPlayer(this.player);
         this.zombieModel.setSpawnPoints(spawns);
 	}

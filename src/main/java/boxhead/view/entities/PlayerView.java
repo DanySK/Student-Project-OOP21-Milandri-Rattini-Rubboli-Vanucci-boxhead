@@ -15,8 +15,8 @@ public class PlayerView {
 	private Direction direction;
 	private final EntityType type;
 	private final Sprite playerSprite;
-	private final ImageView image;
-	private final GunType gunType;
+	private ImageView image;
+	private GunType gunType;
 	
 	public PlayerView() {
 		this.position=Point2D.ZERO;
@@ -73,7 +73,7 @@ public class PlayerView {
 	private void setSpritePosition() {
         this.image.setLayoutX(getPosition().getX());
         this.image.setLayoutY(getPosition().getY());
-    }
+    } 
 	
 	/**
 	 * Final render of the view
@@ -91,4 +91,10 @@ public class PlayerView {
         return this.image;
     }
 	
+	/**
+	 * Set GunType
+	 */
+	public final void setGunType(GunType gun) {
+		this.gunType=gun;
+	}
 }

@@ -55,7 +55,7 @@ public class Sprite {
 		case BULLET:
 			this.imageView.setFitHeight(BULLET_HEIGHT);
 			this.imageView.setFitWidth(BULLET_WIDTH);
-			this.imageView.setImage(new Image(getClass().getResourceAsStream("bullet.png")));;
+			this.imageView.setImage(new Image(getClass().getResourceAsStream("/bullet.png")));;
 		case AMMO:
 			this.imageView.setFitHeight(PASSIVE_HEIGHT);
 			this.imageView.setFitWidth(PASSIVE_WIDTH);
@@ -63,7 +63,7 @@ public class Sprite {
 		case WALL:
 			this.imageView.setFitHeight(PASSIVE_HEIGHT);
 			this.imageView.setFitWidth(PASSIVE_WIDTH);
-			this.imageView.setImage(new Image(getClass().getResourceAsStream("wall.png")));
+			this.imageView.setImage(new Image(getClass().getResourceAsStream("/wall.png")));
 		default:
 			this.imageView.setFitHeight(PASSIVE_HEIGHT);
 			this.imageView.setFitWidth(PASSIVE_WIDTH);
@@ -78,7 +78,7 @@ public class Sprite {
 	 */
 	public static void updatePlayerImage(final ImageView image, Direction direction, GunType gun) {
 		String filename=gun.toString().toLowerCase() + "-" + direction.toString().toLowerCase();
-		image.setImage(new Image(Sprite.class.getResourceAsStream("/player/" + filename)));
+		image.setImage(new Image(Sprite.class.getResourceAsStream("/player/" + filename + ".png")));
 	}
 		
 

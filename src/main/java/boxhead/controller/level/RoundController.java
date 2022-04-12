@@ -14,9 +14,9 @@ public class RoundController{
 	private boolean isRoundInactive;
 	private GameView gameView;
 	
-	public RoundController(final GameLevelImpl gameWorld) {
-        this.round = new RoundImpl(gameWorld.getZombieController().getZombieModel());
-        this.roundView = new RoundView(gameView.getRoundLabel());
+	public RoundController(final GameLevelImpl gameLevel) {
+        this.round = new RoundImpl(gameLevel.getZombieController().getZombieModel());
+        this.roundView = new RoundView(gameLevel.getGameView().getRoundLabel());
         this.isRoundVital = false;
         this.isRoundInactive = true;
     }

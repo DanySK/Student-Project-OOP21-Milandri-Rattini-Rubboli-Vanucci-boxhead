@@ -24,7 +24,7 @@ public interface TileFactory {
 	 * @param s   - size
 	 * @return Tile
 	 */
-	Tile createTile(Integer t, Point2D pos, double s);
+	Tile createTile(int t, Point2D pos, double s);
 
 	/**
 	 * Method to generate a set of tile

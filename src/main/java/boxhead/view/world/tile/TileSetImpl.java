@@ -1,66 +1,37 @@
 package boxhead.view.world.tile;
 
-import java.util.LinkedList;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 import javafx.scene.image.Image;
-import javafx.scene.image.PixelReader;
-import javafx.scene.image.WritableImage;
 
 public class TileSetImpl implements TileSet {
 
-	private Image src;
-	private final List<WritableImage> tiles;
-
-	/**
-	 * Constructor with url of the image
-	 *
-	 * @param url
-	 */
-	public TileSetImpl(final String url) {
-		this();
-		this.loadImage(url);
-	}
+	private final double tileSize;
+	private final Map<Integer, Image> tiles;
 
 	/**
 	 * Constructor if image of the TileSet is not known yet.
 	 */
-	public TileSetImpl() {
-		this.tiles = new LinkedList<>();
+	public TileSetImpl(final double ts) {
+		this.tileSize = ts;
+		this.tiles = new HashMap<>();
+		this.loadImage();
 	}
 
 	/**
 	 * {@inheritDoc}
 	 */
 	@Override
-	public void loadImage(final String url) {
-		this.src = new Image(getClass().getResourceAsStream(url));
-
+	public Image getTile(final int id) {
+		return this.tiles.get(id);
 	}
 
-	/**
-	 * {@inheritDoc}
-	 */
 	@Override
-	public WritableImage getTile(final int index) {
-
-		return this.tiles.get(index);
+	public void loadImage() {
+		this.tiles.put(TileType.GROUND.getId(),new Image(getClass().getResourceAsStream("/ground.png"), tileSize, tileSize, true, true));
+		this.tiles.put(TileType.WALL.getId(),new Image(getClass().getResourceAsStream("/wall.png"), tileSize, tileSize, true, true));
+		this.tiles.put(TileType.ZOMBIE_SPAWN.getId(),new Image(getClass().getResourceAsStream("/ground.png"), tileSize, tileSize, true, true));
+		this.tiles.put(TileType.AMMO_SPAWN.getId(),new Image(getClass().getResourceAsStream("/ground.png"), tileSize, tileSize, true, true));
 	}
-
-	/**
-	 * {@inheritDoc}
-	 */
-	@Override
-	public void loadTiles(final int size) {
-		final PixelReader pxR = this.src.getPixelReader();
-		final int w = size;
-		final int h = size;
-		for (int i = 0; i < this.src.getHeight() / size; i++) {
-			for (int j = 0; j < this.src.getWidth() / size; j++) {
-				tiles.add(new WritableImage(pxR, j * size, i * size, w, h));
-			}
-		}
-
-	}
-
 }

@@ -66,6 +66,7 @@ public class GameLevelImpl implements GameLevel{
 
 		this.gunUpgradeManager = new GunUpgradeManager(this, this.playerController.getPlayer());
 		this.score = new ScoreImpl(null, this.gunUpgradeManager);
+		this.zombieController.getZombieModel().linkScore(this.score);
 		this.game = game;
 		this.initHandlers(game.getScene());
 		this.initializeModel();
@@ -109,8 +110,7 @@ public class GameLevelImpl implements GameLevel{
 
     private void initializeModel() {
         this.zombieController.getZombieModel().setWalls(this.getWalls());
-        this.zombieController.getZombieModel().setSpawnPoints(this.map.getLevel().getZombieSpawnPoints().stream()
-        		.collect(Collectors.toSet()));
+        this.zombieController.getZombieModel().setSpawnPoints(this.map.getLevel().getZombieSpawnPoints());
         this.zombieController.getZombieModel().setPlayer(playerController.getPlayer());
         this.playerController.getPlayer().setWalls(this.getWalls());
         this.shotController.setWalls(this.getWalls());
@@ -139,8 +139,8 @@ public class GameLevelImpl implements GameLevel{
 		this.playerController.getPlayerView().render();
 		final Set<Pair<Point2D, Image>> res = new HashSet<>();
 		this.gameView.clear();
-		this.gameView.completeRender(this.map.getLevelView().renderLevelBackground(), this.cams.getCamera().start(),
-				this.cams.getCamera().end(), this.cams.getCamera().getOffset(), TILE_SIZE);
+//		this.gameView.completeRender(this.map.getLevelView().renderLevelBackground(), this.cams.getCamera().start(),
+//				this.cams.getCamera().end(), this.cams.getCamera().getOffset(), TILE_SIZE);
 		
 		this.gameView.completeRender(this.map.render(), this.cams.getCamera().start(),
 				this.cams.getCamera().end(), this.cams.getCamera().getOffset(), TILE_SIZE);

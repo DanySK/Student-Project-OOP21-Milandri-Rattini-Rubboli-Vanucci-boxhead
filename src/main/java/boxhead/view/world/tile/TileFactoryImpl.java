@@ -23,23 +23,20 @@ public class TileFactoryImpl implements TileFactory {
 
 	public TileFactoryImpl(final double s) {
 		this.tileSize = s;
-		this.tiles = new TileSetImpl();
-		this.tiles.loadTiles((int)tileSize);
-		;
+		this.tiles = new TileSetImpl(this.tileSize);
 	}
 
 	@Override
 	public void setTileSize(final double size) {
 		tileSize = size;
-
 	}
 
 	@Override
-	public final Tile createTile(final Integer t, final Point2D pos, final double s) {
+	public final Tile createTile(final int t, final Point2D pos, final double s) {
 
 		return new Tile() {
 
-			private ImageView img = new ImageView(tiles.getTile(t));
+			private ImageView img = new ImageView();
 			private SnapshotParameters sP = new SnapshotParameters();
 			private Point2D p = pos;
 			private double size = s;
@@ -47,6 +44,7 @@ public class TileFactoryImpl implements TileFactory {
 
 			@Override
 			public Image getTile() {
+				this.img.setImage(tiles.getTile(t));
 				return this.img.snapshot(sP, null);
 			}
 

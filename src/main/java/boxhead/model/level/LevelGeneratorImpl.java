@@ -15,10 +15,10 @@ import boxhead.view.world.tile.TileFactory;
 import boxhead.view.world.tile.TileFactoryImpl;
 
 public class LevelGeneratorImpl implements LevelGenerator {
-	static Map<Point2D, Integer> level = new HashMap<>();
-	int x;
-	int y;
-	Point2D pos = new Point2D(x, y);
+	private static Map<Point2D, Integer> level = new HashMap<>();
+	private int x;
+	private int y;
+	private Point2D pos = new Point2D(x, y);
 	private final TileFactory tFactory;
 
 	public LevelGeneratorImpl(final double ts) {
@@ -34,11 +34,11 @@ public class LevelGeneratorImpl implements LevelGenerator {
 			int y = 0;
 			int x = 0;
 
-			while ((y < 20) && (x < 3)) {
+			while ((y < 28) && (x < 14)) {
 
 				final String line = br.readLine();
 
-				while (y < 20) {
+				while (y < 29) {
 
 					final String numbers[] = line.split(" ");
 
@@ -47,7 +47,7 @@ public class LevelGeneratorImpl implements LevelGenerator {
 					LevelGeneratorImpl.level.put(pos = new Point2D(x, y), num);
 					y++;
 				}
-				if (y == 20) {
+				if (y == 28) {
 					y = 0;
 					x++;
 

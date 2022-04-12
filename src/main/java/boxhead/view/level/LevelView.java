@@ -28,7 +28,7 @@ public interface LevelView {
      * Get all images representing each background tile it's position
      * @return Set<Pair<Point2D, Image>
      */
-    Set<Pair<Point2D, Image>> renderLevelBackground();
+    //Set<Pair<Point2D, Image>> renderLevelBackground();
     
     /**
      * Set rendering scale

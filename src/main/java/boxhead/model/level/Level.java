@@ -3,6 +3,7 @@ package boxhead.model.level;
 import javafx.geometry.Point2D;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import boxhead.model.entities.Wall;
 
@@ -30,7 +31,7 @@ public interface Level {
 	 *
 	 * @return A list with all the zombieSpawnPoints.
 	 */
-	List<Point2D> getZombieSpawnPoints();
+	Set<Point2D> getZombieSpawnPoints();
 
 	/**
 	 * @return The width of the level.

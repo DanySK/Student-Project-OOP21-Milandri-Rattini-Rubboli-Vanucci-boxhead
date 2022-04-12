@@ -33,32 +33,32 @@ public class LevelController {
 	public LevelController(final double w, final double h, final double ts, final int renderScale) {
 		this.lGenerator = new LevelGeneratorImpl(TILE_SIZE);
 		this.generateMap(w, h, ts);
-		l.setScale(renderScale);
-		lv.setScale(renderScale);
+		this.l.setScale(renderScale);
+		this.lv.setScale(renderScale);
 	}
 
 	public final Level getLevel() {
-		return l;
+		return this.l;
 	}
 
 	public final void generateMap(final double w, final double h, final double ts) {
-		final Pair<Level, LevelView> result = lGenerator.loadLevel(w, h, ts);
-		l = result.getKey(); 
-		lv = result.getValue();
+		final Pair<Level, LevelView> result = this.lGenerator.loadLevel(w, h, ts);
+		this.l = result.getKey(); 
+		this.lv = result.getValue();
 	}
 
 	/**
 	 * @return Level Map.
 	 */
 	public final Level getMap() {
-		return l;
+		return this.l;
 	}
 
 	/**
 	 * @return Set<Pair<Point2D, Image>> Map elements coordinates
 	 */
 	public final Set<Pair<Point2D, Image>> render() {
-		return lv.renderLevelMap();
+		return this.lv.renderLevelMap();
 	}
 
 	/**
@@ -66,7 +66,7 @@ public class LevelController {
 	 * @return {@link LevelView}
 	 */
 	public final LevelView getLevelView() {
-		return lv;
+		return this.lv;
 	}
 
 	/**
@@ -74,7 +74,7 @@ public class LevelController {
 	 * @param scale
 	 */
 	public final void resize(final double scale) {
-		lv.setScale(scale);
+		this.lv.setScale(scale);
 	}
 
 	/**

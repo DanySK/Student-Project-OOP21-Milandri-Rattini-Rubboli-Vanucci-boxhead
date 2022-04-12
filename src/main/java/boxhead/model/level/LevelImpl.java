@@ -1,9 +1,12 @@
 package boxhead.model.level;
 
 import javafx.geometry.Point2D;
+
+import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import boxhead.model.entities.Wall;
 import boxhead.view.world.tile.TileType;
@@ -15,7 +18,7 @@ public class LevelImpl implements Level {
 
 	private final Map<Point2D, Integer> blocks;
 	private final List<Wall> walls;
-	private final List<Point2D> zombieSpawns;
+	private final Set<Point2D> zombieSpawns;
 	private final double width;
 	private final double height;
 	private final double tileSize;
@@ -33,7 +36,7 @@ public class LevelImpl implements Level {
 			final double tileSize) {
 		this.blocks = blocks;
 		walls = new LinkedList<>();
-		zombieSpawns = new LinkedList<>();
+		zombieSpawns = new HashSet<>();
 		this.width = width;
 		this.height = height;
 		this.tileSize = tileSize;
@@ -80,7 +83,7 @@ public class LevelImpl implements Level {
 	 * {@inheritDoc}
 	 */
 	@Override
-	public List<Point2D> getZombieSpawnPoints() {
+	public Set<Point2D> getZombieSpawnPoints() {
 		return zombieSpawns;
 	}
 

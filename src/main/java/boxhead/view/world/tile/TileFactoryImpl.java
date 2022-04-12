@@ -2,15 +2,17 @@ package boxhead.view.world.tile;
 
 import java.util.Map;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 import javafx.geometry.Point2D;
 import javafx.scene.SnapshotParameters;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.paint.Color;
 
 public class TileFactoryImpl implements TileFactory {
 	private double tileSize;
-	private final TileSet tiles;
+	private TileSet tiles;
 
 	/**
 	 * Constructor, URL of the image for TileSet, size of the tile in the image
@@ -20,9 +22,9 @@ public class TileFactoryImpl implements TileFactory {
 	 */
 
 	public TileFactoryImpl(final double s) {
-		tileSize = s;
-		tiles = new TileSetImpl();
-		tiles.Tiles((int) tileSize);
+		this.tileSize = s;
+		this.tiles = new TileSetImpl();
+		this.tiles.loadTiles((int)tileSize);
 		;
 	}
 
@@ -33,57 +35,58 @@ public class TileFactoryImpl implements TileFactory {
 	}
 
 	@Override
-	public Tile createTile(final Integer t, final Point2D pos, final double s) {
+	public final Tile createTile(final Integer t, final Point2D pos, final double s) {
 
 		return new Tile() {
 
-			private final ImageView img = new ImageView(tiles.getTile(t));
-			private final SnapshotParameters SP = new SnapshotParameters();
-			private final Point2D p = pos;
-			private final double size = s;
+			private ImageView img = new ImageView(tiles.getTile(t));
+			private SnapshotParameters sP = new SnapshotParameters();
+			private Point2D p = pos;
+			private double size = s;
 			private double scale = 1.0;
 
 			@Override
 			public Image getTile() {
-				return img.snapshot(SP, null);
+				return this.img.snapshot(sP, null);
 			}
 
 			@Override
 			public double getSize() {
-				return size * scale;
+				return this.size * scale;
 			}
 
 			@Override
 			public void setRenderScale(final double scale) {
 				this.scale = scale;
-				img.setFitHeight(s * scale);
-				img.setFitWidth(s * scale);
+				sP.setFill(Color.TRANSPARENT);
+				this.img.setFitHeight(s * scale);
+				this.img.setFitWidth(s * scale);
 
 			}
 
 			@Override
 			public double getRenderScale() {
-				return scale;
+				return this.scale;
 			}
 
 			@Override
 			public Point2D getRelativePos() {
-				return p.multiply(getSize());
+				return this.p.multiply(getSize());
 			}
 
 			@Override
 			public Point2D getPos() {
-				return p;
+				return this.p;
 			}
 
 			@Override
 			public double getX() {
-				return p.getX();
+				return this.p.getX();
 			}
 
 			@Override
 			public double getY() {
-				return p.getY();
+				return this.p.getY();
 			}
 
 		};
@@ -91,8 +94,8 @@ public class TileFactoryImpl implements TileFactory {
 
 	@Override
 	public Set<Tile> createTiles(final Map<Point2D, Integer> tile, final double s) {
-
-		return null;
+		return tile.entrySet().stream().
+                <Tile>map(e -> createTile(e.getValue(), e.getKey(), s)).collect(Collectors.toSet());
 	}
 
 }

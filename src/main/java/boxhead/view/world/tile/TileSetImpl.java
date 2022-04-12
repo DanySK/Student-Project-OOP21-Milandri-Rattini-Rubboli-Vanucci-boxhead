@@ -19,14 +19,14 @@ public class TileSetImpl implements TileSet {
 	 */
 	public TileSetImpl(final String url) {
 		this();
-		loadImage(url);
+		this.loadImage(url);
 	}
 
 	/**
 	 * Constructor if image of the TileSet is not known yet.
 	 */
 	public TileSetImpl() {
-		tiles = new LinkedList<>();
+		this.tiles = new LinkedList<>();
 	}
 
 	/**
@@ -34,7 +34,7 @@ public class TileSetImpl implements TileSet {
 	 */
 	@Override
 	public void loadImage(final String url) {
-		src = new Image(getClass().getResourceAsStream(url));
+		this.src = new Image(getClass().getResourceAsStream(url));
 
 	}
 
@@ -44,19 +44,19 @@ public class TileSetImpl implements TileSet {
 	@Override
 	public WritableImage getTile(final int index) {
 
-		return tiles.get(index);
+		return this.tiles.get(index);
 	}
 
 	/**
 	 * {@inheritDoc}
 	 */
 	@Override
-	public void Tiles(final int size) {
-		final PixelReader pxR = src.getPixelReader();
+	public void loadTiles(final int size) {
+		final PixelReader pxR = this.src.getPixelReader();
 		final int w = size;
 		final int h = size;
-		for (int i = 0; i < (src.getHeight() / size); i++) {
-			for (int j = 0; j < (src.getWidth() / size); j++) {
+		for (int i = 0; i < this.src.getHeight() / size; i++) {
+			for (int j = 0; j < this.src.getWidth() / size; j++) {
 				tiles.add(new WritableImage(pxR, j * size, i * size, w, h));
 			}
 		}

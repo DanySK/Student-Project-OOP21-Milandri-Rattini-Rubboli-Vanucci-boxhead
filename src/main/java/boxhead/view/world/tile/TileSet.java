@@ -19,7 +19,7 @@ public interface TileSet {
 	 *
 	 * @param size
 	 */
-	void Tiles(int size);
+	void loadTiles(int size);
 
 	/**
 	 * Method to get a tile from the index

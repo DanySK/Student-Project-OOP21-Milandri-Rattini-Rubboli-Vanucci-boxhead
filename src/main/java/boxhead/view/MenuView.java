@@ -1,8 +1,5 @@
 package boxhead.view;
 
-import java.nio.file.Files;
-import java.nio.*;
-
 import boxhead.controller.game.GameState;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -18,8 +15,8 @@ import javafx.stage.Stage;
 
 public class MenuView {
 
-    private static final int HEIGHT = 650;
-    private static final int WIDTH = 850;
+    private static final int HEIGHT = 720;
+    private static final int WIDTH = 1080;
 
     private static final int TUTORIAL_LAYOUTX = 10;
     private static final int TUTORIAL_LAYOUTY = 590;
@@ -128,7 +125,7 @@ public class MenuView {
     }
 
     private void createPlayButton() {
-        final BoxheadButton playButton = new BoxheadButton("RESUME GAME");
+        final BoxheadButton playButton = new BoxheadButton("START");
         playButton.setLayoutX(PLAY_LAYOUTX);
         playButton.setLayoutY(PLAY_LAYOUTY);
         pane.getChildren().add(playButton);

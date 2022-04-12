@@ -3,6 +3,7 @@ package boxhead.controller.entities;
 import java.util.Set;
 
 import boxhead.controller.game.GameLevel;
+import boxhead.controller.game.GameLevel;
 import boxhead.model.entities.Player;
 import boxhead.view.entities.PlayerView;
 import javafx.geometry.Point2D;
@@ -54,6 +55,7 @@ public class PlayerControllerImpl implements PlayerController {
 	private void updateView () {
 		this.playerView.setPosition(this.player.getPosition());
 		this.playerView.setDirection(this.player.getDirection());
+		this.playerView.setGunType(this.player.getCurrentGun().getGunType());
 	}
 
 	/**

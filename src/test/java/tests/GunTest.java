@@ -3,6 +3,7 @@ package tests;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
+import java.io.InputStream;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -20,8 +21,11 @@ import boxhead.model.entities.utils.Direction;
 import boxhead.model.entities.zombies.Zombie;
 import boxhead.model.entities.zombies.ZombieModel;
 import boxhead.model.entities.zombies.ZombieModelImpl;
+import boxhead.view.spriteutils.Sprite;
 import javafx.geometry.BoundingBox;
 import javafx.geometry.Point2D;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 
 /**
  * Test for Gun and their use.
@@ -37,6 +41,18 @@ public class GunTest {
 	private final ZombieModel zombieModel;
 	private final Set<Point2D> spawns;
 	private final Point2D position;
+	
+	
+	Direction direction=Direction.NORTH_EAST;
+	
+	@Test
+	public void updateZombieImage() {
+	String filename="zombie-"+this.direction.toString().toLowerCase();
+	InputStream input=Sprite.class.getResourceAsStream("/zombie/" + filename + ".png");
+	InputStream input2=Sprite.class.getResourceAsStream("/player/" +"pistol-east"+ ".png");	
+	return;
+
+	}
 	
 	public GunTest() {
 		final Set<BoundingBox> obstacles = new HashSet<>();

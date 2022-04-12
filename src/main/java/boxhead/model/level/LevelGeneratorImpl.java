@@ -28,17 +28,17 @@ public class LevelGeneratorImpl implements LevelGenerator {
 	private Map<Point2D, Integer> readLevel() {
 
 		try {
-			final InputStream is = getClass().getResourceAsStream("/boxhead.level.txt/prova.txt");
+			final InputStream is = getClass().getResourceAsStream("/prova.txt");
 			final BufferedReader br = new BufferedReader(new InputStreamReader(is));
 
 			int y = 0;
 			int x = 0;
 
-			while ((y < 28) && (x < 14)) {
+			while ((y < 15) && (x < 29)) {
 
 				final String line = br.readLine();
 
-				while (y < 29) {
+				while (y < 15) {
 
 					final String numbers[] = line.split(" ");
 
@@ -47,7 +47,7 @@ public class LevelGeneratorImpl implements LevelGenerator {
 					LevelGeneratorImpl.level.put(pos = new Point2D(x, y), num);
 					y++;
 				}
-				if (y == 28) {
+				if (y == 15) {
 					y = 0;
 					x++;
 

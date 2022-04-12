@@ -48,16 +48,16 @@ public class LevelImpl implements Level {
 	 */
 	private void loadObjects() {
 		blocks.forEach((point, id) -> {
-			switch (TileType.getFromId(id)) {
-			case WALL:
+			switch (id) {
+			case 2:
 				this.walls.add(new Wall(point, tileSize * scale, tileSize * scale));
 				break;
-			case ZOMBIE_SPAWN:
+			case 3:
 				this.zombieSpawns.add(point);
 				break;
-			case AMMO_SPAWN:
+			case 4:
 				break;
-			case GROUND:
+			case 1:
 				break;
 			}
 		});

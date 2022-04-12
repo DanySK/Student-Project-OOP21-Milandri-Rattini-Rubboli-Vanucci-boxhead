@@ -36,7 +36,7 @@ public class BulletView implements ShotView {
 	 */
 	@Override
 	public final Sprite getSprite() {
-		return this.getSprite();
+		return this.sprite;
 	}
 	
 }

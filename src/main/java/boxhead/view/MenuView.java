@@ -11,8 +11,6 @@ import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundImage;
 import javafx.scene.layout.BackgroundPosition;
 import javafx.scene.layout.BackgroundRepeat;
-import javafx.scene.paint.Color;
-import javafx.stage.Stage;
 
 public class MenuView {
 

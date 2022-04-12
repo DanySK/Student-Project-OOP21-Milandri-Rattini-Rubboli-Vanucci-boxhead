@@ -48,26 +48,32 @@ public class Sprite {
 			this.imageView.setFitHeight(ZOMBIE_HEIGHT);
 			this.imageView.setFitWidth(ZOMBIE_WIDTH);
 			updateZombieImage(this.imageView,Direction.EAST);
+			break;
 		case PLAYER:
 			this.imageView.setFitHeight(PLAYER_HEIGHT);
 			this.imageView.setFitWidth(PLAYER_WIDTH);
 			updatePlayerImage(this.imageView,Direction.EAST,GunType.PISTOL);
+			break;
 		case BULLET:
 			this.imageView.setFitHeight(BULLET_HEIGHT);
 			this.imageView.setFitWidth(BULLET_WIDTH);
-			this.imageView.setImage(new Image(getClass().getResourceAsStream("/bullet.png")));;
+			this.imageView.setImage(new Image(getClass().getResourceAsStream("/bullet.png")));
+			break;
 		case AMMO:
 			this.imageView.setFitHeight(PASSIVE_HEIGHT);
 			this.imageView.setFitWidth(PASSIVE_WIDTH);
 			this.imageView.setImage(null);
+			break;
 		case WALL:
 			this.imageView.setFitHeight(PASSIVE_HEIGHT);
 			this.imageView.setFitWidth(PASSIVE_WIDTH);
 			this.imageView.setImage(new Image(getClass().getResourceAsStream("/wall.png")));
+			break;
 		default:
 			this.imageView.setFitHeight(PASSIVE_HEIGHT);
 			this.imageView.setFitWidth(PASSIVE_WIDTH);
 			this.imageView.setImage(null);	
+			break;
 		}
 	}
 	/**
@@ -81,123 +87,15 @@ public class Sprite {
 		image.setImage(new Image(Sprite.class.getResourceAsStream("/player/" + filename + ".png")));
 	}
 		
-
-//        switch (direction) {
-//        case NORTH:
-//            switch (gun) {
-//            case PISTOL:
-//                image.setImage(PLACEHOLDER);
-//                break;
-//            case UZI:
-//                image.setImage(PLACEHOLDER);
-//                break;
-//            case SHOTGUN:
-//                image.setImage(PLACEHOLDER);
-//                break;
-//            }
-//            break;
-//
-//        case NORTH_EAST:
-//            switch (gun) {
-//            case PISTOL:
-//                image.setImage(PLACEHOLDER);
-//                break;
-//            case UZI:
-//                image.setImage(PLACEHOLDER);
-//                break;
-//            case SHOTGUN:
-//                image.setImage(PLACEHOLDER);
-//                break;
-//            }
-//            break;
-//        case EAST:
-//            switch (gun) {
-//            case PISTOL:
-//                image.setImage(PLACEHOLDER);
-//                break;
-//            case UZI:
-//                image.setImage(PLACEHOLDER);
-//                break;
-//            case SHOTGUN:
-//                image.setImage(PLACEHOLDER);
-//                break;
-//            }
-//            break;
-//        case SOUTH_EAST:
-//            switch (gun) {
-//            case PISTOL:
-//                image.setImage(PLACEHOLDER);
-//                break;
-//            case UZI:
-//                image.setImage(PLACEHOLDER);
-//                break;
-//            case SHOTGUN:
-//                image.setImage(PLACEHOLDER);
-//                break;
-//            }
-//            break;
-//        case SOUTH:
-//            switch (gun) {
-//            case PISTOL:
-//                image.setImage(PLACEHOLDER);
-//                break;
-//            case UZI:
-//                image.setImage(PLACEHOLDER);
-//                break;
-//            case SHOTGUN:
-//                image.setImage(PLACEHOLDER);
-//                break;
-//            }
-//            break;
-//        case SOUTH_WEST:
-//            switch (gun) {
-//            case PISTOL:
-//                image.setImage(PLACEHOLDER);
-//                break;
-//            case UZI:
-//                image.setImage(PLACEHOLDER);
-//                break;
-//            case SHOTGUN:
-//                image.setImage(PLACEHOLDER);
-//                break;
-//            }
-//            break;
-//        case WEST:
-//            switch (gun) {
-//            case PISTOL:
-//                image.setImage(PLACEHOLDER);
-//                break;
-//            case UZI:
-//                image.setImage(PLACEHOLDER);
-//                break;
-//            case SHOTGUN:
-//                image.setImage(PLACEHOLDER);
-//                break;
-//            }
-//            break;
-//        case NORTH_WEST:
-//            switch (gun) {
-//            case PISTOL:
-//                image.setImage(PLACEHOLDER);
-//                break;
-//            case UZI:
-//                image.setImage(PLACEHOLDER);
-//                break;
-//            case SHOTGUN:
-//                image.setImage(PLACEHOLDER);
-//                break;
-//            }
-//            break;
-//        }
- 
 	/**
 	 * Update zombie image
 	 * @param image
 	 * @param direction
 	 */
-	public static void updateZombieImage( final ImageView image, Direction direction) {
-		String filename=direction.toString();
-		image.setImage(new Image(Sprite.class.getResourceAsStream("/zombie/" + filename)));
+	public static void updateZombieImage(final ImageView image, Direction direction) {
+		String filename="zombie-"+direction.toString().toLowerCase();
+		image.setImage(new Image(Sprite.class.getResourceAsStream("/zombie/" + filename + ".png")));
+		
 //        switch (direction) {
 //        case NORTH:
 //        	image.setImage(PLACEHOLDER);

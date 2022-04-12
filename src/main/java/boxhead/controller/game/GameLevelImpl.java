@@ -62,7 +62,7 @@ public class GameLevelImpl implements GameLevel{
 		this.roundController = new RoundController(this);
 		this.shotController = new ShotControllerImpl(this);
 
-		this.playerController.getPlayer().setPosition(this.cams.getCenter());
+		this.playerController.getPlayer().setPosition(new Point2D(100, 100));
 
 		this.gunUpgradeManager = new GunUpgradeManager(this, this.playerController.getPlayer());
 		this.score = new ScoreImpl(null, this.gunUpgradeManager);

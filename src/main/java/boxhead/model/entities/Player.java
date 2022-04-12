@@ -23,7 +23,7 @@ public class Player extends AbstractHealthEntity {
 	private Gun selectedGun=null;
 	
 	public Player() {
-		super(Point2D.ZERO, Direction.EAST, Point2D.ZERO, EntityType.PLAYER, MAX_HEALTH);
+		super(Point2D.ZERO, Direction.EAST, new Point2D(50, 50), EntityType.PLAYER, MAX_HEALTH);
 		this.guns = new LinkedList<>();
 		this.currentGun=new GunFactory().getGun(this.getPosition(),GunType.PISTOL);
 		this.guns.add(this.currentGun);
@@ -68,8 +68,8 @@ public class Player extends AbstractHealthEntity {
 	public void checkCollision(final Direction direction) {
 		if (!direction.equals(Direction.NULL)) {
 			this.setDirection(direction);
-	        final BoundingBox playerBB = new BoundingBox(getPosition().getX() + direction.traduce().getX(),
-	                getPosition().getY() + direction.traduce().getY(), getWidth(), getHeight());
+	        final BoundingBox playerBB = new BoundingBox(getPosition().getX() + direction.traduce().getX() *4,
+	                getPosition().getY() + direction.traduce().getY()*4, getWidth(), getHeight());
 	
 	        this.walls.forEach(BB -> {
 	            if (Collision.isColliding(playerBB, BB)) {
@@ -80,11 +80,11 @@ public class Player extends AbstractHealthEntity {
 	        if (!this.iscolliding.isEmpty()) {
 	            setSpeed(Point2D.ZERO);
 	        } else {
-	            setSpeed(direction.traduce());
+	            setSpeed(direction.traduce().multiply(4));
 	        }
 		}
 		else {
-			this.setSpeed(direction.traduce());
+			this.setSpeed(direction.traduce().multiply(4));
 		}
         this.iscolliding.clear();
 	}	

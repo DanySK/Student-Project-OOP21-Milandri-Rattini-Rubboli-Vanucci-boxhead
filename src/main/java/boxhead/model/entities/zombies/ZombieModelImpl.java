@@ -122,7 +122,7 @@ public class ZombieModelImpl implements ZombieModel {
      * Spawns a new zombie
      */
     private void spawnZombie() {
-        this.zombies.add(spawnHandler.getZombie(spawnHandler.getSpawnPoint()));
+        this.zombies.add(spawnHandler.getZombie(this.spawnHandler.getSpawnPoint()));
         this.lastSpawn = System.currentTimeMillis();
         this.zombiesToSpawn = this.zombiesToSpawn - 1;
     }

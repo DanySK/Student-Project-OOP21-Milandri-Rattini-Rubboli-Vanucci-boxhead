@@ -21,8 +21,8 @@ import boxhead.view.spriteutils.SpriteFactory;
  */
 public class ZombieViewImpl implements ZombieView {
 
-    private static final int SPRITE_WIDTH = 10;
-    private static final int SPRITE_HEIGHT = 10;
+    private static final int SPRITE_WIDTH = 30;
+    private static final int SPRITE_HEIGHT = 30;
 
     private Set<Pair<Point2D, Direction>> posIteratorions;
     private final EntityType entityType;

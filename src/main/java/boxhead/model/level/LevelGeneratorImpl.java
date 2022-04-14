@@ -34,20 +34,20 @@ public class LevelGeneratorImpl implements LevelGenerator {
 			int y = 0;
 			int x = 0;
 
-			while ((y < 15) && (x < 29)) {
+			while ((x < 15) && (y < 29)) {
 
 				final String line = br.readLine();
 
-				while (y < 15) {
+				while (y < 29) {
 
 					final String numbers[] = line.split(" ");
 
 					final int num = Integer.parseInt(numbers[y]);
 
-					LevelGeneratorImpl.level.put(pos = new Point2D(x, y), num);
+					LevelGeneratorImpl.level.put(pos = new Point2D(y, x), num);
 					y++;
 				}
-				if (y == 15) {
+				if (y == 29) {
 					y = 0;
 					x++;
 

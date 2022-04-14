@@ -13,7 +13,7 @@ import javafx.geometry.Point2D;
 public class SpawnImpl implements Spawn {
 
 	private static final int DEFAULT_DAMAGE = 5;
-	private static final double DEFAULT_SPEED = 2;
+	private static final double DEFAULT_SPEED = 5;
 	private static final int DEFAULT_HEALTH = 100;
     private Set<Point2D> spawnPoints;
 
@@ -38,7 +38,7 @@ public class SpawnImpl implements Spawn {
      */
     @Override
     public final Zombie getZombie(final Point2D spawnPoint) {
-    	return new Zombie(spawnPoint, Direction.WEST, DEFAULT_SPEED, EntityType.ZOMBIE, DEFAULT_HEALTH, DEFAULT_DAMAGE);
+    	return new Zombie(spawnPoint, Direction.SOUTH, DEFAULT_SPEED, EntityType.ZOMBIE, DEFAULT_HEALTH, DEFAULT_DAMAGE);
     }
 
     /**

@@ -172,25 +172,25 @@ public class ZombieAIImpl implements ZombieAI {
     		return Direction.EAST;
     	} else {
     		if(degree > 22.5 && degree <= 67.5) {
-    			return Direction.NORTH_EAST;
+    			return Direction.SOUTH_EAST;
     		}
     		if(degree > 67.5 && degree <= 112.5) {
-    			return Direction.NORTH;
+    			return Direction.SOUTH;
     		}
     		if(degree > 112.5 && degree <= 157.5) {
-    			return Direction.NORTH_WEST;
+    			return Direction.SOUTH_WEST;
     		}
     		if(degree > 157.5 && degree <= 202.5) {
     			return Direction.WEST;
     		}
     		if(degree > 202.5 && degree <= 247.5) {
-    			return Direction.SOUTH_WEST;
+    			return Direction.NORTH_WEST;
     		}
     		if(degree > 247.5 && degree <= 292.5) {
-    			return Direction.SOUTH;
+    			return Direction.NORTH;
     		}
     		}
-    		return Direction.SOUTH_EAST;
+    		return Direction.NORTH_EAST;
     	}
 
 }

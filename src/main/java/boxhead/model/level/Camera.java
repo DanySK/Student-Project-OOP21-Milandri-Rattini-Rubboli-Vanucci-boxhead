@@ -13,13 +13,13 @@ public class Camera {
 	private double offsetY;
 	
 	public Camera(final double mapHeight, final double mapWidth, final double camHeight, final double camWidth,
-			final double offsetX, final double offsetY) {
+			final double offX, final double offY) {
 		this.mapHeight=mapHeight;
 		this.mapWidth=mapWidth;
 		this.camHeight=camHeight;
 		this.camWidth=camWidth;
-		this.offsetX=offsetX;
-		this.offsetY=offsetY;
+		offsetX=offX;
+		offsetY=offY;
 	}
 	
 	/**
@@ -27,7 +27,7 @@ public class Camera {
 	 * @return Point2D
 	 */
 	public final Point2D getCenter() {
-		return new Point2D(this.mapWidth / 2,this.mapHeight / 2);
+		return new Point2D(mapWidth / 2,mapHeight / 2);
 	}
 	
 	/**
@@ -46,8 +46,8 @@ public class Camera {
 	 * @param y
 	 */
 	public final void centerOn(final double x, final double y) {
-        this.offsetX = x - this.camWidth / 2;
-        this.offsetY = y - this.camHeight / 2;
+        offsetX = x - camWidth / 2;
+        offsetY = y - camHeight / 2;
         this.adjust();
     }
 	
@@ -100,7 +100,7 @@ public class Camera {
 	 * @return
 	 */
 	public final Point2D end() {
-	        return this.getOffset().add(new Point2D(this.camWidth, this.camHeight));
+	        return this.getOffset().add(new Point2D(camWidth, camHeight));
 	}
 	
 	/**

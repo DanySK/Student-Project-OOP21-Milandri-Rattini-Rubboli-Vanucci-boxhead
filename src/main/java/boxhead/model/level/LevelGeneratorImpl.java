@@ -9,6 +9,7 @@ import java.io.InputStreamReader;
 import java.util.HashMap;
 import java.util.Map;
 
+import boxhead.model.entities.utils.Direction;
 import boxhead.view.level.LevelView;
 import boxhead.view.level.LevelViewImpl;
 import boxhead.view.world.tile.TileFactory;
@@ -26,10 +27,12 @@ public class LevelGeneratorImpl implements LevelGenerator {
 	}
 
 	private Map<Point2D, Integer> readLevel() {
-
+	BufferedReader br = null;
+	
 		try {
 			final InputStream is = getClass().getResourceAsStream("/prova.txt");
-			final BufferedReader br = new BufferedReader(new InputStreamReader(is));
+			//System.out.println(is);
+			br = new BufferedReader(new InputStreamReader(is));
 
 			int y = 0;
 			int x = 0;
@@ -46,11 +49,12 @@ public class LevelGeneratorImpl implements LevelGenerator {
 
 					LevelGeneratorImpl.level.put(pos = new Point2D(y, x), num);
 					y++;
+					System.out.println(pos + "" + num);
 				}
 				if (y == 29) {
 					y = 0;
 					x++;
-
+					
 				}
 			}
 			br.close();

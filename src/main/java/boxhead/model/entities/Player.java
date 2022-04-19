@@ -23,10 +23,12 @@ public class Player extends AbstractHealthEntity {
 	private Gun selectedGun=null;
 	
 	public Player() {
-		super(Point2D.ZERO, Direction.EAST, new Point2D(50, 50), EntityType.PLAYER, MAX_HEALTH);
+		super(Point2D.ZERO, Direction.EAST, new Point2D(150, 150), EntityType.PLAYER, MAX_HEALTH);
 		this.guns = new LinkedList<>();
 		this.currentGun=new GunFactory().getGun(this.getPosition(),GunType.PISTOL);
 		this.guns.add(this.currentGun);
+		this.guns.add(new GunFactory().getGun(this.getPosition(),GunType.UZI));
+		this.guns.add(new GunFactory().getGun(this.getPosition(),GunType.SHOTGUN));
 		this.iscolliding=new ArrayList<>();
 		this.gunIndex=0;
 	}
@@ -115,7 +117,7 @@ public class Player extends AbstractHealthEntity {
 		if(this.gunIndex>0) {
 			this.currentGun=this.guns.get(--gunIndex);
 		} else {
-			this.gunIndex=this.guns.size();
+			this.gunIndex=this.guns.size()-1;
 			this.currentGun=this.guns.get(gunIndex);
 		}
 	}

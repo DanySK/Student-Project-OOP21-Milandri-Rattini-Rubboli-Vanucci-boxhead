@@ -166,31 +166,33 @@ public class ZombieAIImpl implements ZombieAI {
     /*
      * Return the nearest direction based on player degree
      */
-    private static Direction checkNearestAngle(final double degree) {
-    	
-    	if (degree > 337.5  && degree <= 22.5) {
-    		return Direction.EAST;
-    	} else {
+    private static Direction checkNearestAngle(final double degree) {	
+    	//System.out.println(degree);
+    	if (degree > -22.5  && degree <= 22.5) {
+    			return Direction.EAST;
+    		}else
+    		if(degree > 112.5 && degree <= 157.5) {
+    			return Direction.SOUTH_WEST;
+    		}
     		if(degree > 22.5 && degree <= 67.5) {
     			return Direction.SOUTH_EAST;
+    		}
+    		if(degree > -157.5 && degree <= -112.5) {
+    			return Direction.NORTH_WEST;
+    		}
+    		if(degree > -112.5 && degree <= -67.5) {
+    			return Direction.NORTH;
+    		}
+    		if(degree > -67.5 && degree <= -22.5) {
+    			return Direction.NORTH_EAST;
     		}
     		if(degree > 67.5 && degree <= 112.5) {
     			return Direction.SOUTH;
     		}
-    		if(degree > 112.5 && degree <= 157.5) {
-    			return Direction.SOUTH_WEST;
-    		}
-    		if(degree > 157.5 && degree <= 202.5) {
+    		if((degree > 157.5 && degree <=180) || (degree < -157.5 && degree >=-180)){
     			return Direction.WEST;
     		}
-    		if(degree > 202.5 && degree <= 247.5) {
-    			return Direction.NORTH_WEST;
-    		}
-    		if(degree > 247.5 && degree <= 292.5) {
-    			return Direction.NORTH;
-    		}
-    		}
-    		return Direction.NORTH_EAST;
-    	}
-
+    		return Direction.NULL;
+			
+    }
 }

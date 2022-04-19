@@ -64,7 +64,7 @@ public class ShotControllerImpl implements ShotController {
 	public final void addShot(Optional<Shot> shot) {
 		if (shot.isPresent()) {
 			ShotView view = new BulletView();
-			view.setDirection(Math.toDegrees(shot.get().getTrajectory().getAngle()));
+			view.setDirection(shot.get().getTrajectory().getAngle());
 			this.manager.addShot(shot.get());
 			this.shotsActiveView.put(shot.get(), view);
 		}

@@ -3,21 +3,21 @@ package boxhead.model.entities.utils;
 import javafx.geometry.Point2D;
 
 public enum Direction {
-	NORTH(0,-1,270),
+	NORTH(0,-1, 0),
 	
-	NORTH_EAST(0.707,-0.707,315),
+	NORTH_EAST(0.707,-0.707,45),
 	
-	EAST(1,0,0),
+	EAST(1,0,90),
 	
-	SOUTH_EAST(0.707,0.707,45),
+	SOUTH_EAST(0.707,0.707,135),
 	
-	SOUTH(0,1,90),
+	SOUTH(0,1,180),
 
-	SOUTH_WEST(-0.707,0.707,135),
+	SOUTH_WEST(-0.707,0.707,225),
 	
-	WEST(-1,0,180),
+	WEST(-1,0,270),
 	
-	NORTH_WEST(-0.707,-0.707,225),
+	NORTH_WEST(-0.707,-0.707,315),
 	
 	NULL(0,0,-1);
 	

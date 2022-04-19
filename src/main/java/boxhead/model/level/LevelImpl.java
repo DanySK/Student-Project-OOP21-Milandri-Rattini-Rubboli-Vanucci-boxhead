@@ -35,8 +35,8 @@ public class LevelImpl implements Level {
 	public LevelImpl(final Map<Point2D, Integer> blocks, final double width, final double height,
 			final double tileSize) {
 		this.blocks = blocks;
-		walls = new LinkedList<>();
-		zombieSpawns = new HashSet<>();
+		this.walls = new LinkedList<>();
+		this.zombieSpawns = new HashSet<>();
 		this.width = width;
 		this.height = height;
 		this.tileSize = tileSize;
@@ -50,10 +50,10 @@ public class LevelImpl implements Level {
 		blocks.forEach((point, id) -> {
 			switch (id) {
 			case 2:
-				this.walls.add(new Wall(point, tileSize * scale, tileSize * scale));
+				this.walls.add(new Wall(new Point2D(point.getX()*tileSize, point.getY()*tileSize), tileSize * scale, tileSize * scale));
 				break;
 			case 3:
-				this.zombieSpawns.add(point);
+				this.zombieSpawns.add(new Point2D(point.getX()*tileSize, point.getY()*tileSize));
 				break;
 			case 4:
 				break;

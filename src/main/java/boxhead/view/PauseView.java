@@ -11,25 +11,19 @@ import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundImage;
 import javafx.scene.layout.BackgroundPosition;
 import javafx.scene.layout.BackgroundRepeat;
-import javafx.stage.Stage;
 
 public class PauseView {
 
-    private static final int HEIGHT = 650;
-    private static final int WIDTH = 850;
+    private static final int HEIGHT = 720;
+    private static final int WIDTH = 1080;
 
-    private static final int TUTORIAL_LAYOUTX = 10;
-    private static final int TUTORIAL_LAYOUTY = 590;
-    private static final int TUTORIAL_WIDTH = 600;
-    private static final int TUTORIAL_HEIGHT = 400;
+    private static final int PLAY_LAYOUTX = 465;
+    private static final int PLAY_LAYOUTY = 600;
 
-    private static final int PLAY_LAYOUTX = 310;
-    private static final int PLAY_LAYOUTY = 500;
-
-    private static final int SOUND_WIDTH = 30;
-    private static final int SOUND_HEIGHT = 30;
-    private static final int SOUND_LAYOUTX = 650;
-    private static final int SOUND_LAYOUTY = 590;
+    private static final int SOUND_WIDTH = 25;
+    private static final int SOUND_HEIGHT = 25;
+    private static final int SOUND_LAYOUTX = 880;
+    private static final int SOUND_LAYOUTY = 50;
 
     private final AnchorPane pane;
     private final Scene scene;
@@ -65,13 +59,12 @@ public class PauseView {
 
     private void createButton() {
         createPlayButton();
-        createTutorialButton();
         createSoundButton();
     }
 
     private void createSoundButton() {
-        final ImageView imgS = new ImageView(new Image(getClass().getResourceAsStream("/media/icon.png")));
-        final ImageView imgNS = new ImageView(new Image(getClass().getResourceAsStream("/media/iconNotSelect.png")));
+        final ImageView imgS = new ImageView(new Image(getClass().getResourceAsStream("/media/unmute.png")));
+        final ImageView imgNS = new ImageView(new Image(getClass().getResourceAsStream("/media/mute.png")));
         imgS.setFitHeight(SOUND_HEIGHT);
         imgS.setFitWidth(SOUND_WIDTH);
         imgNS.setFitHeight(SOUND_HEIGHT);
@@ -96,36 +89,8 @@ public class PauseView {
         });
     }
 
-    private void createTutorialButton() {
-        final BoxheadButton button = new BoxheadButton("Tutorial");
-        button.setLayoutX(TUTORIAL_LAYOUTX);
-        button.setLayoutY(TUTORIAL_LAYOUTY);
-        pane.getChildren().add(button);
-
-        button.setOnAction(new EventHandler<ActionEvent>() {
-
-            @Override
-            public void handle(final ActionEvent event) {
-                final AnchorPane pane = new AnchorPane();
-                final Stage stage = new Stage();
-                final Scene scene = new Scene(pane, TUTORIAL_WIDTH, TUTORIAL_HEIGHT);
-                stage.setResizable(false);
-                stage.setScene(scene);
-                final Image image;
-
-                image = new Image(getClass().getResourceAsStream("/tutorial.png"), TUTORIAL_WIDTH, TUTORIAL_HEIGHT,
-                        false, true);
-                final BackgroundImage background = new BackgroundImage(image, BackgroundRepeat.REPEAT,
-                        BackgroundRepeat.REPEAT, BackgroundPosition.DEFAULT, null);
-                pane.setBackground(new Background(background));
-                stage.show();
-            }
-
-        });
-    }
-
     private void createPlayButton() {
-        final BoxheadButton playButton = new BoxheadButton("RESUME GAME");
+        final BoxheadButton playButton = new BoxheadButton("RESUME");
         playButton.setLayoutX(PLAY_LAYOUTX);
         playButton.setLayoutY(PLAY_LAYOUTY);
         pane.getChildren().add(playButton);
@@ -135,7 +100,6 @@ public class PauseView {
             public void handle(final ActionEvent event) {
                 GameState.state = GameState.GameStateEnum.GAME;
                 GameState.change = true;
-                GameState.init = true;
             }
         });
     }

@@ -4,6 +4,7 @@ import boxhead.model.entities.utils.Direction;
 import javafx.geometry.Point2D;
 import javafx.geometry.BoundingBox;
 import java.util.Set;
+import java.sql.Time;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.LinkedList;
@@ -14,6 +15,7 @@ import boxhead.model.entities.gun.Gun.GunType;
 public class Player extends AbstractHealthEntity {
 	
 	private static final int MAX_HEALTH=100;
+	private static final long CHANGE_WEAPON_INTERVAL = 300;
 	
 	private LinkedList<Gun> guns;
 	private Set<BoundingBox> walls;
@@ -21,6 +23,7 @@ public class Player extends AbstractHealthEntity {
 	private Gun currentGun;
 	private int gunIndex;
 	private Gun selectedGun=null;
+	private long lastChange;
 	
 	public Player() {
 		super(Point2D.ZERO, Direction.EAST, new Point2D(150, 150), EntityType.PLAYER, MAX_HEALTH);
@@ -31,6 +34,7 @@ public class Player extends AbstractHealthEntity {
 		this.guns.add(new GunFactory().getGun(this.getPosition(),GunType.SHOTGUN));
 		this.iscolliding=new ArrayList<>();
 		this.gunIndex=0;
+		this.lastChange = 0;
 	}
 	
 	public final void setWalls(final Set<BoundingBox> walls) {
@@ -82,11 +86,11 @@ public class Player extends AbstractHealthEntity {
 	        if (!this.iscolliding.isEmpty()) {
 	            setSpeed(Point2D.ZERO);
 	        } else {
-	            setSpeed(direction.traduce().multiply(4));
+	            setSpeed(direction.traduce().multiply(2.5));
 	        }
 		}
 		else {
-			this.setSpeed(direction.traduce().multiply(4));
+			this.setSpeed(direction.traduce().multiply(2.5));
 		}
         this.iscolliding.clear();
 	}	
@@ -103,22 +107,28 @@ public class Player extends AbstractHealthEntity {
      * Set currentGun to the next gun in the inventory
      */
 	public void nextGun() {
-		if(this.gunIndex+1<this.guns.size()) {
-			this.currentGun=this.guns.get(++gunIndex);
-		} else {
-			this.gunIndex=0;
-			this.currentGun=this.guns.get(gunIndex);
+		if(System.currentTimeMillis() - this.lastChange > CHANGE_WEAPON_INTERVAL) {
+			if(this.gunIndex+1<this.guns.size()) {
+				this.currentGun=this.guns.get(++gunIndex);
+			} else {
+				this.gunIndex=0;
+				this.currentGun=this.guns.get(gunIndex);
+			}
+			this.lastChange = System.currentTimeMillis();
 		}
 	}
 	/**
      * Set currentGun to the previous gun in the inventory
      */
 	public void previousGun() {
-		if(this.gunIndex>0) {
-			this.currentGun=this.guns.get(--gunIndex);
-		} else {
-			this.gunIndex=this.guns.size()-1;
-			this.currentGun=this.guns.get(gunIndex);
+		if(System.currentTimeMillis() - this.lastChange > CHANGE_WEAPON_INTERVAL) {
+			if(this.gunIndex>0) {
+				this.currentGun=this.guns.get(--gunIndex);
+			} else {
+				this.gunIndex=this.guns.size()-1;
+				this.currentGun=this.guns.get(gunIndex);
+			}
+			this.lastChange = System.currentTimeMillis();
 		}
 	}
 }

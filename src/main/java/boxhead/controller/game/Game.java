@@ -5,6 +5,7 @@ import java.io.FileNotFoundException;
 import boxhead.controller.sound.SoundController;
 import boxhead.view.GameView;
 import boxhead.view.MenuView;
+import boxhead.view.PauseView;
 import boxhead.view.SceneSwapper;
 import boxhead.view.SceneSwapperImpl;
 import javafx.animation.AnimationTimer;
@@ -65,6 +66,7 @@ public class Game extends Application {
     }
 
     private void initGame() {
+    	swapper.addScene(GameState.GameStateEnum.PAUSE.getName(), new PauseView().getMenuScene());
         swapper.loadFromFile(GameState.GameStateEnum.GAME.getName());
         swapper.swapTo(GameState.GameStateEnum.GAME.getName());
         gameCore = new GameLevelImpl((GameView) (swapper.getFXMLController(GameState.GameStateEnum.GAME.getName()).get()),
@@ -89,6 +91,7 @@ public class Game extends Application {
             if (this.gameCore.isPlayerAlive()) {
                 this.gameCore.handle();
             } else {
+            	swapper.addScene(GameState.GameStateEnum.END.getName(), new MenuView().getMenuScene());
                 GameState.change = true;
                 GameState.state = GameState.GameStateEnum.END;
             }

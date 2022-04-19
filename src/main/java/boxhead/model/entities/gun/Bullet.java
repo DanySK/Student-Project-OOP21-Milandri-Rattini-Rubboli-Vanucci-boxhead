@@ -12,24 +12,9 @@ public class Bullet extends AbstractShot {
 	private static final double HEIGHT = 2;
 	private static final double WIDTH = 1;
 	private final Trajectory trajectory;
-
-	/**
-	 * Constructor of Bullet for Pistol and Uzi, where the Bullet has a starting point and a direction.
-	 * @param start
-	 * 			The starting point.
-	 * @param direction
-	 * 			The direction.
-	 * @param damage
-	 * 			The damage of the Bullet.
-	 */
-	public Bullet(final Point2D start, final Direction direction, final int damage) {
-		super(start, EntityType.BULLET, damage);
-		this.setBoundingBox(HEIGHT, WIDTH);
-		this.trajectory = new StraightTrajectory(start, direction);
-	}
 	
 	/**
-	 * Constructor of Bullet for Shotgun, where the Bulled has a starting point and a target point.
+	 * Constructor where the Bullet has a starting point and a target point.
 	 * @param from
 	 * 			The starting point.
 	 * @param towards

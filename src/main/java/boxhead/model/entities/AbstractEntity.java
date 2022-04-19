@@ -46,7 +46,7 @@ public abstract class AbstractEntity implements Entity {
      * @return BoundingBox 
      */
 	public BoundingBox getBoundingBox() {
-		return new BoundingBox(this.position.getX(),this.position.getY(),this.width,this.height);
+		return new BoundingBox(this.position.getX()-20,this.position.getY()-34,this.width,this.height);
 	}
 	
 	/** 

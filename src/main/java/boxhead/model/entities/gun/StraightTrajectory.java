@@ -1,6 +1,5 @@
 package boxhead.model.entities.gun;
 
-import boxhead.model.entities.utils.Direction;
 import javafx.geometry.Point2D;
 
 /**
@@ -9,28 +8,13 @@ import javafx.geometry.Point2D;
 
 public class StraightTrajectory implements Trajectory {
 
-	private static final double DEFAULT_SPEED = 6;
+	private static final double DEFAULT_SPEED = 20;
 	
 	private double speed;
-	private Direction direction;
 	private double angle;
 	private Point2D position;
 	private Point2D positionVariation;
-	
-	/**
-	 * @param start
-	 * 			The starting point of the trajectory
-	 * @param dir
-	 * 			The direction of the trajectory
-	 */
-	public StraightTrajectory(final Point2D start, final Direction dir) {
-		this.position = start;
-		this.direction = dir;
-		this.angle = this.direction.getAngle();
-		this.setSpeed(DEFAULT_SPEED);
-		this.calculateStep();
-	}
-	
+		
 	/**
 	 * @param from
 	 * 			The starting point of the trajectory
@@ -40,7 +24,6 @@ public class StraightTrajectory implements Trajectory {
 	public StraightTrajectory(final Point2D from, final Point2D towards) {
 		this.position = from;
 		this.positionVariation = towards;
-		this.direction = Direction.NULL;
 		this.setSpeed(DEFAULT_SPEED);
 		this.calculateStep();
 	}
@@ -50,19 +33,12 @@ public class StraightTrajectory implements Trajectory {
 	 */
 	private void calculateStep() {
 		final double xStep, yStep;
-		if (this.direction != Direction.NULL) {
-			xStep = this.direction.traduce().getX() * this.speed;
-			yStep = this.direction.traduce().getY() * this.speed;
-			this.positionVariation = new Point2D(xStep, yStep);
-		}
-		else {
-			final double distX = this.positionVariation.getX() - this.position.getX();
-			final double distY = this.positionVariation.getY() - this.position.getY();
-			this.angle = Math.atan2(distY, distX);
-			xStep = Math.cos(this.angle) * this.speed;
-			yStep = Math.sin(this.angle) * this.speed;
-			this.positionVariation = new Point2D(xStep, yStep);
-		}
+		final double distX = this.positionVariation.getX() - this.position.getX();
+		final double distY = this.positionVariation.getY() - this.position.getY();
+		this.angle = Math.atan2(distY, distX);
+		xStep = Math.cos(this.angle) * this.speed;
+		yStep = Math.sin(this.angle) * this.speed;
+		this.positionVariation = new Point2D(xStep, yStep);
 	}
 	
 	/**
@@ -81,13 +57,6 @@ public class StraightTrajectory implements Trajectory {
 		return this.angle;
 	}
 
-	/**
-	 * {@inheritDoc}
-	 */
-	public final Direction getDirection() {
-		return this.direction;
-		
-	}
 	/**
 	 * {@inheritDoc}
 	 */

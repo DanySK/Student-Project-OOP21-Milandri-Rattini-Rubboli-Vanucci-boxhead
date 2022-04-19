@@ -31,8 +31,8 @@ public class GameLevelImpl implements GameLevel{
 	private static final int TILE_SIZE = 32;
 		
 	//Map dimensions
-	private static final int MAP_WIDTH = 35;
-	private static final int MAP_HEIGHT = 35;
+	private static final int MAP_WIDTH = 32;
+	private static final int MAP_HEIGHT = 32;
 		   
 	private final ShotController shotController;
 	private final InputHandler inputHandler;
@@ -62,7 +62,7 @@ public class GameLevelImpl implements GameLevel{
 		this.roundController = new RoundController(this);
 		this.shotController = new ShotControllerImpl(this);
 
-		this.playerController.getPlayer().setPosition(new Point2D(100, 100));
+		this.playerController.getPlayer().setPosition(new Point2D(360, 360));
 
 		this.gunUpgradeManager = new GunUpgradeManager(this, this.playerController.getPlayer());
 		this.score = new ScoreImpl(null, this.gunUpgradeManager);

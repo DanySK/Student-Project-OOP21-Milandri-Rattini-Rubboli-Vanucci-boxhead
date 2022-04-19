@@ -1,7 +1,6 @@
 package boxhead.model.entities.gun;
 
 import javafx.geometry.Point2D;
-import boxhead.model.entities.utils.Direction;
 
 /**
  * Represents the trajectory of the shot
@@ -19,12 +18,6 @@ public interface Trajectory {
 	 * @return The angle at the current moment
 	 */
 	double getAngle();
-	
-	/**
-	 * 
-	 * @return The direction of the movement
-	 */
-	Direction getDirection();
 	
 	/**
 	 * 

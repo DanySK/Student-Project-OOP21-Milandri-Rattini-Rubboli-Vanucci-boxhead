@@ -3,21 +3,21 @@ package boxhead.model.entities.utils;
 import javafx.geometry.Point2D;
 
 public enum Direction {
-	NORTH(0,-1, 0),
+	NORTH(0,-1, 270),
 	
-	NORTH_EAST(0.707,-0.707,45),
+	NORTH_EAST(0.707,-0.707,315),
 	
-	EAST(1,0,90),
+	EAST(1,0,0),
 	
-	SOUTH_EAST(0.707,0.707,135),
+	SOUTH_EAST(0.707,0.707,45),
 	
-	SOUTH(0,1,180),
+	SOUTH(0,1,90),
 
-	SOUTH_WEST(-0.707,0.707,225),
+	SOUTH_WEST(-0.707,0.707,135),
 	
-	WEST(-1,0,270),
+	WEST(-1,0,180),
 	
-	NORTH_WEST(-0.707,-0.707,315),
+	NORTH_WEST(-0.707,-0.707,225),
 	
 	NULL(0,0,-1);
 	
@@ -43,5 +43,29 @@ public enum Direction {
 	
 	public final double getAngle() {
 		return this.angle;
+	}
+	
+	public final Point2D getShotOffset() {
+		switch(this) {
+		case NORTH:
+			return new Point2D(35, 0);
+		case NORTH_EAST:
+			return new Point2D(40, 10);
+		case EAST:
+			return new Point2D(35, 25);
+		case SOUTH_EAST:
+			return new Point2D(25, 30);
+		case SOUTH:
+			return new Point2D(10, 35);
+		case SOUTH_WEST:
+			return new Point2D(0, 20);
+		case WEST:
+			return new Point2D(0, 25);
+		case NORTH_WEST:
+			return new Point2D(10, 0);
+		case NULL:
+			return null;
+	}
+		return null;
 	}
 }

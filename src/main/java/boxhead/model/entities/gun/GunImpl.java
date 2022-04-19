@@ -39,7 +39,7 @@ public class GunImpl extends AbstractGun {
 	 * {@inheritDoc}
 	 */
 	@Override
-	public Set<Optional<Shot>> attack(final Direction direction) {
+	public Set<Optional<Shot>> attack(final Point2D pos, final Direction direction) {
 		final Set<Optional<Shot>> attacks = new HashSet<>();
 		if (System.currentTimeMillis() - this.lastShot <= rateOfFire || this.ammoInMagazine <= 0) {
 			attacks.add(Optional.empty());
@@ -50,7 +50,7 @@ public class GunImpl extends AbstractGun {
 		switch(this.gunType) {
 		case PISTOL:
 		case UZI:
-			attacks.add(Optional.of(new Bullet(this.getPosition(), direction, damage)));
+			attacks.add(Optional.of(new Bullet(pos, direction, damage)));
 			return attacks;
 		case SHOTGUN:
 			Point2D offset = null;
@@ -66,9 +66,9 @@ public class GunImpl extends AbstractGun {
 												direction.traduce().getY()*10 + offset.getY());
 			final Point2D bullet3 = new Point2D(direction.traduce().getX()*10 - offset.getX(),
 												direction.traduce().getY()*10 - offset.getY());
-			attacks.add(Optional.of(new Bullet(this.getPosition(), direction, damage)));
-			attacks.add(Optional.of(new Bullet(this.getPosition(), bullet2, damage)));
-			attacks.add(Optional.of(new Bullet(this.getPosition(), bullet3, damage)));
+			attacks.add(Optional.of(new Bullet(pos, direction, damage)));
+			attacks.add(Optional.of(new Bullet(pos, bullet2, damage)));
+			attacks.add(Optional.of(new Bullet(pos, bullet3, damage)));
 			return attacks;
 		}
 		return attacks;

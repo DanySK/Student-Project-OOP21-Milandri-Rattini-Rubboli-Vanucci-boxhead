@@ -47,7 +47,6 @@ public class AmmoSpawnImpl implements AmmoSpawn{
 			if (now - t > AMMO_TIME_RESPAWN && t != 0) {
 				this.ammoActive.add(new Ammo(p, AMMO_WIDTH, AMMO_HEIGTH));
 				this.ammoSpawnPoints.replace(p, (long) 0);
-				System.out.println("Ammo Spawned");
 			}
 		});
 	}

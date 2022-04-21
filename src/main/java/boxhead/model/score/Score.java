@@ -21,6 +21,12 @@ public interface Score {
 	 * 			The streak of kills you are at a certain moment.
 	 */
 	int getStreak();
+	
+	/**
+	 * Method to set the streak cooldown depending on the current round.
+	 * @param streakTime
+	 */
+	void setStreakTime(int round);
 
 	/**
 	 * Used to update internally the score.

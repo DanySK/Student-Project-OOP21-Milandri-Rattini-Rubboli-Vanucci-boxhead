@@ -32,8 +32,6 @@ public class Player extends AbstractHealthEntity {
 		this.guns = new LinkedList<>();
 		this.currentGun=new GunFactory().getGun(this.getPosition(),GunType.PISTOL);
 		this.guns.add(this.currentGun);
-		this.guns.add(new GunFactory().getGun(this.getPosition(),GunType.UZI));
-		this.guns.add(new GunFactory().getGun(this.getPosition(),GunType.SHOTGUN));
 		this.iscolliding=new ArrayList<>();
 		this.gunIndex=0;
 		this.lastChange = 0;
@@ -100,7 +98,12 @@ public class Player extends AbstractHealthEntity {
 	        this.ammoController.getAmmos().forEach(BB -> {
 	        	if (Collision.isColliding(playerBB, BB)) {
 	        		this.ammoController.removeAmmo(BB);
-	        		this.currentGun.rechargeAmmo();
+	        		this.currentGun.rechargeAmmo(this.currentGun.getMagazineSize());
+	        		if (this.health <= 75) {
+	        			this.health += 25;
+	        		} else {
+	        			this.health = 100;
+	        		}
 	        	}
 	        });
 	

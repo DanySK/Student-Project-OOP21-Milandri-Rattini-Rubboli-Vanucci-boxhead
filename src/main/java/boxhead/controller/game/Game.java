@@ -3,6 +3,7 @@ package boxhead.controller.game;
 import java.io.FileNotFoundException;
 
 import boxhead.controller.sound.SoundController;
+import boxhead.view.EndView;
 import boxhead.view.GameView;
 import boxhead.view.MenuView;
 import boxhead.view.PauseView;
@@ -91,7 +92,7 @@ public class Game extends Application {
             if (this.gameCore.isPlayerAlive()) {
                 this.gameCore.handle();
             } else {
-            	swapper.addScene(GameState.GameStateEnum.END.getName(), new MenuView().getMenuScene());
+            	swapper.addScene(GameState.GameStateEnum.END.getName(), new EndView().getMenuScene());
                 GameState.change = true;
                 GameState.state = GameState.GameStateEnum.END;
             }

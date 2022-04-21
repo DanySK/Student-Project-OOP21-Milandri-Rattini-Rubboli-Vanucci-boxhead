@@ -30,12 +30,12 @@ public class ScoreImpl implements Score {
 	 * @param nickname
 	 * 			The nickname of the player.
 	 */
-	public ScoreImpl(final String nickname, final GunUpgradeManager manager, final GameLevelImpl gameLevel) {
-		round = new RoundController(gameLevel);
+	public ScoreImpl(final String nickname, final GunUpgradeManager manager, final RoundController roundController) {
+		round = roundController;
 		this.kills = 0;
 		this.killStreak = 0;
 		this.maxStreak = 0;
-		this.streakTime = 20000;
+		this.streakTime = 0;
 		this.timePlayed = Optional.empty();
 		this.nickname = Optional.ofNullable(nickname);
 		this.gunManager = manager;
@@ -74,6 +74,13 @@ public class ScoreImpl implements Score {
 	public final int getStreak() {
 		return this.killStreak;
 	}
+	
+	@Override
+	public final void setStreakTime(final int round) {
+		if (round < 14) {
+			this.streakTime = this.streakTime - 1000;
+		}
+	}
 
 	/**
 	 * Used to add a kill to the streak.
@@ -84,6 +91,7 @@ public class ScoreImpl implements Score {
 			this.gunManager.checkUpgrades(this.killStreak);
 			this.maxStreak = this.killStreak;
 		}
+		this.streakTime = 20000 - (this.killStreak * 1000);
 	}
 
 	/**
@@ -91,6 +99,7 @@ public class ScoreImpl implements Score {
 	 */
 	private final void decreaseStreak() {
 		this.killStreak--;
+		this.streakTime = 20000 - (this.killStreak * 1000);
 	}
 
 	/**
@@ -129,10 +138,6 @@ public class ScoreImpl implements Score {
         final long sec = TimeUnit.MILLISECONDS.toSeconds(this.time) - TimeUnit.MINUTES.toSeconds(min);
         this.timePlayed = Optional.of(String.format("%02d:%02d:%02d", hour, min, sec));
 	}
-	
-	private long setStreakTime() {
-		return this.streakTime = streakTime - (round.getCurrentRound()*1000);
-	}
 
 	/**
 	 * {@inheritDoc}
@@ -140,8 +145,8 @@ public class ScoreImpl implements Score {
 	@Override
 	public void update() {
 		if (System.currentTimeMillis() - this.lastKill > streakTime && this.killStreak > 0) {
+			this.lastKill = System.currentTimeMillis();
 			this.decreaseStreak();
 		}
 	}
-
 }

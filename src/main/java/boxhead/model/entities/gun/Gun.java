@@ -63,6 +63,12 @@ public interface Gun extends Entity{
 	int getDamage();
 	
 	/**
+	 * Method to get the magazine size of the gun
+	 * @return
+	 */
+	int getMagazineSize();
+	
+	/**
 	 * @return
 	 * 			The amount of ammo remaining
 	 */
@@ -70,8 +76,9 @@ public interface Gun extends Entity{
 	
 	/**
 	 * Method to recharge gun's ammos
+	 * @param ammo
 	 */
-	void rechargeAmmo();
+	void rechargeAmmo(int ammo);
 	
 	/**
 	 * @return

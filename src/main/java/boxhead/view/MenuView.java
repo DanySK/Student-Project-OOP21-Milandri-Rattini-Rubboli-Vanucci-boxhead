@@ -14,15 +14,15 @@ import javafx.scene.layout.BackgroundRepeat;
 
 public class MenuView {
 
-    private static final int HEIGHT = 720;
-    private static final int WIDTH = 1080;
+    private static final int HEIGHT = 480;
+    private static final int WIDTH = 928;
 
-    private static final int PLAY_LAYOUTX = 465;
-    private static final int PLAY_LAYOUTY = 600;
+    private static final int PLAY_LAYOUTX = 400;
+    private static final int PLAY_LAYOUTY = 400;
 
     private static final int SOUND_WIDTH = 25;
     private static final int SOUND_HEIGHT = 25;
-    private static final int SOUND_LAYOUTX = 880;
+    private static final int SOUND_LAYOUTX = 700;
     private static final int SOUND_LAYOUTY = 50;
 
     private final AnchorPane pane;

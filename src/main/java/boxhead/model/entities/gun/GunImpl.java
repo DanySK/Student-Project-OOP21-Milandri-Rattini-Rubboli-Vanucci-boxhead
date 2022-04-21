@@ -91,6 +91,14 @@ public class GunImpl extends AbstractGun {
 	}
 	
 	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public int getMagazineSize() {
+		return this.magazineSize;
+	}
+	
+	/**
 	 * Used to get the remaining ammos.
 	 * @return
 	 * 			The amount of ammos left.
@@ -100,10 +108,10 @@ public class GunImpl extends AbstractGun {
 	}
 	
 	/**
-	 * Used to recharge the gun.
+	 * {@inheritDoc}
 	 */
-	public void rechargeAmmo() {
-		this.ammoInMagazine = this.magazineSize;
+	public void rechargeAmmo(final int ammo) {
+		this.ammoInMagazine = ammo;
 	}
 	
 	/**
@@ -111,7 +119,7 @@ public class GunImpl extends AbstractGun {
 	 */
 	public void updateDamage(final int newDamage) {
 		this.damage = newDamage;
-		this.rechargeAmmo();
+		this.rechargeAmmo(this.magazineSize);
 	}
 	
 	/**
@@ -119,7 +127,7 @@ public class GunImpl extends AbstractGun {
 	 */
 	public void updateRateOfFire(final long newRate) {
 		this.rateOfFire = newRate;
-		this.rechargeAmmo();
+		this.rechargeAmmo(this.magazineSize);
 	}
 	
 	/**
@@ -127,7 +135,7 @@ public class GunImpl extends AbstractGun {
 	 */
 	public void updateMagazine(final int newSize) {
 		this.magazineSize = newSize;
-		this.rechargeAmmo();
+		this.rechargeAmmo(this.magazineSize);
 	}
 	
 	/**

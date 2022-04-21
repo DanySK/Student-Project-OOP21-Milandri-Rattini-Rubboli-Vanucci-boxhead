@@ -24,8 +24,8 @@ public class Sprite {
     private static final int BULLET_HEIGHT = 8;
     private static final int BULLET_WIDTH = 3;
     
-    private static final int AMMO_HEIGHT = 16;
-    private static final int AMMO_WIDTH = 16;
+    private static final int AMMO_HEIGHT = 50;
+    private static final int AMMO_WIDTH = 50;
     
     private static final int PASSIVE_HEIGHT = 20;
     private static final int PASSIVE_WIDTH = 20;

@@ -49,7 +49,6 @@ public class LevelGeneratorImpl implements LevelGenerator {
 
 					LevelGeneratorImpl.level.put(pos = new Point2D(y, x), num);
 					y++;
-					System.out.println(pos + "" + num);
 				}
 				if (y == 29) {
 					y = 0;

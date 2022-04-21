@@ -70,7 +70,7 @@ public class GameLevelImpl implements GameLevel{
 		this.playerController.getPlayer().setAmmoController(ammoController);
 
 		this.gunUpgradeManager = new GunUpgradeManager(this, this.playerController.getPlayer());
-		this.score = new ScoreImpl(null, this.gunUpgradeManager, this);
+		this.score = new ScoreImpl(null, this.gunUpgradeManager, this.roundController);
 		this.zombieController.getZombieModel().linkScore(this.score);
 		this.game = game;
 		this.initHandlers(game.getScene());
@@ -90,11 +90,9 @@ public class GameLevelImpl implements GameLevel{
 
         root.addEventHandler(KeyEvent.KEY_PRESSED, (event) -> {
                 if (event.getCode().equals(KeyCode.P)) {
-                	if(GameState.state == GameState.GameStateEnum.GAME) {
-                    	GameState.change = true;
+                	if(GameState.state.equals(GameState.GameStateEnum.GAME)) {
                     	GameState.state = GameState.GameStateEnum.PAUSE;
-                	} else if (GameState.state == GameState.GameStateEnum.PAUSE) {
-                		GameState.change = true;
+                	} else if (GameState.state.equals(GameState.GameStateEnum.PAUSE)) {
                 		GameState.state = GameState.GameStateEnum.GAME;
                 	}
                 }
@@ -158,7 +156,6 @@ public class GameLevelImpl implements GameLevel{
 		
 		this.ammoController.getAmmoView().forEach((a, v) -> {
 			this.gameView.render(v.getSprite().getImage(), a.getPosition());
-			System.out.println(a.getPosition());
 		});
 		
 		this.shotController.getShots().forEach((s, v) -> {

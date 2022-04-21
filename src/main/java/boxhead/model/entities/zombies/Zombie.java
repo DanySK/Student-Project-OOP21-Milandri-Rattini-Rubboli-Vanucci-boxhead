@@ -14,7 +14,7 @@ public class Zombie extends AbstractHealthEntity {
     /**
      * Zombie BB width
      */
-    private static final int WIDTH = 32;
+    private static final int WIDTH = 16;
     /**
      * Zombie BB height
      */

@@ -20,7 +20,7 @@ public class LevelViewImpl implements LevelView {
 	 * @param level - Map<Point2D, Integer> to be transformed in relative tiles
 	 * @param tf    - tileFactory to create tiles
 	 */
-	public LevelViewImpl(final Map<Point2D, Integer> blocks, final TileFactory tf) {
+	public LevelViewImpl(final Map<Point2D, Integer> blocks, final TileFactory tf, final double ts) {
 		tiles = tf.createTiles(blocks, ts);
 	}
 

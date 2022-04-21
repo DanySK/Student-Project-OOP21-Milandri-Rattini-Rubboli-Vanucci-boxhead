@@ -26,7 +26,7 @@ public class LevelGeneratorImpl implements LevelGenerator {
 	 * @param ts
 	 */
 	public LevelGeneratorImpl(final double ts) {
-		tFactory = new TileFactoryImpl(ts);
+		this.tFactory = new TileFactoryImpl(ts);
 	}
 
 	/**
@@ -36,7 +36,7 @@ public class LevelGeneratorImpl implements LevelGenerator {
 	public final Pair<Level, LevelView> loadLevel(final double width, final double height, final double tileSize) {
 		final Map<Point2D, Integer> level = readLevel();
 		return new Pair<>(LevelGeneratorImpl.generateLevel(level, width, height, tileSize),
-				LevelGeneratorImpl.generateLevelView(level, tFactory));
+				LevelGeneratorImpl.generateLevelView(level, tFactory, tileSize));
 	}
 	
 	/**
@@ -70,7 +70,7 @@ public class LevelGeneratorImpl implements LevelGenerator {
 	}
 
 	/**
-	 * Method to intanties a new LevelImpl.
+	 * Method to instantiate a new Level.
 	 * @param level
 	 * @param width
 	 * @param height
@@ -82,7 +82,14 @@ public class LevelGeneratorImpl implements LevelGenerator {
 
 	}
 
-	private static LevelView generateLevelView(final Map<Point2D, Integer> level, final TileFactory tf) {
-		return new LevelViewImpl(level, tf);
+	/**
+	 * Method to instantiate a new LevelView.
+	 * @param level
+	 * @param tf
+	 * @param tileSize
+	 * @return
+	 */
+	private static LevelView generateLevelView(final Map<Point2D, Integer> level, final TileFactory tf, final double tileSize) {
+		return new LevelViewImpl(level, tf, tileSize);
 	}
 }

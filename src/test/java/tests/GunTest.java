@@ -3,7 +3,6 @@ package tests;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
-import java.io.InputStream;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -21,11 +20,8 @@ import boxhead.model.entities.utils.Direction;
 import boxhead.model.entities.zombies.Zombie;
 import boxhead.model.entities.zombies.ZombieModel;
 import boxhead.model.entities.zombies.ZombieModelImpl;
-import boxhead.view.spriteutils.Sprite;
 import javafx.geometry.BoundingBox;
 import javafx.geometry.Point2D;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 
 /**
  * Test for Gun and their use.
@@ -41,18 +37,6 @@ public class GunTest {
 	private final ZombieModel zombieModel;
 	private final Set<Point2D> spawns;
 	private final Point2D position;
-	
-	
-	Direction direction=Direction.NORTH_EAST;
-	
-	@Test
-	public void updateZombieImage() {
-	String filename="zombie-"+this.direction.toString().toLowerCase();
-	InputStream input=Sprite.class.getResourceAsStream("/zombie/" + filename + ".png");
-	InputStream input2=Sprite.class.getResourceAsStream("/player/" +"pistol-east"+ ".png");	
-	return;
-
-	}
 	
 	public GunTest() {
 		final Set<BoundingBox> obstacles = new HashSet<>();
@@ -76,7 +60,7 @@ public class GunTest {
         int active = 0;
         assertTrue(Integer.valueOf(this.manager.getShotsActive().size()).equals(active));
 
-        bullet1 = new Bullet(new Point2D(0,0), Direction.EAST, 100);
+        bullet1 = new Bullet(new Point2D(0,0), new Point2D(100, 0), 100);
         this.manager.addShot(bullet1);
         active++;
         assertTrue(Integer.valueOf(this.manager.getShotsActive().size()).equals(active));
@@ -111,9 +95,9 @@ public class GunTest {
 		//PISTOL
 		final Zombie z = this.zombieModel.getZombies().stream().findFirst().get();
 		int zombieHP = z.getHealth();
-		this.player.getCurrentGun().attack(Direction.SOUTH).forEach(s -> {
+		this.player.getCurrentGun().attack(position, Direction.SOUTH).forEach(s -> {
 			this.manager.addShot(s.get());
-		});;
+		});
 		this.manager.update();
 		assertTrue(z.getHealth() == (zombieHP - PISTOL_DAMAGE));
 		
@@ -121,7 +105,7 @@ public class GunTest {
 		this.player.unlockGun(uzi);
 		this.player.nextGun();
 		assertTrue(this.player.getCurrentGun().equals(uzi));
-		this.player.getCurrentGun().attack(Direction.SOUTH).forEach(s -> {
+		this.player.getCurrentGun().attack(position, Direction.SOUTH).forEach(s -> {
 			this.manager.addShot(s.get());
 		});
 		this.manager.update();
@@ -131,7 +115,7 @@ public class GunTest {
 		this.player.unlockGun(shotgun);
 		this.player.nextGun();
 		assertTrue(this.player.getCurrentGun().equals(shotgun));
-		this.player.getCurrentGun().attack(Direction.SOUTH).forEach(s -> {
+		this.player.getCurrentGun().attack(position, Direction.SOUTH).forEach(s -> {
 			this.manager.addShot(s.get());
 		});
 		z.setHealth(200);

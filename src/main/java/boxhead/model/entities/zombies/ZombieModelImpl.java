@@ -154,6 +154,9 @@ public class ZombieModelImpl implements ZombieModel {
         this.player = player;
     }
     
+    /**
+     * {@inheritDoc}
+     */
 	@Override
 	public void linkScore(Score score) {
 		this.score = score;

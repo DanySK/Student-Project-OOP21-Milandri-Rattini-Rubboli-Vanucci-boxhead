@@ -3,6 +3,9 @@ package boxhead.view.entities;
 import boxhead.model.entities.EntityType;
 import boxhead.view.spriteutils.Sprite;
 
+/**
+ * View class for the {@link Bullet}.
+ */
 public class BulletView implements ShotView {
 
 	private final Sprite sprite;

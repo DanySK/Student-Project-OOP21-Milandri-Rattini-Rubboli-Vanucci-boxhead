@@ -12,6 +12,9 @@ import javafx.scene.layout.BackgroundImage;
 import javafx.scene.layout.BackgroundPosition;
 import javafx.scene.layout.BackgroundRepeat;
 
+/**
+ * Class to represent graphic menu'.
+ */
 public class MenuView {
 
     private static final int HEIGHT = 480;
@@ -39,29 +42,36 @@ public class MenuView {
     }
 
     /**
-     * 
+     * Method to retrieve Menu's Scene.
      * @return the scene.
      */
     public final Scene getMenuScene() {
         return this.scene;
     }
 
+    /**
+     * Inner method to create the Background.
+     */
     private void createBackGround() {
         final Image backgroundImage = new Image(getClass().getResourceAsStream("/backgroundMenu.png"), WIDTH, HEIGHT,
                 false, true);
 
-        final BackgroundImage background = new BackgroundImage(backgroundImage, BackgroundRepeat.REPEAT,
-                BackgroundRepeat.REPEAT, BackgroundPosition.DEFAULT, null);
-
+        final BackgroundImage background = new BackgroundImage(backgroundImage, BackgroundRepeat.REPEAT, 
+        									 BackgroundRepeat.REPEAT, BackgroundPosition.DEFAULT, null);
         pane.setBackground(new Background(background));
-
     }
 
+    /**
+     * Method to create the two Buttons.
+     */
     private void createButton() {
         createPlayButton();
         createSoundButton();
     }
 
+    /**
+     * Method to create the Sound Button.
+     */
     private void createSoundButton() {
         final ImageView imgS = new ImageView(new Image(getClass().getResourceAsStream("/media/unmute.png")));
         final ImageView imgNS = new ImageView(new Image(getClass().getResourceAsStream("/media/mute.png")));
@@ -89,6 +99,9 @@ public class MenuView {
         });
     }
 
+    /**
+     * Method to create the Play Button.
+     */
     private void createPlayButton() {
         final BoxheadButton playButton = new BoxheadButton("START");
         playButton.setLayoutX(PLAY_LAYOUTX);

@@ -9,7 +9,6 @@ import java.util.Set;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Point2D;
-import javafx.geometry.Pos;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Label;
@@ -54,7 +53,6 @@ public class GameView implements Initializable {
 		gamePane.setPrefHeight(screenSize.getHeight());
 		gameMap.setHeight(screenSize.getHeight());
 		gameMap.setWidth(screenSize.getWidth());
-
 	}
 	
 	/*

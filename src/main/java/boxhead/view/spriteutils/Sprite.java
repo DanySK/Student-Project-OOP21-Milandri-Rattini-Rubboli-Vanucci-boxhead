@@ -8,29 +8,27 @@ import javafx.scene.paint.Color;
 import boxhead.model.entities.EntityType;
 import boxhead.model.entities.gun.Gun.GunType;
 import boxhead.model.entities.utils.Direction;
-import boxhead.model.entities.zombies.Zombie;
 
+/**
+ * Class to model a single sprite, with all the entities specs.
+ */
 public class Sprite {
 	
-	/**
-	 * FIXME find out best size of sprites
-	 */
-	private static final int ZOMBIE_HEIGHT = 10;
-    private static final int ZOMBIE_WIDTH = 10;
+	private static final int ZOMBIE_HEIGHT = 40;
+    private static final int ZOMBIE_WIDTH = 40;
     
-    private static final int PLAYER_HEIGHT = 10;
-    private static final int PLAYER_WIDTH = 10;
+    private static final int PLAYER_HEIGHT = 40;
+    private static final int PLAYER_WIDTH = 40;
     
     private static final int BULLET_HEIGHT = 8;
     private static final int BULLET_WIDTH = 3;
     
-    private static final int AMMO_HEIGHT = 50;
-    private static final int AMMO_WIDTH = 50;
+    private static final int AMMO_HEIGHT = 30;
+    private static final int AMMO_WIDTH = 40;
     
     private static final int PASSIVE_HEIGHT = 20;
     private static final int PASSIVE_WIDTH = 20;
     
-   
     
     private final EntityType type;
     private ImageView imageView;
@@ -44,7 +42,7 @@ public class Sprite {
     }
 
     /**
-     * TODO Replace placeholder with PNG 
+     * Method to set the image of the single entity.
      */
 	private void setImageView() {
 		this.imageView=new ImageView();
@@ -100,34 +98,8 @@ public class Sprite {
 	public static void updateZombieImage(final ImageView image, Direction direction) {
 		String filename="zombie-"+direction.toString().toLowerCase();
 		image.setImage(new Image(Sprite.class.getResourceAsStream("/zombie/" + filename + ".png")));
-		
-//        switch (direction) {
-//        case NORTH:
-//        	image.setImage(PLACEHOLDER);
-//        	break;
-//        case NORTH_EAST:
-//        	image.setImage(PLACEHOLDER);
-//            break;
-//        case EAST:
-//        	image.setImage(PLACEHOLDER);
-//        	break;
-//        case SOUTH_EAST:
-//        	image.setImage(PLACEHOLDER);
-//        	break;
-//        case SOUTH:
-//        	image.setImage(PLACEHOLDER);
-//            break;
-//        case SOUTH_WEST:
-//        	image.setImage(PLACEHOLDER);
-//            break;
-//        case WEST:
-//        	image.setImage(PLACEHOLDER);
-//            break;
-//        case NORTH_WEST:
-//        	image.setImage(PLACEHOLDER);
-//            break;
-//        }
 	}
+	
 	/**
 	 * Return the image view
 	 * @return ImageView

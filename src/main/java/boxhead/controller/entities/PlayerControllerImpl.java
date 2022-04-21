@@ -6,7 +6,6 @@ import boxhead.controller.game.GameLevel;
 import boxhead.model.entities.Player;
 import boxhead.view.entities.PlayerView;
 import javafx.geometry.Point2D;
-import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 
 public class PlayerControllerImpl implements PlayerController {
@@ -15,15 +14,13 @@ public class PlayerControllerImpl implements PlayerController {
 	private final PlayerView playerView;
 	private final InputHandler input;
 	private final GameLevel gameLevel;
-	private final ImageView playerImage;
-	
 	public PlayerControllerImpl(final GameLevel gameLevel) {
 		this.player=new Player();
 		this.playerView=new PlayerView();
-		this.playerImage=this.playerView.getImageView();
+		this.playerView.getImageView();
 		this.gameLevel=gameLevel;
 		this.input=gameLevel.getInputHandler();
-		this.player.setBoundingBox(playerImage.getFitWidth(), playerImage.getFitHeight());
+		this.player.setBoundingBox(10, 10);
 	}
 	
 	/**

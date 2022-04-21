@@ -21,9 +21,6 @@ import boxhead.view.spriteutils.SpriteFactory;
  */
 public class ZombieViewImpl implements ZombieView {
 
-    private static final int SPRITE_WIDTH = 32;
-    private static final int SPRITE_HEIGHT = 32;
-
     private Set<Pair<Point2D, Direction>> posIteratorions;
     private final EntityType entityType;
     private final Set<ImageView> zombieImages;
@@ -94,8 +91,6 @@ public class ZombieViewImpl implements ZombieView {
         posIterator.forEachRemaining(pos -> {
             ImageView zombie;
             zombie = SpriteFactory.createSprite(entityType).getImageView();
-            zombie.setFitHeight(SPRITE_HEIGHT);
-            zombie.setFitWidth(SPRITE_WIDTH);
             zombie.setPreserveRatio(true);
             this.zombieImages.add(zombie);
         });

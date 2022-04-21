@@ -49,9 +49,8 @@ public interface SceneSwapper {
     /**
      * Method to load scenes from FXML files.
      * @param filename
-     * @return boolean - if loading occurs.
      */
-    boolean loadFromFile(String filename);
+    void loadFromFile(String filename);
     
     /**
      * Method to get the Controller of a FXML generated scene.

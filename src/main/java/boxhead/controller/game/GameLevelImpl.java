@@ -47,7 +47,6 @@ public class GameLevelImpl implements GameLevel{
 	private final GameView gameView;
 	private final GunUpgradeManager gunUpgradeManager;
 	private final Score score;
-	private final Game game;
 	
 	public GameLevelImpl(final GameView view, final Game game) {
 		final int scale;
@@ -72,7 +71,6 @@ public class GameLevelImpl implements GameLevel{
 		this.gunUpgradeManager = new GunUpgradeManager(this, this.playerController.getPlayer());
 		this.score = new ScoreImpl(null, this.gunUpgradeManager, this.roundController);
 		this.zombieController.getZombieModel().linkScore(this.score);
-		this.game = game;
 		this.initHandlers(game.getScene());
 		this.initializeModel();
 	}

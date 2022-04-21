@@ -84,13 +84,11 @@ public class SceneSwapperImpl implements SceneSwapper {
 	 * {@inheritDoc}
 	 */
 	@Override
-	public final boolean loadFromFile(final String filename) {
+	public final void loadFromFile(final String filename) {
 		final FXMLContainer container = new FXMLContainer(filename);
 		if (container != null) {
 			this.scenesFromFile.put(filename, container);
-			return true;
 		}
-		return false; 
 	}
 
 	/**

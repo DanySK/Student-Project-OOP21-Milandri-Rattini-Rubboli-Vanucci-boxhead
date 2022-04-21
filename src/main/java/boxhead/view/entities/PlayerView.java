@@ -8,7 +8,9 @@ import boxhead.view.spriteutils.Sprite;
 import boxhead.view.spriteutils.SpriteFactory;
 import boxhead.model.entities.gun.Gun.GunType;
 
-
+/**
+ * View class of the player.
+ */
 public class PlayerView {
 	
 	private Point2D position;

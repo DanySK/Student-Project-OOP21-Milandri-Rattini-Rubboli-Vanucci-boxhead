@@ -9,7 +9,6 @@ import java.util.Map;
 import java.util.Set;
 
 import boxhead.model.entities.Wall;
-import boxhead.view.world.tile.TileType;
 
 /**
  * Implementation of {@link Level}

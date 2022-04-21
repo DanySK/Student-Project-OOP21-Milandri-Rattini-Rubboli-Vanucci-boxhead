@@ -1,7 +1,6 @@
 package boxhead.view.world.tile;
 
 import javafx.scene.image.Image;
-import javafx.scene.image.WritableImage;
 
 /*
  * Interface to create a set of tile, a collection of image

@@ -3,7 +3,6 @@ package boxhead.view;
 import javafx.scene.control.Button;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.input.MouseButton;
-import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 
 /**
@@ -16,7 +15,6 @@ public class BoxheadButton extends Button {
 
 	private final String BUTTON_PRESSED_STYLE = "-fx-background-color: #E5E5E5";
 	private final String BUTTON_FREE_STYLE = "-fx-background-color: #E5E5E5";
-	//private final String BUTTON_TEXT = "-fx-text-fill: #FF4C00";
 
 	public BoxheadButton(final String text) {
 		setText(text);

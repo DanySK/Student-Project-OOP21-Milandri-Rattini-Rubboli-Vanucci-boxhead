@@ -9,8 +9,8 @@ import javafx.geometry.Point2D;
 public class AmmoSpawnImpl implements AmmoSpawn{
 	
 	private static final long AMMO_TIME_RESPAWN = 8000;
-	private static final double AMMO_WIDTH = 16;
-	private static final double AMMO_HEIGTH = 16;
+	private static final double AMMO_WIDTH = 40;
+	private static final double AMMO_HEIGTH = 40;
 	
 	private final Set<Ammo> ammoActive;
 	private Map<Point2D, Long> ammoSpawnPoints;

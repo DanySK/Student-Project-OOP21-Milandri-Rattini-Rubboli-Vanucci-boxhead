@@ -11,7 +11,6 @@ import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundImage;
 import javafx.scene.layout.BackgroundPosition;
 import javafx.scene.layout.BackgroundRepeat;
-import javafx.stage.Stage;
 
 public class EndView {
 
@@ -101,7 +100,9 @@ public class EndView {
         playButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(final ActionEvent event) {
-                GameState.close = true;
+                //GameState.close = true;
+            	GameState.state = GameState.GameStateEnum.GAME;
+            	GameState.change = true;
             }
         });
     }

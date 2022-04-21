@@ -24,13 +24,11 @@ public class GunImpl extends AbstractGun {
 	
 	public GunImpl(final Point2D position,final GunType gunType, final String name, final Integer damage, final Long rateOfFire, final Integer magazineSize) {
 		super(position);
-
 		this.gunType = gunType;
         this.name = name;
         this.damage = damage;
         this.rateOfFire = rateOfFire;
         this.magazineSize = magazineSize;
-
         this.ammoInMagazine = magazineSize;
         this.lastShot = 0;
     }
@@ -39,7 +37,7 @@ public class GunImpl extends AbstractGun {
 	 * {@inheritDoc}
 	 */
 	@Override
-	public Set<Optional<Shot>> attack(final Point2D pos, final Direction direction) {
+	public final Set<Optional<Shot>> attack(final Point2D pos, final Direction direction) {
 		final Set<Optional<Shot>> attacks = new HashSet<>();
 		final Point2D actualPos = pos.add(direction.getShotOffset());
 		if (System.currentTimeMillis() - this.lastShot <= rateOfFire || this.ammoInMagazine <= 0) {
@@ -218,6 +216,5 @@ public class GunImpl extends AbstractGun {
             		this.rateOfFire.orElse(DEFAULT_RATE_OF_FIRE),
                     this.magazineSize.orElse(DEFAULT_MAGAZINE_SIZE));
         }
-
 	}
 }

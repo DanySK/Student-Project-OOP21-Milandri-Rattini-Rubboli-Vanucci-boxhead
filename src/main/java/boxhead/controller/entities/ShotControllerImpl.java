@@ -1,7 +1,6 @@
 package boxhead.controller.entities;
 
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
@@ -19,7 +18,6 @@ import javafx.geometry.BoundingBox;
  */
 public class ShotControllerImpl implements ShotController {
 
-	private final GameLevel level;
 	private final ShotManager manager;
 	private final Map<Shot, ShotView> shotsActiveView;
 	
@@ -28,7 +26,6 @@ public class ShotControllerImpl implements ShotController {
 	 * 			The world where the ShotController will be used.
 	 */
 	public ShotControllerImpl(final GameLevel level) {
-		this.level = level;
 		this.manager = new ShotManagerImpl(level.getZombieController().getZombieModel());
 		this.shotsActiveView = new HashMap<>();
 	}

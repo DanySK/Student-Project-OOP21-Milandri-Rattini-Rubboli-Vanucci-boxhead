@@ -3,10 +3,7 @@ package boxhead.model.score;
 import java.util.Optional;
 import java.util.concurrent.TimeUnit;
 
-import boxhead.controller.game.GameLevelImpl;
-import boxhead.controller.level.RoundController;
 import boxhead.model.entities.gun.GunUpgradeManager;
-import boxhead.model.level.RoundImpl;
 
 /**
  * Implementation of {@link Score}.
@@ -22,16 +19,11 @@ public class ScoreImpl implements Score {
 	private Optional<String> timePlayed;
 	private Optional<String> nickname;
 	private final GunUpgradeManager gunManager;
-	private RoundController round;
-	
-	
-	
 	/**
 	 * @param nickname
 	 * 			The nickname of the player.
 	 */
-	public ScoreImpl(final String nickname, final GunUpgradeManager manager, final RoundController roundController) {
-		round = roundController;
+	public ScoreImpl(final String nickname, final GunUpgradeManager manager) {
 		this.kills = 0;
 		this.killStreak = 0;
 		this.maxStreak = 0;
@@ -91,7 +83,7 @@ public class ScoreImpl implements Score {
 			this.gunManager.checkUpgrades(this.killStreak);
 			this.maxStreak = this.killStreak;
 		}
-		this.streakTime = 20000 - (this.killStreak * 1000);
+		this.streakTime = 20000 - (this.killStreak * 500) + Math.round(Math.pow(this.killStreak, 1.7)) ;
 	}
 
 	/**
@@ -99,7 +91,7 @@ public class ScoreImpl implements Score {
 	 */
 	private final void decreaseStreak() {
 		this.killStreak--;
-		this.streakTime = 20000 - (this.killStreak * 1000);
+		this.streakTime = 20000 - (this.killStreak * 500);
 	}
 
 	/**

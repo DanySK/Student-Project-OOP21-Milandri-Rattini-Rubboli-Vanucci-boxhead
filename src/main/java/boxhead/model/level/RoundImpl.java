@@ -18,7 +18,7 @@ public class RoundImpl implements Round {
     /**
      * Time to wait until next round start
      */
-    private static final int ROUND_BREAK_TIME = 7000;
+    private static final int ROUND_BREAK_TIME = 5000;
     
     
     private int roundCounter;

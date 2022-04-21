@@ -85,28 +85,17 @@ public class GameLevelImpl implements GameLevel{
 
         root.addEventHandler(KeyEvent.KEY_PRESSED, inputHandler.keyboard());
         root.addEventHandler(KeyEvent.KEY_RELEASED, inputHandler.keyboard());
-
         root.addEventHandler(KeyEvent.KEY_PRESSED, (event) -> {
                 if (event.getCode().equals(KeyCode.P)) {
                 	if(GameState.state.equals(GameState.GameStateEnum.GAME)) {
                     	GameState.state = GameState.GameStateEnum.PAUSE;
+                    	GameState.change = true;
                 	} else if (GameState.state.equals(GameState.GameStateEnum.PAUSE)) {
                 		GameState.state = GameState.GameStateEnum.GAME;
+                		GameState.change = true;
                 	}
                 }
         });
-
-//        root.addEventHandler(KeyEvent.KEY_PRESSED, (event) -> {
-//                if (event.getCode().equals(KeyCode.E)) {
-//                    this.playerController.getPlayer().nextGun();;
-//                }
-//        });
-//        
-//        root.addEventHandler(KeyEvent.KEY_PRESSED, (event) -> {
-//        		if (event.getCode().equals(KeyCode.Q)) {
-//        			this.playerController.getPlayer().previousGun();;
-//        		}
-//        });
     }
 
     private void initializeModel() {
@@ -140,8 +129,6 @@ public class GameLevelImpl implements GameLevel{
 		this.playerController.getPlayerView().render();
 		final Set<Pair<Point2D, Image>> res = new HashSet<>();
 		this.gameView.clear();
-//		this.gameView.completeRender(this.map.getLevelView().renderLevelBackground(), this.cams.getCamera().start(),
-//				this.cams.getCamera().end(), this.cams.getCamera().getOffset(), TILE_SIZE);
 		
 		this.gameView.completeRender(this.map.render(), this.cams.getCamera().start(),
 				this.cams.getCamera().end(), this.cams.getCamera().getOffset(), TILE_SIZE);

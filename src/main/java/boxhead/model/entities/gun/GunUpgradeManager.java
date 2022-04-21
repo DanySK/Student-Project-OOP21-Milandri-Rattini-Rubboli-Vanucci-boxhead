@@ -42,9 +42,6 @@ public class GunUpgradeManager {
 		switch(streak) {
 		case 3:
 			this.player.getSelectedGun(GunType.PISTOL).updateRateOfFire(PISTOL_RATE_OF_FIRE_UPGRADE_1);
-			this.player.unlockGun(new GunFactory().getGun(this.player.getPosition(), GunType.SHOTGUN));
-			this.player.getSelectedGun(GunType.SHOTGUN).updateRateOfFire(50);
-			this.player.getSelectedGun(GunType.SHOTGUN).updateMagazine(999999);
 			this.gameLevel.getGameView().renderGunUpgrade("Pistol+: Faster Fire");
 		break;
 		case 5:

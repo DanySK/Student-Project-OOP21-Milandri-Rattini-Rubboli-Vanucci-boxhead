@@ -91,7 +91,7 @@ public class ScoreImpl implements Score {
 	 */
 	private final void decreaseStreak() {
 		this.killStreak--;
-		this.streakTime = 20000 - (this.killStreak * 500);
+		this.streakTime = 20000 - (this.killStreak * 500) + Math.round(Math.pow(this.killStreak, 1.7));
 	}
 
 	/**

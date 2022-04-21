@@ -18,6 +18,10 @@ import boxhead.view.world.tile.TileFactoryImpl;
  * Implementation of {@link LevelGenerator}.
  */
 public class LevelGeneratorImpl implements LevelGenerator {
+	
+	private final static int MAP_WIDTH = 29;
+	private final static int MAP_HEIGHT = 15;
+	
 	private static Map<Point2D, Integer> level = new HashMap<>();
 	private final TileFactory tFactory;
 
@@ -48,19 +52,19 @@ public class LevelGeneratorImpl implements LevelGenerator {
 		try {
 			final InputStream is = getClass().getResourceAsStream("/prova.txt");
 			br = new BufferedReader(new InputStreamReader(is));
-			int y = 0;
 			int x = 0;
-			while ((x < 15) && (y < 29)) {
+			int y = 0;
+			while ((x < MAP_WIDTH) && (y < MAP_HEIGHT)) {
 				final String line = br.readLine();
-				while (y < 29) {
+				while (x < MAP_WIDTH) {
 					final String numbers[] = line.split(" ");
-					final int num = Integer.parseInt(numbers[y]);
-					LevelGeneratorImpl.level.put(new Point2D(y, x), num);
-					y++;
-				}
-				if (y == 29) {
-					y = 0;
+					final int num = Integer.parseInt(numbers[x]);
+					LevelGeneratorImpl.level.put(new Point2D(x, y), num);
 					x++;
+				}
+				if (x == MAP_WIDTH) {
+					x = 0;
+					y++;
 				}
 			}
 			br.close();

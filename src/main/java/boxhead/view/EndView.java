@@ -18,7 +18,10 @@ public class EndView {
     private static final int WIDTH = 928;
 
     private static final int PLAY_LAYOUTX = 400;
-    private static final int PLAY_LAYOUTY = 400;
+    private static final int PLAY_LAYOUTY = 350;
+    
+    private static final int EXIT_LAYOUTX = 400;
+    private static final int EXIT_LAYOUTY = 400;
 
     private static final int SOUND_WIDTH = 30;
     private static final int SOUND_HEIGHT = 30;
@@ -59,6 +62,7 @@ public class EndView {
 
     private void createButton() {
         createPlayButton();
+        createExitButton();
         createSoundButton();
     }
 
@@ -92,7 +96,7 @@ public class EndView {
     }
 
     private void createPlayButton() {
-        final BoxheadButton playButton = new BoxheadButton("EXIT");
+        final BoxheadButton playButton = new BoxheadButton("REPLAY");
         playButton.setLayoutX(PLAY_LAYOUTX);
         playButton.setLayoutY(PLAY_LAYOUTY);
         pane.getChildren().add(playButton);
@@ -100,9 +104,24 @@ public class EndView {
         playButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(final ActionEvent event) {
-                //GameState.close = true;
             	GameState.state = GameState.GameStateEnum.GAME;
             	GameState.change = true;
+            	GameState.init = true;
+            }
+        });
+    }
+    
+    private void createExitButton() {
+        final BoxheadButton exitButton = new BoxheadButton("EXIT");
+        exitButton.setLayoutX(EXIT_LAYOUTX);
+        exitButton.setLayoutY(EXIT_LAYOUTY);
+        pane.getChildren().add(exitButton);
+
+        exitButton.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(final ActionEvent event) {
+            	GameState.state = GameState.GameStateEnum.END;
+            	GameState.close = true;
             }
         });
     }

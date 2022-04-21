@@ -37,15 +37,6 @@ public class GameView implements Initializable {
 	@FXML
 	private Label gunUpgrade;
 
-	/*
-	 * private void initializeStage() { gamePane = new AnchorPane(); gameScene = new
-	 * Scene(gamePane, GameViewManager.GAME_WIDTH, GameViewManager.GAME_HEIGHT);
-	 * gameStage = new Stage(); gameStage.setScene(gameScene); }
-	 *
-	 * public void createNewGame(final Stage menuStage) { this.menuStage =
-	 * menuStage; this.menuStage.hide(); gameStage.show(); }
-	 */
-	
 	@Override
 	public void initialize(final URL path, final ResourceBundle src) {
 		final Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();

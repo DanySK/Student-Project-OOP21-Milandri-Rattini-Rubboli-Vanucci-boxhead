@@ -76,17 +76,4 @@ public class LevelController {
 	public final void resize(final double scale) {
 		this.lv.setScale(scale);
 	}
-
-	/**
-	 *
-	 * @param w  level's width
-	 * @param h  level's height
-	 * @param ts Tiles size
-	 *
-	 *           public final void generateLevel(final double w, final double h,
-	 *           final double ts) { final Pair<Level, LevelView> result =
-	 *           lGenerator.loadLevel(w, h, ts); l = result.getKey(); lv =
-	 *           result.getValue(); }
-	 */
-
 }

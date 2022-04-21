@@ -12,8 +12,8 @@ import javafx.geometry.Point2D;
  */
 public class SpawnImpl implements Spawn {
 
-	private static final int DEFAULT_DAMAGE = 5;
-	private static final double DEFAULT_SPEED = 5;
+	private static final int DEFAULT_DAMAGE = 1;
+	private static final double DEFAULT_SPEED = 1;
 	private static final int DEFAULT_HEALTH = 100;
     private Set<Point2D> spawnPoints;
 

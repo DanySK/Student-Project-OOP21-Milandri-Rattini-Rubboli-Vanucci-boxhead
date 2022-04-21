@@ -11,8 +11,8 @@ public class RoundView {
 	public RoundView(Label label){
 		this.round=0; 
 		this.roundLabel=label;
-		this.roundLabel.setText(Integer.toString(this.round));
-		this.roundLabel.setFont(Font.font("Corbel",20));
+		this.roundLabel.setText("Round: "+ Integer.toString(this.round));
+		this.roundLabel.setFont(Font.font("Corbel",14));
 		this.roundLabel.setVisible(true);
 	}
 	
@@ -22,6 +22,6 @@ public class RoundView {
 	 */
 	public void setRound(final int round) {
 		this.round=round;
-		this.roundLabel.setText(Integer.toString(round));
+		this.roundLabel.setText("Round: "+Integer.toString(round));
 	}
 }

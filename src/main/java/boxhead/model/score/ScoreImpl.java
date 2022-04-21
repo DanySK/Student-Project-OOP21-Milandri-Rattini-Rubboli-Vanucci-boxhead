@@ -3,7 +3,10 @@ package boxhead.model.score;
 import java.util.Optional;
 import java.util.concurrent.TimeUnit;
 
+import boxhead.controller.game.GameLevelImpl;
+import boxhead.controller.level.RoundController;
 import boxhead.model.entities.gun.GunUpgradeManager;
+import boxhead.model.level.RoundImpl;
 
 /**
  * Implementation of {@link Score}.
@@ -19,22 +22,26 @@ public class ScoreImpl implements Score {
 	private Optional<String> timePlayed;
 	private Optional<String> nickname;
 	private final GunUpgradeManager gunManager;
+	private RoundController round;
+	
+	
 	
 	/**
 	 * @param nickname
 	 * 			The nickname of the player.
 	 */
-	public ScoreImpl(final String nickname, final GunUpgradeManager manager) {
+	public ScoreImpl(final String nickname, final GunUpgradeManager manager, final GameLevelImpl gameLevel) {
+		round = new RoundController(gameLevel);
 		this.kills = 0;
 		this.killStreak = 0;
 		this.maxStreak = 0;
-		this.streakTime = 4000;
+		this.streakTime = 20000;
 		this.timePlayed = Optional.empty();
 		this.nickname = Optional.ofNullable(nickname);
 		this.gunManager = manager;
 		this.setGameStart();
 	}
-	
+			
 	/**
 	 * Used to set the starting time of the game.
 	 */
@@ -122,13 +129,17 @@ public class ScoreImpl implements Score {
         final long sec = TimeUnit.MILLISECONDS.toSeconds(this.time) - TimeUnit.MINUTES.toSeconds(min);
         this.timePlayed = Optional.of(String.format("%02d:%02d:%02d", hour, min, sec));
 	}
+	
+	private long setStreakTime() {
+		return this.streakTime = streakTime - (round.getCurrentRound()*1000);
+	}
 
 	/**
 	 * {@inheritDoc}
 	 */
 	@Override
-	public final void update() {
-		if (System.currentTimeMillis() - this.lastKill > this.streakTime && this.killStreak > 0) {
+	public void update() {
+		if (System.currentTimeMillis() - this.lastKill > streakTime && this.killStreak > 0) {
 			this.decreaseStreak();
 		}
 	}

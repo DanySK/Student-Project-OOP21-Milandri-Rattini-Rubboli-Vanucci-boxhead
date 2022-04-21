@@ -9,6 +9,7 @@ import java.util.Set;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Point2D;
+import javafx.geometry.Pos;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Label;
@@ -49,10 +50,10 @@ public class GameView implements Initializable {
 	@Override
 	public void initialize(final URL path, final ResourceBundle src) {
 		final Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-		gamePane.setPrefWidth(screenSize.getWidth() / 2);
-		gamePane.setPrefHeight(screenSize.getHeight() / 2);
-		gameMap.setHeight(screenSize.getHeight() / 2);
-		gameMap.setWidth(screenSize.getWidth() / 2);
+		gamePane.setPrefWidth(screenSize.getWidth());
+		gamePane.setPrefHeight(screenSize.getHeight());
+		gameMap.setHeight(screenSize.getHeight());
+		gameMap.setWidth(screenSize.getWidth());
 
 	}
 	
@@ -89,38 +90,41 @@ public class GameView implements Initializable {
     }
     
     /*
-     * Render methodq
+     * Render method
      */
     public final void render(final Image img, final Point2D pos) {
         this.gameMap.getGraphicsContext2D().drawImage(img, pos.getX(), pos.getY());
     }
     
     /*
-     * Reders the ammo label setting a magazine text      
+     * Renders the ammo label setting a magazine text      
      */
     public final void renderAmmoLabel(final String magazineAmmo) {
-        this.magazineAmmo.setText(magazineAmmo);
+    	this.magazineAmmo.setTextFill(Color.BLACK);
+    	this.magazineAmmo.setText("Ammo: "+magazineAmmo);
     }
 
     /*
      * Renders the HP label setting the health text
      */
     public final void renderHPLabel(final String hp) {
-        this.healthPoints.setText("HP: " + hp);
+    	this.healthPoints.setTextFill(Color.GREEN);
+    	this.healthPoints.setText("HP: " + hp);
     }
     
     /*
      * Renders the kill streak of the player
      */
     public final void renderKillStreak(final String killStreak) {
-    	this.gunUpgrade.setText(killStreak);
+    	this.killStreak.setTextFill(Color.CHOCOLATE);
+    	this.killStreak.setText("Streak: " +killStreak);
     }
     
     /*
      * Renders the gun upgrade text with the upgrade the player just got
      */
     public final void renderGunUpgrade(final String gunUpgradeText) {
-		this.gunUpgrade.setTextFill(Color.WHITE);
+		this.gunUpgrade.setTextFill(Color.FUCHSIA);
         this.gunUpgrade.setText(gunUpgradeText);
     }
     

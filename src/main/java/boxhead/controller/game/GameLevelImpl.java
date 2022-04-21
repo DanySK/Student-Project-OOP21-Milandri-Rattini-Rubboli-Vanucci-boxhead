@@ -65,7 +65,7 @@ public class GameLevelImpl implements GameLevel{
 		this.playerController.getPlayer().setPosition(new Point2D(360, 360));
 
 		this.gunUpgradeManager = new GunUpgradeManager(this, this.playerController.getPlayer());
-		this.score = new ScoreImpl(null, this.gunUpgradeManager);
+		this.score = new ScoreImpl(null, this.gunUpgradeManager, this);
 		this.zombieController.getZombieModel().linkScore(this.score);
 		this.game = game;
 		this.initHandlers(game.getScene());

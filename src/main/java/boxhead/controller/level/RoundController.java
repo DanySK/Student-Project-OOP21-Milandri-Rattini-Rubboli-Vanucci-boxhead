@@ -3,6 +3,7 @@ package boxhead.controller.level;
 import boxhead.controller.game.GameLevelImpl;
 import boxhead.model.level.Round;
 import boxhead.model.level.RoundImpl;
+import boxhead.model.score.ScoreImpl;
 import boxhead.view.GameView;
 import boxhead.view.RoundView;
 
@@ -21,6 +22,11 @@ public class RoundController{
         this.isRoundInactive = true;
     }
 	
+	public int getCurrentRound() {
+		return this.round.getCurrentRound();
+	}
+	
+	
 	/*
 	 * Updates rounds based on its boolean values
 	 */
@@ -28,6 +34,7 @@ public class RoundController{
 		this.round.update();
 		
 		//this.roundView.setRound(this.round.getCurrentRound())
+		
 		
 		if (this.round.isRoundActive() && !this.isRoundVital) {
             this.isRoundVital = true;
@@ -38,6 +45,10 @@ public class RoundController{
                 this.isRoundVital = false;
                 this.isRoundInactive = true;
 	}
+		
+		
 	}
+	
+	
 
 }

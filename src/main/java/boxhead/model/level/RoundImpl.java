@@ -10,15 +10,15 @@ public class RoundImpl implements Round {
 	/**
      * Zombie spawn multiplier for every round
      */
-    private static final double SPAWN_MULTIPLIER = 1.3;
+    private static final double SPAWN_MULTIPLIER = 1.5;
     /**
      * Zombies to spawn in the first round
      */
-    private static final int STARTING_ZOMBIES = 8;
+    private static final int STARTING_ZOMBIES = 5;
     /**
      * Time to wait until next round start
      */
-    private static final int ROUND_BREAK_TIME = 20000;
+    private static final int ROUND_BREAK_TIME = 7000;
     
     
     private int roundCounter;

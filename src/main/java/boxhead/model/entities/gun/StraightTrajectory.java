@@ -89,5 +89,9 @@ public class StraightTrajectory implements Trajectory {
 	public final void setSpeed(final double speed) {
 		this.speed = speed;
 	}
+	
+	public final Point2D getPositionVariation() {
+		return this.positionVariation;
+	}
 
 }

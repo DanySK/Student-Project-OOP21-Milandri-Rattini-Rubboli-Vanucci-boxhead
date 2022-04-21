@@ -22,14 +22,21 @@ public interface Level {
 	/**
 	 * Method to retrieve all the walls of the level.
 	 *
-	 * @return A list the all the walls.
+	 * @return A list of all the walls.
 	 */
 	List<Wall> getWalls();
+	
+	/**
+	 * Method to get all the ammo spawn point of the level.
+	 * 
+	 * @return A set with all the spawn points.
+	 */
+	Set<Point2D> getAmmoSpawnPoints();
 
 	/**
 	 * Method to get all the zombie spawn points of the level.
 	 *
-	 * @return A list with all the zombieSpawnPoints.
+	 * @return A set with all the zombieSpawnPoints.
 	 */
 	Set<Point2D> getZombieSpawnPoints();
 

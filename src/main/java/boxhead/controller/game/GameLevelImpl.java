@@ -4,6 +4,8 @@ import java.util.HashSet;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+import boxhead.controller.entities.AmmoController;
+import boxhead.controller.entities.AmmoControllerImpl;
 import boxhead.controller.entities.InputHandler;
 import boxhead.controller.entities.PlayerController;
 import boxhead.controller.entities.PlayerControllerImpl;
@@ -39,6 +41,7 @@ public class GameLevelImpl implements GameLevel{
 	private final PlayerController playerController;
 	private final ZombieController zombieController;
 	private final RoundController roundController;
+	private final AmmoController ammoController;
 	private final LevelController map;
 	private final CameraController cams;
 	private final GameView gameView;
@@ -60,9 +63,11 @@ public class GameLevelImpl implements GameLevel{
 
 		this.zombieController = new ZombieControllerImpl(this);
 		this.roundController = new RoundController(this);
+		this.ammoController = new AmmoControllerImpl(this.map.getMap().getAmmoSpawnPoints());
 		this.shotController = new ShotControllerImpl(this);
 
 		this.playerController.getPlayer().setPosition(new Point2D(360, 360));
+		this.playerController.getPlayer().setAmmoController(ammoController);
 
 		this.gunUpgradeManager = new GunUpgradeManager(this, this.playerController.getPlayer());
 		this.score = new ScoreImpl(null, this.gunUpgradeManager, this);
@@ -151,6 +156,11 @@ public class GameLevelImpl implements GameLevel{
 		this.gameView.completeRender(res, this.cams.getCamera().start(), this.cams.getCamera().end(),
 				this.cams.getCamera().getOffset(), TILE_SIZE);
 		
+		this.ammoController.getAmmoView().forEach((a, v) -> {
+			this.gameView.render(v.getSprite().getImage(), a.getPosition());
+			System.out.println(a.getPosition());
+		});
+		
 		this.shotController.getShots().forEach((s, v) -> {
 			this.gameView.render(v.getSprite().getImage(), s.getPosition().subtract(this.cams.getCamera().getOffset()));
 		});
@@ -222,7 +232,7 @@ public class GameLevelImpl implements GameLevel{
 	public final Set<BoundingBox> getWalls() {
 		return this.map.getLevel().getWalls().stream().map(w -> w.getBoundingBox()).collect(Collectors.toSet());
 	}
-
+	
 	/**
 	 * {@inheritDoc}
 	 */

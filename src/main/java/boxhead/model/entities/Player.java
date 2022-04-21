@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.LinkedList;
 import boxhead.model.entities.utils.*;
+import boxhead.controller.entities.AmmoController;
 import boxhead.model.entities.gun.*;
 import boxhead.model.entities.gun.Gun.GunType;
 
@@ -24,6 +25,7 @@ public class Player extends AbstractHealthEntity {
 	private int gunIndex;
 	private Gun selectedGun=null;
 	private long lastChange;
+	private AmmoController ammoController;
 	
 	public Player() {
 		super(Point2D.ZERO, Direction.EAST, new Point2D(150, 150), EntityType.PLAYER, MAX_HEALTH);
@@ -37,8 +39,20 @@ public class Player extends AbstractHealthEntity {
 		this.lastChange = 0;
 	}
 	
+	/**
+	 * Method to set the walls.
+	 * @param walls
+	 */
 	public final void setWalls(final Set<BoundingBox> walls) {
 		this.walls = walls;
+	}
+	
+	/**
+	 * Method to set the ammos.
+	 * @param ammos
+	 */
+	public final void setAmmoController(final AmmoController ammoController) {
+		this.ammoController = ammoController;
 	}
 	
 	 /**
@@ -81,6 +95,13 @@ public class Player extends AbstractHealthEntity {
 	            if (Collision.isColliding(playerBB, BB)) {
 	                this.iscolliding.add(true);
 	            }
+	        });
+	        
+	        this.ammoController.getAmmos().forEach(BB -> {
+	        	if (Collision.isColliding(playerBB, BB)) {
+	        		this.ammoController.removeAmmo(BB);
+	        		this.currentGun.rechargeAmmo();
+	        	}
 	        });
 	
 	        if (!this.iscolliding.isEmpty()) {
@@ -130,5 +151,10 @@ public class Player extends AbstractHealthEntity {
 			}
 			this.lastChange = System.currentTimeMillis();
 		}
+	}
+	
+	public void update() {
+		this.setPosition(this.getPosition().add(this.speed));
+		this.ammoController.update();
 	}
 }

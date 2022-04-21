@@ -18,6 +18,7 @@ public class LevelImpl implements Level {
 
 	private final Map<Point2D, Integer> blocks;
 	private final List<Wall> walls;
+	private final Set<Point2D> ammoSpawns;
 	private final Set<Point2D> zombieSpawns;
 	private final double width;
 	private final double height;
@@ -36,6 +37,7 @@ public class LevelImpl implements Level {
 			final double tileSize) {
 		this.blocks = blocks;
 		this.walls = new LinkedList<>();
+		this.ammoSpawns = new HashSet<>();
 		this.zombieSpawns = new HashSet<>();
 		this.width = width;
 		this.height = height;
@@ -56,6 +58,7 @@ public class LevelImpl implements Level {
 				this.zombieSpawns.add(new Point2D(point.getX()*tileSize, point.getY()*tileSize));
 				break;
 			case 4:
+				this.ammoSpawns.add(new Point2D(point.getX()*tileSize, point.getY()*tileSize));
 				break;
 			case 1:
 				break;
@@ -76,7 +79,12 @@ public class LevelImpl implements Level {
 	 */
 	@Override
 	public List<Wall> getWalls() {
-		return walls;
+		return this.walls;
+	}
+	
+	@Override
+	public Set<Point2D> getAmmoSpawnPoints() {
+		return this.ammoSpawns;
 	}
 
 	/**
@@ -84,7 +92,7 @@ public class LevelImpl implements Level {
 	 */
 	@Override
 	public Set<Point2D> getZombieSpawnPoints() {
-		return zombieSpawns;
+		return this.zombieSpawns;
 	}
 
 	/**

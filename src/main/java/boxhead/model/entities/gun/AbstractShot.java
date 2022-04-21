@@ -22,24 +22,6 @@ public abstract class AbstractShot extends AbstractEntity implements Shot {
 	 * 			The trajectory of the shot
 	 */
 	public abstract Trajectory getTrajectory();
-	
-	/**
-	 * {@inheritDoc}
-	 */
-	@Override
-	public final Point2D getSpeed() {
-		final double vel = this.getTrajectory().getSpeed();
-		final Point2D dir = this.getTrajectory().getDirection().traduce();
-		return new Point2D(vel * dir.getX(), vel * dir.getY());
-	}
-
-	/**
-	 * {@inheritDoc}
-	 */
-	@Override
-	public Direction getDirection() {
-		return this.getTrajectory().getDirection();
-	}
 
 	/**
 	 * {@inheritDoc}
@@ -64,21 +46,5 @@ public abstract class AbstractShot extends AbstractEntity implements Shot {
 	@Override
 	public final int getDamage() {
 		return this.damage;
-	}
-	
-	/**
-	 * Not implemented because it's not necessary to change the speed of an attack
-	 */
-	@Override
-	public void setSpeed(Point2D speed) {
-		
-	}
-	
-	/**
-	 * Not implemented because it's not necessary to change the direction of an attack
-	 */
-	@Override
-	public void setDirection(Direction direction) {
-		
 	}
 }

@@ -1,8 +1,8 @@
 package boxhead.model.entities.gun;
 
-import boxhead.model.entities.ActiveEntity;
+import boxhead.model.entities.Entity;
 
-public interface Shot extends ActiveEntity {
+public interface Shot extends Entity {
 	
 	/**
 	 * @return True if the shot has ended his trajectory.
@@ -18,4 +18,9 @@ public interface Shot extends ActiveEntity {
 	 * @return The trajectory of the shot.
 	 */
 	Trajectory getTrajectory();
+	
+	/**
+	 * Method to update the shot.
+	 */
+	void update();
 }

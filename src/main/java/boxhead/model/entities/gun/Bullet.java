@@ -1,7 +1,6 @@
 package boxhead.model.entities.gun;
 
 import boxhead.model.entities.EntityType;
-import boxhead.model.entities.utils.Direction;
 import javafx.geometry.Point2D;
 
 /**

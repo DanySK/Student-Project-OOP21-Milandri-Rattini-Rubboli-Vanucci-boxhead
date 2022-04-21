@@ -24,8 +24,13 @@ public class Sprite {
     private static final int BULLET_HEIGHT = 8;
     private static final int BULLET_WIDTH = 3;
     
+    private static final int AMMO_HEIGHT = 16;
+    private static final int AMMO_WIDTH = 16;
+    
     private static final int PASSIVE_HEIGHT = 20;
     private static final int PASSIVE_WIDTH = 20;
+    
+   
     
     private final EntityType type;
     private ImageView imageView;
@@ -60,9 +65,9 @@ public class Sprite {
 			this.imageView.setImage(new Image(getClass().getResourceAsStream("/bullet.png")));
 			break;
 		case AMMO:
-			this.imageView.setFitHeight(PASSIVE_HEIGHT);
-			this.imageView.setFitWidth(PASSIVE_WIDTH);
-			this.imageView.setImage(null);
+			this.imageView.setFitHeight(AMMO_HEIGHT);
+			this.imageView.setFitWidth(AMMO_WIDTH);
+			this.imageView.setImage(new Image(getClass().getResourceAsStream("/ammo.png")));
 			break;
 		case WALL:
 			this.imageView.setFitHeight(PASSIVE_HEIGHT);

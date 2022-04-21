@@ -69,6 +69,11 @@ public interface Gun extends Entity{
 	int getCurrentAmmo();
 	
 	/**
+	 * Method to recharge gun's ammos
+	 */
+	void rechargeAmmo();
+	
+	/**
 	 * @return
 	 * 			The type of the weapon
 	 */

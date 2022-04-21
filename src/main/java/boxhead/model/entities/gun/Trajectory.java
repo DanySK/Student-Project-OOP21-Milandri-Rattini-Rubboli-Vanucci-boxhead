@@ -27,6 +27,12 @@ public interface Trajectory {
 	
 	/**
 	 * 
+	 * @return The variation of the position to move the trajectory
+	 */
+	Point2D getPositionVariation();
+	
+	/**
+	 * 
 	 * @return True if the movement has ended
 	 */
 	boolean hasEnded();

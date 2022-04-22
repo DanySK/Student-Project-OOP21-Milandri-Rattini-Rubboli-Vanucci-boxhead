@@ -63,15 +63,16 @@ public class ScoreImpl implements Score {
 	 * {@inheritDoc}
 	 */
 	@Override
-	public final int getStreak() {
-		return this.killStreak;
+	public int getMaxStreak() {
+		return this.maxStreak;
 	}
 	
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
-	public final void setStreakTime(final int round) {
-		if (round < 14) {
-			this.streakTime = this.streakTime - 1000;
-		}
+	public final int getStreak() {
+		return this.killStreak;
 	}
 
 	/**
@@ -83,7 +84,7 @@ public class ScoreImpl implements Score {
 			this.gunManager.checkUpgrades(this.killStreak);
 			this.maxStreak = this.killStreak;
 		}
-		this.streakTime = 20000 - (this.killStreak * 500) + Math.round(Math.pow(this.killStreak, 1.7)) ;
+		this.streakTime = 20000 - (this.killStreak * 500) + Math.round(Math.pow(this.killStreak, 2.3)) ;
 	}
 
 	/**
@@ -91,7 +92,7 @@ public class ScoreImpl implements Score {
 	 */
 	private final void decreaseStreak() {
 		this.killStreak--;
-		this.streakTime = 20000 - (this.killStreak * 500) + Math.round(Math.pow(this.killStreak, 1.7));
+		this.streakTime = 20000 - (this.killStreak * 500) + Math.round(Math.pow(this.killStreak, 2));
 	}
 
 	/**

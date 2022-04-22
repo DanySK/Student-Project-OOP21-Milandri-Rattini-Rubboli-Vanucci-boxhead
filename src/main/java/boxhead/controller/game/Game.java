@@ -3,6 +3,7 @@ package boxhead.controller.game;
 import java.io.FileNotFoundException;
 
 import boxhead.controller.sound.SoundController;
+import boxhead.model.score.Score;
 import boxhead.view.EndView;
 import boxhead.view.GameView;
 import boxhead.view.MenuView;
@@ -92,7 +93,13 @@ public class Game extends Application {
             if (this.gameCore.isPlayerAlive()) {
                 this.gameCore.handle();
             } else {
-            	swapper.addScene(GameState.GameStateEnum.END.getName(), new EndView().getMenuScene());
+            	final EndView end = new EndView();
+            	final Score score = this.gameCore.getScore();
+            	score.setGameEnd();
+            	end.renderPlayTime(score.getTimePlayed());
+            	end.renderKillCount(Integer.toString(score.getKills()));
+            	end.renderMaxStreak(Integer.toString(score.getMaxStreak()));
+            	swapper.addScene(GameState.GameStateEnum.END.getName(), end.getMenuScene());
                 GameState.change = true;
                 GameState.state = GameState.GameStateEnum.END;
             }

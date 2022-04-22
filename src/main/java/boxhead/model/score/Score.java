@@ -23,10 +23,10 @@ public interface Score {
 	int getStreak();
 	
 	/**
-	 * Method to set the streak cooldown depending on the current round.
-	 * @param streakTime
+	 * Method to retrieve the max streak reached.
+	 * @return maxStreak
 	 */
-	void setStreakTime(int round);
+	int getMaxStreak();
 
 	/**
 	 * Used to update internally the score.

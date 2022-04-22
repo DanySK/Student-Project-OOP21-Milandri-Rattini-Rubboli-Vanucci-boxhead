@@ -4,6 +4,7 @@ import boxhead.controller.game.GameState;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
@@ -11,6 +12,8 @@ import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundImage;
 import javafx.scene.layout.BackgroundPosition;
 import javafx.scene.layout.BackgroundRepeat;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
 
 public class EndView {
 
@@ -30,6 +33,9 @@ public class EndView {
 
     private final AnchorPane pane;
     private final Scene scene;
+    private Label playTime;
+    private Label killCount;
+    private Label maxStreak;
 
     /**
      * Construct a {@link EndView}.
@@ -39,6 +45,7 @@ public class EndView {
         this.scene = new Scene(pane, WIDTH, HEIGHT);
         createBackGround();
         createButton();
+        createLabel();
     }
 
     /**
@@ -59,7 +66,7 @@ public class EndView {
         pane.setBackground(new Background(background));
 
     }
-
+    
     private void createButton() {
         createPlayButton();
         createExitButton();
@@ -124,5 +131,38 @@ public class EndView {
             	GameState.close = true;
             }
         });
+    }
+    
+    /**
+     * Method to assegnate the Labels to the pane.
+     */
+    private final void createLabel() {
+    	this.playTime = new Label();
+    	this.killCount = new Label();
+    	this.maxStreak = new Label();
+    	this.playTime.setLayoutX(700);
+        this.playTime.setLayoutY(120);
+        this.killCount.setLayoutX(700);
+        this.killCount.setLayoutY(140);
+        this.maxStreak.setLayoutX(700);
+        this.maxStreak.setLayoutY(160);
+    	this.pane.getChildren().add(this.playTime);
+        this.pane.getChildren().add(this.killCount);
+        this.pane.getChildren().add(this.maxStreak);
+    }
+    
+    public final void renderPlayTime(final String time) {
+    	this.playTime.setFont(Font.font("Verdana", FontWeight.EXTRA_BOLD, 13));
+    	this.playTime.setText("You played for: " + time);
+    }
+    
+    public final void renderKillCount(final String killCount) {
+    	this.killCount.setFont(Font.font("Verdana", FontWeight.EXTRA_BOLD, 13));
+    	this.killCount.setText("You killed about " + killCount + " zombies");
+    }
+    
+    public final void renderMaxStreak(final String maxStreak) {
+    	this.maxStreak.setFont(Font.font("Verdana", FontWeight.EXTRA_BOLD, 13));
+    	this.maxStreak.setText("Your max streak was: " + maxStreak);
     }
 }

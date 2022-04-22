@@ -13,7 +13,6 @@ import boxhead.controller.entities.ShotController;
 import boxhead.controller.entities.ShotControllerImpl;
 import boxhead.controller.entities.ZombieController;
 import boxhead.controller.entities.ZombieControllerImpl;
-import boxhead.controller.level.CameraController;
 import boxhead.controller.level.LevelController;
 import boxhead.controller.level.RoundController;
 import boxhead.model.entities.gun.GunUpgradeManager;
@@ -43,7 +42,6 @@ public class GameLevelImpl implements GameLevel{
 	private final RoundController roundController;
 	private final AmmoController ammoController;
 	private final LevelController map;
-	private final CameraController cams;
 	private final GameView gameView;
 	private final GunUpgradeManager gunUpgradeManager;
 	private final Score score;
@@ -54,9 +52,7 @@ public class GameLevelImpl implements GameLevel{
 
 		scale = (int) Math.ceil(gameView.getWidth() / 1000);
 		this.map = new LevelController(MAP_WIDTH, MAP_HEIGHT, TILE_SIZE, scale);
-		this.cams = new CameraController(0, 0, MAP_WIDTH * TILE_SIZE * scale, MAP_HEIGHT * TILE_SIZE * scale, gameView.getWidth(),
-				gameView.getHeight());
-
+		
 		this.inputHandler = new InputHandler();
 		this.playerController = new PlayerControllerImpl(this);
 
@@ -119,7 +115,6 @@ public class GameLevelImpl implements GameLevel{
 	
 	private void gameUpdate() {
 		this.playerController.update();
-		this.cams.centerOnPlayer(this.playerController.getPlayer());
 		this.zombieController.update();
 		this.roundController.update();
 		this.shotController.update();
@@ -130,21 +125,19 @@ public class GameLevelImpl implements GameLevel{
 		final Set<Pair<Point2D, Image>> res = new HashSet<>();
 		this.gameView.clear();
 		
-		this.gameView.completeRender(this.map.render(), this.cams.getCamera().start(),
-				this.cams.getCamera().end(), this.cams.getCamera().getOffset(), TILE_SIZE);
+		this.gameView.completeRender(this.map.render());
 
 	
 		res.add(new Pair<>(this.playerController.getPlayer().getPosition(), this.playerController.getPlayerView().getImageView().getImage()));
 		res.addAll(this.zombieController.getZombieView().getSprites());
-		this.gameView.completeRender(res, this.cams.getCamera().start(), this.cams.getCamera().end(),
-				this.cams.getCamera().getOffset(), TILE_SIZE);
+		this.gameView.completeRender(res);
 		
 		this.ammoController.getAmmoView().forEach((a, v) -> {
 			this.gameView.render(v.getSprite().getImage(), a.getPosition());
 		});
 		
 		this.shotController.getShots().forEach((s, v) -> {
-			this.gameView.render(v.getSprite().getImage(), s.getPosition().subtract(this.cams.getCamera().getOffset()));
+			this.gameView.render(v.getSprite().getImage(), s.getPosition());
 		});
 		this.gameView.renderAmmoLabel(String.valueOf(this.playerController.getPlayer().getCurrentGun().getCurrentAmmo()));
 		this.gameView.renderHPLabel(String.valueOf(this.playerController.getPlayer().getHealth()));
@@ -181,14 +174,6 @@ public class GameLevelImpl implements GameLevel{
 	@Override
 	public final ShotController getShotController() {
 		return this.shotController;
-	}
-
-	/**
-	 * {@inheritDoc}
-	 */
-	@Override
-	public final CameraController getCamera() {
-		return this.cams;
 	}
 
 	/**

@@ -67,7 +67,7 @@ public class ZombieAIImpl implements ZombieAI {
 
         if (!collisions.contains(player.getDirection())){
             currentDirection = getDirectionToPlayer(zombie, player);
-        } else {
+        } else{
             if (collisions.contains(Direction.NORTH)) {
                 if (!collisions.contains(Direction.EAST)) {
                     currentDirection = Direction.NORTH_EAST;
@@ -77,7 +77,8 @@ public class ZombieAIImpl implements ZombieAI {
                     currentDirection = Direction.SOUTH;
                 }
             }
-        }
+
+        }      
         zombie.setDirection(currentDirection);
         zombie.setPosition(this.computeNextPosition(zombie.getPosition(), currentDirection));
     }
@@ -93,7 +94,7 @@ public class ZombieAIImpl implements ZombieAI {
     private boolean isOccupied(final Zombie zombie, final BoundingBox entity, final Direction angle) {
         final Point2D nextPos = computeNextPosition(zombie.getPosition(), angle);
         return Collision.isColliding(
-                new BoundingBox(nextPos.getX(), nextPos.getY(), zombie.getWidth(), zombie.getHeight()), entity);
+                new BoundingBox(nextPos.getX(), nextPos.getY(), zombie.getWidth()+8, zombie.getHeight()+8), entity);
     }
 
     /**
@@ -159,36 +160,36 @@ public class ZombieAIImpl implements ZombieAI {
         final double distanceX = player.getPosition().getX() - (zombie.getPosition().getX());
         final double distanceY = player.getPosition().getY() - (zombie.getPosition().getY());
         final double degree = Math.toDegrees(Math.atan2(distanceY, distanceX));
-        return checkNearestAngle(degree);
+        return checkNearestAngle(degree,player);
         
     }
     
     /*
      * Return the nearest direction based on player degree
      */
-    private static Direction checkNearestAngle(final double degree) {	
+    private static Direction checkNearestAngle(final double degree, Player player) {	
     	//System.out.println(degree);
-    	if (degree > -22.5  && degree <= 22.5) {
+    	if (degree > -22.5  && degree <= 22.5 ) {
     			return Direction.EAST;
     		}else
     		if(degree > 112.5 && degree <= 157.5) {
     			return Direction.SOUTH_WEST;
-    		}
+    		}else
     		if(degree > 22.5 && degree <= 67.5) {
     			return Direction.SOUTH_EAST;
-    		}
+    		}else
     		if(degree > -157.5 && degree <= -112.5) {
     			return Direction.NORTH_WEST;
-    		}
+    		}else
     		if(degree > -112.5 && degree <= -67.5) {
     			return Direction.NORTH;
-    		}
+    		}else
     		if(degree > -67.5 && degree <= -22.5) {
     			return Direction.NORTH_EAST;
-    		}
+    		}else
     		if(degree > 67.5 && degree <= 112.5) {
     			return Direction.SOUTH;
-    		}
+    		}else
     		if((degree > 157.5 && degree <=180) || (degree < -157.5 && degree >=-180)){
     			return Direction.WEST;
     		}

@@ -6,7 +6,6 @@ import boxhead.controller.entities.InputHandler;
 import boxhead.controller.entities.PlayerController;
 import boxhead.controller.entities.ShotController;
 import boxhead.controller.entities.ZombieController;
-import boxhead.controller.level.CameraController;
 import boxhead.model.score.Score;
 import boxhead.view.GameView;
 import javafx.geometry.BoundingBox;
@@ -41,11 +40,6 @@ public interface GameLevel {
 	 * 			The ShotController of the game.
 	 */
 	ShotController getShotController();
-	/**
-	 * @return
-	 * 			The CameraController of the game.
-	 */
-	CameraController getCamera();
 	/**
 	 * @return
 	 * 			The GameView of the game.

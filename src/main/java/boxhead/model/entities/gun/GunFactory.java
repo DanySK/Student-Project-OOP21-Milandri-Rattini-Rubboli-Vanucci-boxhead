@@ -2,7 +2,6 @@ package boxhead.model.entities.gun;
 
 import java.time.Duration;
 
-import boxhead.model.entities.gun.Gun;
 import boxhead.model.entities.gun.Gun.GunType;
 import javafx.geometry.Point2D;
 

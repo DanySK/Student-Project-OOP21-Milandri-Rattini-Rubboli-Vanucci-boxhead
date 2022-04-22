@@ -15,7 +15,7 @@ public class LevelViewImpl implements LevelView {
 	private final Set<Tile> tiles;
 	private Set<Pair<Point2D, Image>> levelRendered;
 	/**
-	 * Constructor of the levelview
+	 * Constructor of the LevelView
 	 *
 	 * @param level - Map<Point2D, Integer> to be transformed in relative tiles
 	 * @param tf    - tileFactory to create tiles

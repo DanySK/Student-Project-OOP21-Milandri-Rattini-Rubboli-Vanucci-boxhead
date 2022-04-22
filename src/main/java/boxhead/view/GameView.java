@@ -68,15 +68,6 @@ public class GameView implements Initializable {
 	public final void clear() {
 	        this.gameMap.getGraphicsContext2D().clearRect(0, 0, this.gameMap.getWidth(), this.gameMap.getHeight());
 	    }
-	
-	/*
-	 * Check if the given point is between two another points
-	 */
-    private boolean isBetween(final Point2D p, final Point2D s, final Point2D e) {
-        final double cooX = p.getX();
-        final double cooY = p.getY();
-        return cooX >= s.getX() && cooX <= e.getX() && s.getY() <= cooY && cooY <= e.getY();
-    }
     
     /*
      * Render method
@@ -128,17 +119,9 @@ public class GameView implements Initializable {
     /*
      * Renders the given object after steps calculation
      */
-    public final void completeRender(final Set<Pair<Point2D, Image>> objToRender, final Point2D start, final Point2D end,
-            final Point2D offset, final double tileSize) {
-        final Point2D step = new Point2D(tileSize, tileSize);
-        final Point2D startStep = start.subtract(step);
-        final Point2D endStep = end.add(step);
-
-        objToRender.forEach(s -> {
-            final Point2D point = s.getKey();
-            if (isBetween(point, startStep, endStep)) {
-                render(s.getValue(), s.getKey().subtract(offset));
-            }
+    public final void completeRender(final Set<Pair<Point2D, Image>> objToRender) {
+    	objToRender.forEach(s -> {
+                render(s.getValue(), s.getKey());
         });
     }
     

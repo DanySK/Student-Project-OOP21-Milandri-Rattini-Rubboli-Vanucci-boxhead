@@ -34,18 +34,6 @@ public interface Score {
 	void update();
 
 	/**
-	 * @return
-	 * 			The nickname of the player.
-	 */
-	String getNickname();
-
-	/**
-	 * Used to set the nickname of the player.
-	 * @param nickname
-	 */
-	void setNickname(String nickname);
-
-	/**
 	 * Used to get the playtime.
 	 */
 	String getTimePlayed();

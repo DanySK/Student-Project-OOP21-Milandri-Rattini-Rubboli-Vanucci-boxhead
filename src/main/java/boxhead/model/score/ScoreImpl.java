@@ -17,19 +17,17 @@ public class ScoreImpl implements Score {
 	private int maxStreak;
 	private long streakTime;
 	private Optional<String> timePlayed;
-	private Optional<String> nickname;
 	private final GunUpgradeManager gunManager;
 	/**
 	 * @param nickname
 	 * 			The nickname of the player.
 	 */
-	public ScoreImpl(final String nickname, final GunUpgradeManager manager) {
+	public ScoreImpl(final GunUpgradeManager manager) {
 		this.kills = 0;
 		this.killStreak = 0;
 		this.maxStreak = 0;
 		this.streakTime = 0;
 		this.timePlayed = Optional.empty();
-		this.nickname = Optional.ofNullable(nickname);
 		this.gunManager = manager;
 		this.setGameStart();
 	}
@@ -93,22 +91,6 @@ public class ScoreImpl implements Score {
 	private final void decreaseStreak() {
 		this.killStreak--;
 		this.streakTime = 20000 - (this.killStreak * 500) + Math.round(Math.pow(this.killStreak, 2));
-	}
-
-	/**
-	 * {@inheritDoc}
-	 */
-	@Override
-	public final String getNickname() {
-		return this.nickname.orElse("No nickname yet");
-	}
-
-	/**
-	 * {@inheritDoc}
-	 */
-	@Override
-	public final void setNickname(String nickname) {
-		this.nickname = Optional.ofNullable(nickname);
 	}
 
 	/**

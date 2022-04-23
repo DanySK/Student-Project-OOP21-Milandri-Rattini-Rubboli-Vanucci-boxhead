@@ -18,7 +18,10 @@ public class PauseView {
     private static final int WIDTH = 928;
 
     private static final int PLAY_LAYOUTX = 400;
-    private static final int PLAY_LAYOUTY = 400;
+    private static final int PLAY_LAYOUTY = 350;
+    
+    private static final int EXIT_LAYOUTX = 400;
+    private static final int EXIT_LAYOUTY = 400;
 
     private static final int SOUND_WIDTH = 25;
     private static final int SOUND_HEIGHT = 25;
@@ -59,6 +62,7 @@ public class PauseView {
 
     private void createButton() {
         createPlayButton();
+        createExitButton();
         createSoundButton();
     }
 
@@ -89,6 +93,21 @@ public class PauseView {
         });
     }
 
+    private void createExitButton() {
+        final BoxheadButton exitButton = new BoxheadButton("EXIT");
+        exitButton.setLayoutX(EXIT_LAYOUTX);
+        exitButton.setLayoutY(EXIT_LAYOUTY);
+        pane.getChildren().add(exitButton);
+
+        exitButton.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(final ActionEvent event) {
+            	GameState.state = GameState.GameStateEnum.END;
+            	GameState.close = true;
+            }
+        });
+    }
+    
     private void createPlayButton() {
         final BoxheadButton playButton = new BoxheadButton("RESUME");
         playButton.setLayoutX(PLAY_LAYOUTX);

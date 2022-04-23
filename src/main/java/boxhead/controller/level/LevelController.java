@@ -16,7 +16,7 @@ import boxhead.view.level.LevelView;
  */
 public class LevelController {
 
-	private static final int TILE_SIZE = 128;
+	private static final int TILE_SIZE = 32;
 
 	private Level l;
 	private LevelView lv;

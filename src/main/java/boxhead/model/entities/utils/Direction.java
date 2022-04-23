@@ -18,7 +18,7 @@ public enum Direction {
 	WEST(-1,0,180),
 	
 	NORTH_WEST(-0.707,-0.707,225),
-	
+		
 	NULL(0,0,-1);
 	
 	private final Point2D direction;

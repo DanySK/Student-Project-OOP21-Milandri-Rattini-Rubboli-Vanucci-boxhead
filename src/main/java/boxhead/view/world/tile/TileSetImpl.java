@@ -30,6 +30,8 @@ public class TileSetImpl implements TileSet {
 	@Override
 	public void loadImage() {
 		this.tiles.put(TileType.GROUND.getId(),new Image(getClass().getResourceAsStream("/ground.png"), tileSize, tileSize, true, true));
+		this.tiles.put(TileType.GRASS.getId(),new Image(getClass().getResourceAsStream("/grass.png"), tileSize, tileSize, true, true));
+		this.tiles.put(TileType.CONCRETE.getId(),new Image(getClass().getResourceAsStream("/concrete.png"), tileSize, tileSize, true, true));
 		this.tiles.put(TileType.WALL.getId(),new Image(getClass().getResourceAsStream("/wall.png"), tileSize, tileSize, true, true));
 		this.tiles.put(TileType.ZOMBIE_SPAWN.getId(),new Image(getClass().getResourceAsStream("/ground.png"), tileSize, tileSize, true, true));
 		this.tiles.put(TileType.AMMO_SPAWN.getId(),new Image(getClass().getResourceAsStream("/ground.png"), tileSize, tileSize, true, true));

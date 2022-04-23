@@ -101,9 +101,12 @@ public class ZombieViewImpl implements ZombieView {
      * @param imageIterator images iterator
      */
     private void removeDeadZombies(final Iterator<ImageView> imageIterator) {
-        imageIterator.forEachRemaining(img -> {
-            this.zombieImages.remove(img);
-        });
+    	try {
+    		imageIterator.forEachRemaining(img -> {
+            	this.zombieImages.remove(img);
+            	});
+		} catch (Exception e) {
+			System.out.println(e);
+		}
     }
-
 }

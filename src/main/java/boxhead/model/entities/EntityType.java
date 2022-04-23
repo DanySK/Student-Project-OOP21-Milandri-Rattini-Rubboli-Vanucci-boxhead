@@ -6,8 +6,6 @@ public enum EntityType {
 	
 	ZOMBIE(),
 	
-	DEVIL(),
-	
 	GUN(),
 	
 	BULLET(),

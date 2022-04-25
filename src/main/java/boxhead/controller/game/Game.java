@@ -50,7 +50,7 @@ public class Game extends Application {
         GameState.state = GameState.GameStateEnum.MENU;
         this.changeScene();
 
-        primaryStage.getIcons().add(new Image(getClass().getResourceAsStream("/media/unmute.png")));
+        primaryStage.getIcons().add(new Image(getClass().getResourceAsStream("/player/shotgun-south_west.png")));
         primaryStage.setTitle("BOXHEAD");
         primaryStage.setResizable(false);
         primaryStage.show();

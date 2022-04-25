@@ -14,6 +14,9 @@ import boxhead.model.entities.gun.Gun.GunType;
 
 public class Player extends AbstractHealthEntity {
 	
+	private static final double PLAYER_WIDTH = 10;
+	private static final double PLAYER_HEIGHT = 10;
+	
 	private static final int MAX_HEALTH=100;
 	private static final long CHANGE_WEAPON_INTERVAL = 300;
 	
@@ -34,6 +37,7 @@ public class Player extends AbstractHealthEntity {
 		this.iscolliding=new ArrayList<>();
 		this.gunIndex=0;
 		this.lastChange = 0;
+		super.setBoundingBox(PLAYER_WIDTH, PLAYER_HEIGHT);
 	}
 	
 	/**
@@ -85,7 +89,7 @@ public class Player extends AbstractHealthEntity {
 	public void checkCollision(final Direction direction) {
 		if (!direction.equals(Direction.NULL)) {
 			this.setDirection(direction);
-	        final BoundingBox playerBB = new BoundingBox(getPosition().getX() + direction.traduce().getX() *4,
+	        final BoundingBox playerBB = new BoundingBox(getPosition().getX() + direction.traduce().getX()*4,
 	                getPosition().getY() + direction.traduce().getY()*4, getWidth(), getHeight());
 	
 	        this.walls.forEach(BB -> {

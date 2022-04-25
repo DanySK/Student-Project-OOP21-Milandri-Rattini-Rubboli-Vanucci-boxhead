@@ -4,8 +4,15 @@ import javafx.geometry.Point2D;
 
 public class Wall extends AbstractEntity {
 	
-	public Wall(final Point2D position, final double width, final double height) {
+	private static final double WALL_WIDTH = 32;
+	private static final double WALL_HEIGHT = 32;
+	
+	/**
+	 * Constructor of the wall.
+	 * @param position
+	 */
+	public Wall(final Point2D position) {
 		super(position,EntityType.WALL);
-		super.setBoundingBox(width,height);
+		super.setBoundingBox(WALL_WIDTH, WALL_HEIGHT);
 	}
 }

@@ -36,7 +36,7 @@ public abstract class AbstractEntity implements Entity {
      * @param height height of the box
      * @param width width of the box
      */
-	public void setBoundingBox(double height, double width) {
+	public void setBoundingBox(double width, double height) {
 		this.height=height;
 		this.width=width;
 	}

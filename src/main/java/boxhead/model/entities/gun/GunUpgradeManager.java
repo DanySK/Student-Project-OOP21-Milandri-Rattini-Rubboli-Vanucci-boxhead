@@ -1,8 +1,8 @@
 package boxhead.model.entities.gun;
 
-import boxhead.controller.game.GameLevel;
 import boxhead.model.entities.Player;
 import boxhead.model.entities.gun.Gun.GunType;
+import boxhead.view.GameView;
 
 /**
  * Class that is used to manage the upgrades of the weapons.
@@ -30,11 +30,11 @@ public class GunUpgradeManager {
     private static final int SHOTGUN_MAGAZINE_UPGRADE_1 = 20;
     private static final int SHOTGUN_MAGAZINE_UPGRADE_2 = 40;
 	
-	private final GameLevel gameLevel;
+	private final GameView gameView;
 	private final Player player;
 	
-	public GunUpgradeManager(final GameLevel level, final Player player) {
-		this.gameLevel = level;
+	public GunUpgradeManager(final GameView gameView, final Player player) {
+		this.gameView = gameView;
 		this.player = player;
 	}
 	
@@ -42,83 +42,83 @@ public class GunUpgradeManager {
 		switch(streak) {
 		case 3:
 			this.player.getSelectedGun(GunType.PISTOL).updateRateOfFire(PISTOL_RATE_OF_FIRE_UPGRADE_1);
-			this.gameLevel.getGameView().renderGunUpgrade("Pistol+: Faster Fire");
+			gameView.renderGunUpgrade("Pistol+: Faster Fire");
 		break;
 		case 5:
 			this.player.getSelectedGun(GunType.PISTOL).updateDamage(PISTOL_DAMAGE_UPGRADE_1);
-			this.gameLevel.getGameView().renderGunUpgrade("Pistol+: More Damage");
+			gameView.renderGunUpgrade("Pistol+: More Damage");
 		break;
 		case 8:
 			this.player.getSelectedGun(GunType.PISTOL).updateMagazine(PISTOL_MAGAZINE_UPGRADE_1);
-			this.gameLevel.getGameView().renderGunUpgrade("Pistol+: Double Ammo");
+			this.gameView.renderGunUpgrade("Pistol+: Double Ammo");
 		break;
 		case 10:
 			this.player.unlockGun(new GunFactory().getGun(this.player.getPosition(), GunType.UZI));
-			this.gameLevel.getGameView().renderGunUnlock("New Weapon: UZI");
+			this.gameView.renderGunUnlock("New Weapon: UZI");
 		break;
 		case 13:
 			this.player.getSelectedGun(GunType.PISTOL).updateDamage(PISTOL_DAMAGE_UPGRADE_2);
-			this.gameLevel.getGameView().renderGunUpgrade("Pistol+: Even More Damage");
+			this.gameView.renderGunUpgrade("Pistol+: Even More Damage");
 		break;
 		case 17:
 			this.player.getSelectedGun(GunType.UZI).updateMagazine(UZI_MAGAZINE_UPGRADE_1);
-			this.gameLevel.getGameView().renderGunUpgrade("UZI+: Double Ammo");
+			this.gameView.renderGunUpgrade("UZI+: Double Ammo");
 		break;
 		case 18:
 			this.player.getSelectedGun(GunType.UZI).updateDamage(UZI_DAMAGE_UPGRADE_1);
-			this.gameLevel.getGameView().renderGunUpgrade("UZI+: More Damage");
+			this.gameView.renderGunUpgrade("UZI+: More Damage");
 		break;
 		case 20:
 			this.player.unlockGun(new GunFactory().getGun(this.player.getPosition(), GunType.SHOTGUN));
-			this.gameLevel.getGameView().renderGunUnlock("New Weapon: Shotgun");
+			this.gameView.renderGunUnlock("New Weapon: Shotgun");
 		break;
 		case 21:
 			this.player.getSelectedGun(GunType.UZI).updateRateOfFire(UZI_RATE_OF_FIRE_UPGRADE_1);
-			this.gameLevel.getGameView().renderGunUpgrade("UZI+: Faster Fire");
+			this.gameView.renderGunUpgrade("UZI+: Faster Fire");
 		break;
 		case 23:
 			this.player.getSelectedGun(GunType.SHOTGUN).updateMagazine(SHOTGUN_MAGAZINE_UPGRADE_1);
-			this.gameLevel.getGameView().renderGunUpgrade("Shotgun+: Double Ammo");
+			this.gameView.renderGunUpgrade("Shotgun+: Double Ammo");
 		break;
 		case 26:
 			this.player.getSelectedGun(GunType.SHOTGUN).updateRateOfFire(SHOTGUN_RATE_OF_FIRE_UPGRADE_1);
-			this.gameLevel.getGameView().renderGunUpgrade("Shotgun+: Faster Fire");
+			this.gameView.renderGunUpgrade("Shotgun+: Faster Fire");
 		break;
 		case 30:
 			this.player.getSelectedGun(GunType.PISTOL).updateMagazine(PISTOL_MAGAZINE_UPGRADE_2);
-			this.gameLevel.getGameView().renderGunUpgrade("Pistol+: Quad Ammo");
+			this.gameView.renderGunUpgrade("Pistol+: Quad Ammo");
 		break;
 		case 32:
 			this.player.getSelectedGun(GunType.SHOTGUN).updateDamage(SHOTGUN_DAMAGE_UPGRADE_1);
-			this.gameLevel.getGameView().renderGunUpgrade("Shotgun+: More Damage");
+			this.gameView.renderGunUpgrade("Shotgun+: More Damage");
 		break;
 		case 35:
 			this.player.getSelectedGun(GunType.PISTOL).updateRateOfFire(PISTOL_RATE_OF_FIRE_UPGRADE_2);
-			this.gameLevel.getGameView().renderGunUpgrade("Pistol+: Even Faster Fire");
+			this.gameView.renderGunUpgrade("Pistol+: Even Faster Fire");
 		break;
 		case 36:
 			this.player.getSelectedGun(GunType.SHOTGUN).updateMagazine(SHOTGUN_MAGAZINE_UPGRADE_2);
-			this.gameLevel.getGameView().renderGunUpgrade("Shotgun+: Quad Ammo");
+			this.gameView.renderGunUpgrade("Shotgun+: Quad Ammo");
 		break;
 		case 38:
 			this.player.getSelectedGun(GunType.UZI).updateRateOfFire(UZI_RATE_OF_FIRE_UPGRADE_2);
-			this.gameLevel.getGameView().renderGunUpgrade("UZI+: Even Faster Fire");
+			this.gameView.renderGunUpgrade("UZI+: Even Faster Fire");
 		break;
 		case 40:
 			this.player.getSelectedGun(GunType.UZI).updateMagazine(UZI_MAGAZINE_UPGRADE_2);
-			this.gameLevel.getGameView().renderGunUpgrade("UZI+: Quad Ammo");
+			this.gameView.renderGunUpgrade("UZI+: Quad Ammo");
 		break;
 		case 43:
 			this.player.getSelectedGun(GunType.SHOTGUN).updateDamage(SHOTGUN_DAMAGE_UPGRADE_2);
-			this.gameLevel.getGameView().renderGunUpgrade("Shotgun+: Even More Damage");
+			this.gameView.renderGunUpgrade("Shotgun+: Even More Damage");
 		break;
 		case 45:
 			this.player.getSelectedGun(GunType.UZI).updateDamage(UZI_DAMAGE_UPGRADE_2);
-			this.gameLevel.getGameView().renderGunUpgrade("UZI+: Even More Damage");
+			this.gameView.renderGunUpgrade("UZI+: Even More Damage");
 		break;
 		case 48:
 			this.player.getSelectedGun(GunType.SHOTGUN).updateRateOfFire(SHOTGUN_RATE_OF_FIRE_UPGRADE_2);
-			this.gameLevel.getGameView().renderGunUpgrade("Shotgun+: Even Faster Fire");
+			this.gameView.renderGunUpgrade("Shotgun+: Even Faster Fire");
 		break;		
 		}
 	}

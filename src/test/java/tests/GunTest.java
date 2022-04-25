@@ -9,6 +9,7 @@ import java.util.Set;
 import org.junit.Test;
 
 import boxhead.model.entities.Player;
+import boxhead.model.entities.Wall;
 import boxhead.model.entities.gun.Bullet;
 import boxhead.model.entities.gun.Gun;
 import boxhead.model.entities.gun.Gun.GunType;
@@ -39,44 +40,47 @@ public class GunTest {
 	private final Point2D position;
 	
 	public GunTest() {
-		final Set<BoundingBox> obstacles = new HashSet<>();
-        final Point2D zombiePos = new Point2D(0, 6);
-        this.position = new Point2D(1, 1);
+        final Point2D zombiePos = new Point2D(0, 20);
+        this.position = new Point2D(0, 0);
         this.spawns = new HashSet<>();
         this.spawns.add(zombiePos);
         this.player = new Player();
+        this.player.setPosition(position);
         this.zombieModel = new ZombieModelImpl();
         this.manager = new ShotManagerImpl(zombieModel);
-        this.manager.setWalls(obstacles);
-        this.zombieModel.setWalls(obstacles);
         this.zombieModel.setPlayer(this.player);
         this.zombieModel.setSpawnPoints(spawns);
 	}
 	
+	/**
+	 * To test the collision between Bullets and Walls.
+	 */
 	@Test
 	public void testShotManager() {
 		Shot bullet1;
 		Shot bullet2;
         int active = 0;
         assertTrue(Integer.valueOf(this.manager.getShotsActive().size()).equals(active));
-
+        //Istanzio i bullet
         bullet1 = new Bullet(new Point2D(0,0), new Point2D(100, 0), 100);
         this.manager.addShot(bullet1);
         active++;
         assertTrue(Integer.valueOf(this.manager.getShotsActive().size()).equals(active));
         assertFalse(bullet1.hasEnded());
         
-        bullet2 = new Bullet(new Point2D(0,0), new Point2D(0,66), 100);
+        bullet2 = new Bullet(new Point2D(0,0), new Point2D(0,60), 100);
         this.manager.addShot(bullet2);
         active++;
         assertTrue(Integer.valueOf(this.manager.getShotsActive().size()).equals(active));
         assertFalse(bullet2.hasEnded());
-        
+        //Piazzo nella traiettoria del Bullet un muro per vedere se si schianta
         final Set<BoundingBox> walls = new HashSet<>();
-        walls.add(new BoundingBox(60, 0, 1, 1));
-        walls.add(new BoundingBox(0, 66, 1, 1));
+        final Wall wall1 = new Wall(new Point2D(55, 0));
+        final Wall wall2 = new Wall(new Point2D(0, 55));
+        walls.add(wall1.getBoundingBox());
+        walls.add(wall2.getBoundingBox());
         this.manager.setWalls(walls);
-        for (int i = 0; i < 12; i++) {
+        for (int i = 0; i < 4; i++) {
         	this.manager.update();
         }
         final Set<Shot> ended = this.manager.getShotsEnded();
@@ -90,12 +94,11 @@ public class GunTest {
 		this.player.setPosition(this.position);
 		this.zombieModel.setZombiesToSpawn(1);
 		this.zombieModel.update();
-		assertTrue(Integer.valueOf(zombieModel.getZombies().size()).equals(1));
 		
 		//PISTOL
 		final Zombie z = this.zombieModel.getZombies().stream().findFirst().get();
 		int zombieHP = z.getHealth();
-		this.player.getCurrentGun().attack(position, Direction.SOUTH).forEach(s -> {
+		this.player.getCurrentGun().attack(position.subtract(Direction.SOUTH.getShotOffset()), Direction.SOUTH).forEach(s -> {
 			this.manager.addShot(s.get());
 		});
 		this.manager.update();
@@ -105,7 +108,7 @@ public class GunTest {
 		this.player.unlockGun(uzi);
 		this.player.nextGun();
 		assertTrue(this.player.getCurrentGun().equals(uzi));
-		this.player.getCurrentGun().attack(position, Direction.SOUTH).forEach(s -> {
+		this.player.getCurrentGun().attack(position.subtract(Direction.SOUTH.getShotOffset()), Direction.SOUTH).forEach(s -> {
 			this.manager.addShot(s.get());
 		});
 		this.manager.update();
@@ -113,9 +116,9 @@ public class GunTest {
 		
 		//SHOTGUN
 		this.player.unlockGun(shotgun);
-		this.player.nextGun();
+		this.player.setCurrentGun(shotgun);
 		assertTrue(this.player.getCurrentGun().equals(shotgun));
-		this.player.getCurrentGun().attack(position, Direction.SOUTH).forEach(s -> {
+		this.player.getCurrentGun().attack(position.subtract(Direction.SOUTH.getShotOffset()), Direction.SOUTH).forEach(s -> {
 			this.manager.addShot(s.get());
 		});
 		z.setHealth(200);

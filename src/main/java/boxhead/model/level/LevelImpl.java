@@ -51,7 +51,7 @@ public class LevelImpl implements Level {
 		blocks.forEach((point, id) -> {
 			switch (id) {
 			case 2:
-				this.walls.add(new Wall(new Point2D(point.getX()*tileSize, point.getY()*tileSize), tileSize * scale, tileSize * scale));
+				this.walls.add(new Wall(new Point2D(point.getX()*tileSize, point.getY()*tileSize)));
 				break;
 			case 3:
 				this.zombieSpawns.add(new Point2D(point.getX()*tileSize, point.getY()*tileSize));

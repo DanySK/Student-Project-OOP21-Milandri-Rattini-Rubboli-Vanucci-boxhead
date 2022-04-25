@@ -82,7 +82,7 @@ public class ScoreImpl implements Score {
 			this.gunManager.checkUpgrades(this.killStreak);
 			this.maxStreak = this.killStreak;
 		}
-		this.streakTime = 20000 - (this.killStreak * 500) + Math.round(Math.pow(this.killStreak, 2.3)) ;
+		this.streakTime = 20000 - (this.killStreak * 500) + Math.round(Math.pow(this.killStreak, 2.2)) ;
 	}
 
 	/**
@@ -90,7 +90,7 @@ public class ScoreImpl implements Score {
 	 */
 	private final void decreaseStreak() {
 		this.killStreak--;
-		this.streakTime = 20000 - (this.killStreak * 500) + Math.round(Math.pow(this.killStreak, 2));
+		this.streakTime = 20000 - (this.killStreak * 500) + Math.round(Math.pow(this.killStreak, 2.2));
 	}
 
 	/**
@@ -99,7 +99,7 @@ public class ScoreImpl implements Score {
 	 */
 	@Override
 	public final String getTimePlayed() {
-		return this.timePlayed.orElse("Not set");
+		return this.timePlayed.orElse("Still not set");
 	}
 
 	/**

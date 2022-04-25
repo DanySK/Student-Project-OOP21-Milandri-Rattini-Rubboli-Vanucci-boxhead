@@ -96,8 +96,10 @@ public class Sprite {
 	 * @param direction
 	 */
 	public static void updateZombieImage(final ImageView image, Direction direction) {
-		String filename="zombie-"+direction.toString().toLowerCase();
-		image.setImage(new Image(Sprite.class.getResourceAsStream("/zombie/" + filename + ".png")));
+		if(!direction.equals(Direction.NULL)) {
+			String filename="zombie-"+direction.toString().toLowerCase();
+			image.setImage(new Image(Sprite.class.getResourceAsStream("/zombie/" + filename + ".png")));
+		}
 	}
 	
 	/**

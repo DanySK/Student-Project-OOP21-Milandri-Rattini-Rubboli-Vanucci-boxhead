@@ -25,6 +25,7 @@ public class ShotManagerImpl implements ShotManager {
 		this.shotsActive = new HashSet<>();
 		this.zombieModel = zombieModel;
 		this.ended = new HashSet<>();
+		this.walls = new HashSet<>();
 	}
 	
 	/**

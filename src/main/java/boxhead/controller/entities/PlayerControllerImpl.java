@@ -20,7 +20,6 @@ public class PlayerControllerImpl implements PlayerController {
 		this.playerView.getImageView();
 		this.gameLevel=gameLevel;
 		this.input=gameLevel.getInputHandler();
-		this.player.setBoundingBox(10, 10);
 	}
 	
 	/**

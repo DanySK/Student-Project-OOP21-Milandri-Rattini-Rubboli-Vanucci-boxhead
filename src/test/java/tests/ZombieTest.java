@@ -56,4 +56,31 @@ public class ZombieTest {
 		final Zombie zombie = this.model.getZombies().stream().findFirst().get();
 		assertTrue(Collision.isColliding(zombie.getBoundingBox(), wall.getBoundingBox()));
 	}
+
+
+@Test
+	public void testHitZombie() {
+    	this.model.setZombiesToSpawn(1);
+    	this.model.update();
+    	final Zombie zombie = this.model.getZombies().stream().findAny().get();
+    	final int zombieHealth = zombie.getHealth();
+    	final int damage = zombieHealth / 2;
+    	this.model.hitZombie(zombie, damage);
+    	assertTrue(Integer.valueOf(zombie.getHealth()).equals(zombieHealth - damage));
+	}
+
+	/*
+	 * Remove addKill (score) before
+	 */
+	@Test
+	public void testKillZombie() {
+		this.model.setZombiesToSpawn(1);
+		this.model.update();
+		final Zombie zombie = this.model.getZombies().stream().findAny().get();
+		final int damage = zombie.getHealth();
+		this.model.hitZombie(zombie, damage);
+		this.model.update();
+		assertTrue(this.model.getZombies().isEmpty());
+	}
+	
 }

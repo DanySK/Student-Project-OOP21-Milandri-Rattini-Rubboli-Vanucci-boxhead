@@ -22,7 +22,6 @@ public class LevelImpl implements Level {
 	private final double width;
 	private final double height;
 	private final double tileSize;
-	private double scale = 1.0;
 
 	/**
 	 * Constructor of the level.
@@ -117,13 +116,4 @@ public class LevelImpl implements Level {
 	public double getTileSize() {
 		return tileSize;
 	}
-
-	/**
-	 * {@inheritDoc}
-	 */
-	@Override
-	public void setScale(final double scale) {
-		this.scale = scale;
-	}
-
 }

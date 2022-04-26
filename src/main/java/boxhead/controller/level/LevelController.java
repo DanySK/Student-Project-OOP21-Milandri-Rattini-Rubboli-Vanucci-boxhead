@@ -33,7 +33,6 @@ public class LevelController {
 	public LevelController(final double w, final double h, final double ts, final int renderScale) {
 		this.lGenerator = new LevelGeneratorImpl(TILE_SIZE);
 		this.generateMap(w, h, ts);
-		this.l.setScale(renderScale);
 		this.lv.setScale(renderScale);
 	}
 

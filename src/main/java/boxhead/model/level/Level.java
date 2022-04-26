@@ -54,6 +54,4 @@ public interface Level {
 	 * @return The size of a single tile.
 	 */
 	double getTileSize();
-
-	void setScale(double scale);
 }

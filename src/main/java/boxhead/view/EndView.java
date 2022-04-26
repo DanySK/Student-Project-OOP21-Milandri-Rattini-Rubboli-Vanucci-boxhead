@@ -82,7 +82,11 @@ public class EndView {
         imgNS.setFitWidth(SOUND_WIDTH);
 
         final BoxheadButton button = new BoxheadButton("");
-        button.setGraphic(imgS);
+        if (GameState.soundOff == false) {
+        	button.setGraphic(imgS);
+        } else {
+        	button.setGraphic(imgNS);
+        }
         button.setLayoutY(SOUND_LAYOUTY);
         button.setLayoutX(SOUND_LAYOUTX);
         this.pane.getChildren().add(button);

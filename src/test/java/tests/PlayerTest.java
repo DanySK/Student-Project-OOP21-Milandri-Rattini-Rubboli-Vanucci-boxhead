@@ -29,7 +29,7 @@ import boxhead.model.entities.utils.Collision;
 import boxhead.model.entities.utils.Direction;
 import boxhead.controller.entities.PlayerInput;
 
-public class PlayerTest extends Application{
+public class PlayerTest {
 	private static final int MAX_HP = 100;
     private static final int PLAYER_BB = 20;
     private static final Point2D PLAYER_POSITION = new Point2D(10, 10);

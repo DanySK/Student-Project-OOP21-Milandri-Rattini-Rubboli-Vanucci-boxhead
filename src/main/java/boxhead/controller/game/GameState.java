@@ -37,7 +37,7 @@ public class GameState {
 		
 		MENU("menuView"),
 		
-		GAME("gameView"),
+		GAME("gameview"),
 		
 		PAUSE("gamePause"),
 		

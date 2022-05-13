@@ -13,7 +13,7 @@ plugins {
      */
     id("com.github.johnrengelman.shadow") version "5.2.0"
     id("de.aaschmid.cpd") version "3.1"
-    id("com.github.spotbugs") version "4.3.0"
+    id("com.github.spotbugs") version "5.0.7"
     `build-dashboard`
 }
 
